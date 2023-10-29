@@ -10,6 +10,16 @@
     align-content: center;
     justify-content: stretch;
 
+    .attachButton {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        background: url('../../assets/images/attach.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+    }
+
     label {
 
         img {

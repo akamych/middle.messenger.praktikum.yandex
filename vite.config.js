@@ -14,9 +14,11 @@ export default defineConfig({
 
   root: resolve(__dirname, 'src', 'pages'),
 
+  assetsInclude: ['**/*.svg'],
+
   build: {
 
-    outDir: resolve(__dirname, 'dist'),
+    outDir: resolve(__dirname, 'dist'),    
 
     rollupOptions: {
       input: {

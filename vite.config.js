@@ -21,12 +21,13 @@ export default defineConfig({
     outDir: resolve(__dirname, 'dist'),
   },
   
-  input: Object.fromEntries(
-		glob.sync('src/pages/*.html').map(file => [
-			path.relative('src', file.slice(0, file.length - path.extname(file).length)),
-			fileURLToPath(new URL(file, import.meta.url))
-		])
-	),
+  input: {
+    index: 'src/pages/index.html',
+    404: 'src/pages/404.html',
+    500: 'src/pages/500.html',
+    login: 'src/pages/login.html',
+    signup: 'src/pages/signup.html',
+  },
 
   plugins: [
 

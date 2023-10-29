@@ -1,5 +1,8 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import glob from 'glob';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import handlebars from 'vite-plugin-handlebars';
 import pagesData from './src/utils/constants/pagesData.json';
 import textBundle from './src/utils/constants/text.json';
@@ -18,10 +21,12 @@ export default defineConfig({
     outDir: resolve(__dirname, 'dist'),
   },
   
-  input: {
-    index: resolve(__dirname, 'src', 'pages', 'index.html'),
-    404: resolve(__dirname, 'src', 'pages', '404.html'),
-  },
+  input: Object.fromEntries(
+		glob.sync('src/pages/*.html').map(file => [
+			path.relative('src', file.slice(0, file.length - path.extname(file).length)),
+			fileURLToPath(new URL(file, import.meta.url))
+		])
+	),
 
   plugins: [
 

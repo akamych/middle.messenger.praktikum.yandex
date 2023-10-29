@@ -20,7 +20,7 @@ export default defineConfig({
 
     rollupOptions: {
       input: {
-        index: 'src/pages/index.html',
+        index: 'src/pages/*.html',
         404: 'src/pages/404.html',
         500: 'src/pages/500.html',
         login: 'src/pages/login.html',
@@ -51,7 +51,8 @@ export default defineConfig({
           pagesData,
           textVars: textBundle,
           messages,
-          feedMessages
+          feedMessages,
+          svgAttach: new URL('src/assets/svgs/attach.svg', import.meta.url).href
         };
       },
       

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  {{> head }}
+  <body>
+
+    {{> header/header }}
+
+    {{#> guestForms/guestForms
+      header=textVars.buttons.login
+    }}
+
+      {{> inputs/input/input 
+        type="text"
+        name="username"
+        label=textVars.labels.username }}
+
+      {{> inputs/input/input 
+        type="password"
+        name="password"
+        label=textVars.labels.password }}
+
+      {{> inputs/button/button
+        className="important"
+        text=textVars.buttons.login
+      }}
+
+      <a href="{{ pagesData.signup.link }}" title="{{ pagesData.signup.title }}">
+       {{ pagesData.signup.title }}
+      </a>
+
+    {{/ guestForms/guestForms }}
+
+    {{> footer/footer}}
+    
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  {{> head }}
+  <body>
+
+    {{> header/header }}
+
+    {{> errorPages/errorPages
+      header=textVars.errors.404.header
+      desc=textVars.errors.404.desc
+      linkHref=pagesData.index.link
+      linkText=textVars.buttons.goBackToChats
+    }}
+
+    {{> footer/footer}}
+    
+  </body>
+</html>

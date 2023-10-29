@@ -1,0 +1,80 @@
+@import '../static/css/variables.scss';
+
+@import '../partials/header/header.scss';
+@import '../partials/nav/nav.scss';
+@import '../partials/footer/footer.scss';
+@import '../partials/feed/feed.scss';
+@import '../partials/chatMessages/chatMessages.scss';
+@import '../partials/chatMenu/chatMenu.scss';
+@import '../partials/chatSend/chatSend.scss';
+
+@import '../layouts/chat/chat.scss';
+@import '../layouts/errorPages/errorPages.scss';
+@import '../layouts/guestForms/guestForms.scss';
+
+@import '../components/inputs/button/button.scss';
+@import '../components/inputs/input/input.scss';
+
+@font-face {
+    font-family: comfortaa;
+    src: url("/fonts/comfortaa.ttf") format("truetype-variations");
+    font-weight: 1 999;
+    font-style: normal;
+    font-display: swap;
+}	
+
+html, body {
+    position: relative;
+    height: 100%;
+    background: var(--background);
+    color: var(--black);
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    font-variation-settings: 'wght' 450;    
+    font-size: var(--rem);
+}
+
+body {
+    display: grid;
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    grid-template-rows: max-content 1fr max-content;
+    justify-items: stretch;
+    align-content: center;
+
+    &:has(main.chat) {        
+        grid-template-rows: 100%;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--backgroundGrey);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+main {
+    position: relative;
+}
+
+input {    
+    font-family: var(--fontFamily);
+    font-size: var(--rem);
+}
+
+a {    
+    text-decoration: none;
+}

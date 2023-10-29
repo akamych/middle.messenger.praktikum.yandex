@@ -1,6 +1,6 @@
 [build]
 
-    command = "bpm run build"
+    command = "npm run build"
     publish = "dist"
 
 [[redirects]]

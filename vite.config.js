@@ -17,6 +17,11 @@ export default defineConfig({
   build: {
     outDir: resolve(__dirname, 'dist'),
   },
+  
+  input: {
+    index: resolve(__dirname, 'src', 'pages', 'index.html'),
+    404: resolve(__dirname, 'src', 'pages', '404.html'),
+  },
 
   plugins: [
 

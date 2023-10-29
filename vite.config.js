@@ -15,17 +15,21 @@ export default defineConfig({
   root: resolve(__dirname, 'src', 'pages'),
 
   build: {
+
     outDir: resolve(__dirname, 'dist'),
+
+    rollupOptions: {
+      input: {
+        index: 'src/pages/index.html',
+        404: 'src/pages/404.html',
+        500: 'src/pages/500.html',
+        login: 'src/pages/login.html',
+        signup: 'src/pages/signup.html',
+      },
+    }
+
   },
   
-  input: {
-    index: 'src/pages/index.html',
-    404: 'src/pages/404.html',
-    500: 'src/pages/500.html',
-    login: 'src/pages/login.html',
-    signup: 'src/pages/signup.html',
-  },
-
   plugins: [
 
     handlebars({

@@ -1,8 +1,5 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import glob from 'glob';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import handlebars from 'vite-plugin-handlebars';
 import pagesData from './src/utils/constants/pagesData.json';
 import textBundle from './src/utils/constants/text.json';

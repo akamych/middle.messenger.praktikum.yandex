@@ -1,0 +1,16 @@
+<div class="chatSend">
+
+    <img src="../../static/svgs/attach.svg" />
+
+    {{> inputs/input/input 
+        type="text"
+        name="message"
+        label=textVars.labels.messageText
+    }}
+
+    {{> inputs/button/button
+        className="sendMessage"
+        text=textVars.buttons.sendMessage
+    }}
+
+</div>

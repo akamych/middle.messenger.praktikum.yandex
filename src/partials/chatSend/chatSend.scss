@@ -1,0 +1,63 @@
+.chatSend {
+
+    position: sticky;
+    bottom: 0;
+    background: var(--background);
+    padding: 0.5em 1em;
+    display: grid;
+    width: 100%;
+    grid-template-columns: max-content 1fr max-content;
+    align-content: center;
+    justify-content: stretch;
+
+    label {
+
+        img {
+            width: 2em;
+            height: 2em;
+        }
+
+        &:has(input) {
+            width: 100%;
+        }
+
+        &:has(button) {
+            width: 10em;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            border: 2px solid var(--purple);
+            font-family: var(--fontFamily);
+            font-size: 0.8em;
+            border-radius: var(--borderRadius);
+            padding: 0.5em;
+
+            &::placeholder {
+                color: var(--background);
+            }
+        }
+
+        span.label {
+            display: none;
+        }
+
+        button {
+            font-family: var(--fontFamily);
+            font-size: 0.8em;
+            background: var(--purple);
+            color: var(--background);
+            padding: 0.5em 0.75em;
+            border-radius: var(--borderRadius);
+            border: 0;
+            outline: 0;
+
+            &:hover {
+                background: var(--orange);
+                cursor: pointer;
+            }
+        }
+    }
+
+}

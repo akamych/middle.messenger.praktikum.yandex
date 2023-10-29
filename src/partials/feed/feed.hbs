@@ -1,0 +1,11 @@
+<ul class="feed">
+    {{#each feedMessages }}
+        <li>
+            <div class="avatar"></div>
+            <b>{{ user }}</b>
+            <p>{{ text }}</p>
+            <span class="time">{{ time }}</span>
+            <span class="new">{{ new }}</span>
+        </li>
+    {{/each}}
+</ul>

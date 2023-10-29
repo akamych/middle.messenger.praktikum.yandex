@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  {{> head }}
+  <body>
+
+    {{> header/header }}
+
+    {{#> guestForms/guestForms
+      header=textVars.buttons.signup
+    }}
+
+      {{> inputs/input/input 
+        type="email"
+        name="email"
+        label=textVars.labels.email }}
+
+      {{> inputs/input/input 
+        type="text"
+        name="lastname"
+        label=textVars.labels.lastname }}
+
+      {{> inputs/input/input 
+        type="text"
+        name="firstname"
+        label=textVars.labels.firstname }}
+
+      {{> inputs/input/input 
+        type="password"
+        name="password"
+        label=textVars.labels.password }}
+
+      {{> inputs/input/input 
+        type="password"
+        name="passwordConfirmation"
+        label=textVars.labels.passwordConfirmation }}
+
+      {{> inputs/button/button
+        className="important"
+        text=textVars.buttons.signup
+      }}
+
+      <a href="{{ pagesData.login.link }}" title="{{ pagesData.login.title }}">
+       {{ pagesData.login.title }}
+      </a>
+
+    {{/ guestForms/guestForms }}
+
+    {{> footer/footer}}
+    
+  </body>
+</html>

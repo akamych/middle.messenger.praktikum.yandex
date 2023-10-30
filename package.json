@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3000",
     "build": "vite build",
-    "start": "vite build",
+    "start": "vite --port 3000",
     "preview": "vite preview"
   },
   "devDependencies": {

@@ -1,3 +1,12 @@
-Пока за макет базовый практикумный:
-https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=0%3A1&mode=dev 
-Мелкие доработки возможны в будущем
+# Мессенджер (Яндекс.Практикум)
+
+Данный репозиторий представляет из себя учебное задание (пока ещё) первого спринта в рамках обучения курсу Middle Frontend Developer в Яндекс.Практикум
+
+## Disclaimer
+
+Сразу извиняюсь перед ревьюером за дилетантский шаблон и верстку - "потерял" первую неделю спринта, поэтому не стал всё делать красиво - постарался максимально минималистично и безстатично. Не всегда в CSS соблюдаю DRY. Хотел бы сдать эту работу и доделать более красивый макет и стили уже в рамках второго спринта. 
+
+### Нужные ссылки
+
+[Figma: MVC](https://www.figma.com/file/sbtB0RzeT89V7y3rvyzy6x/Yandex-Praktikum%3A-Sprint-1?type=design&node-id=0%3A1&mode=design&t=Si48pxi8MbvwfP5q-1)
+[Netlify](https://yandex-praktikum-akamych-1.netlify.app/)

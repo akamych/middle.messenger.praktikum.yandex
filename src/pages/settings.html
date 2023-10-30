@@ -5,45 +5,62 @@
 
     {{> header/header }}
 
-    {{#> guestForms/guestForms
+    {{#> mainForms/mainForms
       header=textVars.buttons.signup
     }}
 
       {{> inputs/input/input 
         type="email"
         name="email"
+        value=myData.email
         label=textVars.labels.email }}
 
       {{> inputs/input/input 
-        type="text"
-        name="lastname"
-        label=textVars.labels.lastname }}
+        type="phone"
+        name="phone"
+        value=myData.phone
+        label=textVars.labels.phone }}
 
       {{> inputs/input/input 
         type="text"
-        name="firstname"
-        label=textVars.labels.firstname }}
+        name="login"
+        value=myData.login
+        label=textVars.labels.login }}
+
+      {{> inputs/input/input 
+        type="text"
+        name="display_name"
+        value=myData.display_name
+        label=textVars.labels.display_name }}
+
+      {{> inputs/input/input 
+        type="text"
+        name="first_name"
+        value=myData.first_name
+        label=textVars.labels.first_name }}
+
+      {{> inputs/input/input 
+        type="text"
+        name="second_name"
+        value=myData.second_name
+        label=textVars.labels.second_name }}
 
       {{> inputs/input/input 
         type="password"
-        name="password"
-        label=textVars.labels.password }}
+        name="oldPassword"
+        label=textVars.labels.oldPassword }}
 
       {{> inputs/input/input 
         type="password"
-        name="passwordConfirmation"
-        label=textVars.labels.passwordConfirmation }}
+        name="newPassword"
+        label=textVars.labels.newPassword }}
 
       {{> inputs/button/button
         className="important"
-        text=textVars.buttons.signup
+        text=textVars.buttons.save
       }}
 
-      <a href="{{ pagesData.login.link }}" title="{{ pagesData.login.title }}">
-       {{ pagesData.login.title }}
-      </a>
-
-    {{/ guestForms/guestForms }}
+    {{/ mainForms/mainForms }}
 
     {{> footer/footer}}
     

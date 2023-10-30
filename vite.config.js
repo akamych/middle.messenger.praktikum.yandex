@@ -5,6 +5,7 @@ import pagesData from './src/utils/constants/pagesData.json';
 import textBundle from './src/utils/constants/text.json';
 import feedMessages from './src/utils/tests/feedMessages.json';
 import messages from './src/utils/tests/messages.json';
+import myData from './src/utils/tests/myData.json';
 
 export default defineConfig({
 
@@ -50,13 +51,14 @@ export default defineConfig({
         return {
           pageData: currentPageData,
           pagesData,
+          myData,
           textVars: textBundle,
           messages,
           feedMessages,
           svgAttach: new URL('src/assets/svgs/attach.svg', import.meta.url).href
         };
       },
-      
+            
     }), 
     
   ],

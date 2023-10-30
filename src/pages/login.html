@@ -5,14 +5,14 @@
 
     {{> header/header }}
 
-    {{#> guestForms/guestForms
+    {{#> mainForms/mainForms
       header=textVars.buttons.login
     }}
 
       {{> inputs/input/input 
         type="text"
-        name="username"
-        label=textVars.labels.username }}
+        name="login"
+        label=textVars.labels.login }}
 
       {{> inputs/input/input 
         type="password"
@@ -28,7 +28,7 @@
        {{ pagesData.signup.title }}
       </a>
 
-    {{/ guestForms/guestForms }}
+    {{/ mainForms/mainForms }}
 
     {{> footer/footer}}
     

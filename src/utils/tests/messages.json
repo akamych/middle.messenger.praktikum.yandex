@@ -1,17 +1,14 @@
 {
-
     "1" : {
         "text": "Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. Some message. ",
         "time": "00:01",
         "byYou": false
     },
-
     "2" : {
         "text": "Some message. ",
         "time": "00:02",
         "byYou": false
     },
-
     "3" : {    
         "text": "caption",
         "img": "https://www.akamych.com/swing.school/img/logo.png",
@@ -21,18 +18,15 @@
         "time": "00:03",
         "byYou": false
     },
-
     "4" : {
         "text": "some answer",
         "time": "00:04",
         "byYou": true
     },
-
     "5" : {    
         "text": "unread message",
         "time": "00:03",
         "byYou": false,
         "unread": true
     }
-
 }

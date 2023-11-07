@@ -1,0 +1,28 @@
+<main class="chat">
+
+    <aside>
+
+        <div>
+
+            <a href="{{ pagesData.settings.link }}" title="{{ pagesData.settings.title }}">{{ textVars.buttons.profile }}</a>
+            
+            {{> inputs/input/input 
+                type="text"
+                name="search"
+                label=textVars.labels.search }}
+
+        </div>
+
+        {{> feed/feed }}
+
+    </aside>
+
+    <section class="chatMessages">
+
+        {{> chatMenu/chatMenu }}
+        {{> chatMessages/chatMessages }}
+        {{> chatSend/chatSend }}
+
+    </section>
+
+</main>

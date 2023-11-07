@@ -1,0 +1,57 @@
+.chatMenu {
+
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    padding: 1em 0;
+    display: grid;
+    grid-template-columns: auto max-content;
+    align-items: center;
+    justify-items: start;
+    grid-gap: 0 1em;
+
+    .avatar {
+        grid-row: span 2;
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        background: var(--blue);
+        border-radius: 50%;
+    }
+
+    b {
+        grid-row: span 2;
+        color: var(--blue);
+        line-height: 1;
+        justify-self: end;
+        align-self: center;
+    }
+
+    nav {
+        display: none;
+        justify-self: end;
+        line-height: 1;
+
+        a {
+            font-family: var(--fontFamily);
+            font-size: 0.5em;
+            color: var(--grey);
+            margin-right: 1em;
+
+            &:hover {
+                color: var(--orange);
+            }
+        }
+    }
+    
+    &:hover {
+        
+        b {
+            grid-row: 1;
+        }
+        
+        nav {
+            display: inline-block;
+        }
+    }
+}

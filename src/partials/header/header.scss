@@ -1,0 +1,17 @@
+header {
+    
+    padding: 0.5em 1em;
+    text-align: right;
+
+    a {
+        font-size: 2em;
+        font-weight: 300;
+        text-transform: lowercase;
+        color: var(--blue);
+
+        b {
+            font-weight: 300;
+            color: var(--orange);
+        }
+    }
+}

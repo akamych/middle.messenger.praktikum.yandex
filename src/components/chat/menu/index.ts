@@ -1,5 +1,6 @@
 import Block from '../../../classes/Block.ts';
-import template from './menu.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './menu.hbs?raw';
 
 type chatMenuLinkProps = {
   href: string,

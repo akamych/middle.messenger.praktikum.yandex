@@ -10,9 +10,11 @@ import textBundle from '../../../utils/constants/text.json';
 import ChatMessages from '../../chat/messages/index.ts';
 import ChatMessage from '../../chat/messages/message/index.ts';
 import FeedUsers from '../../chat/feed/users/index.ts';
-import attachIcon from '../../../assets/svg/attach.svg';
+// eslint-disable-next-line import/no-unresolved
+import attachIcon from '../../../assets/svg/attach.svg?raw';
 import ChatSend from '../../chat/send/index.ts';
 import Button from '../../inputs/button/index.ts';
+import ChatSendForm from '../../chat/send/form/index.ts';
 
 const feedProps = {
   users: [],
@@ -72,21 +74,19 @@ Object.entries(messagesData).forEach((message) => {
 
 const messages = new ChatMessages(chatMessagesProps);
 
-const chatSendProps = {
-  attachIcon,
-};
-
 const chatSend = new ChatSend({
   attachIcon,
-  input: new Input({
-    type: 'text',
-    name: 'message',
-    placeholder: textBundle.labels.messageText,
-  }),
-  button: new Button({
-    text: textBundle.buttons.sendMessage,
-    type: 'button',
-    className: 'sendMessage',
+  form: new ChatSendForm({
+    input: new Input({
+      type: 'text',
+      name: 'message',
+      placeholder: textBundle.labels.messageText,
+    }),
+    button: new Button({
+      text: textBundle.buttons.sendMessage,
+      type: 'submit',
+      className: 'sendMessage',
+    }),
   }),
 });
 

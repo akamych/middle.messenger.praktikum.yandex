@@ -2,7 +2,7 @@ import Block from '../../../classes/Block.ts';
 import BackLink from '../../links/backLink/index.ts';
 import textBundle from '../../../utils/constants/text.json';
 import pagesData from '../../../utils/constants/pagesData.json';
-import template from './errors.hbs';
+import template from './errors.hbs?raw';
 import styles from './errors.scss';
 
 type errorPageProps = {

@@ -1,6 +1,7 @@
 import Block from '../../../classes/Block.ts';
 import FeedUsers from './users/index.ts';
-import template from './feed.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './feed.hbs?raw';
 
 type feedProps = {
     events?: Record<string, Function>,

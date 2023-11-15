@@ -1,6 +1,7 @@
 import pagesData from '../../../utils/constants/pagesData.json';
 import Block from '../../../classes/Block.ts';
-import template from './header.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './header.hbs?raw';
 import styles from './header.scss';
 
 type headerPropsType = {

@@ -48,6 +48,13 @@ function validateLogin(value : string) : validateInputType {
   return { error, message };
 }
 
+function validateMessage(value : string) : validateInputType {
+  if (checkValuePresence(value)) {
+    return valueAbsentError();
+  }
+  return { error: false };
+}
+
 function validateNames(value : string) : validateInputType {
   if (checkValuePresence(value)) {
     return valueAbsentError();
@@ -99,8 +106,10 @@ export function validateInputData(name: string, type: string, value?: string) : 
         case 'display_name':
           return validateLogin(value);
         case 'first_name':
-        case 'second_name':
-          return validateNames(value);
+          case 'second_name':
+            return validateNames(value);
+        case 'message':
+          return validateMessage(value);          
         case 'feedSearch':
           return { error: false };
         default: return { error: false };

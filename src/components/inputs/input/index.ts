@@ -1,7 +1,8 @@
 import Block from '../../../classes/Block.ts';
 // eslint-disable-next-line max-len
 import { validateInput, validateInputType, validateInputData } from '../../../utils/functions/validateInput.ts';
-import template from './input.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './input.hbs?raw';
 
 type InputPropsType = {
   type: string,
@@ -16,7 +17,9 @@ export default class Input extends Block {
   constructor(props: InputPropsType) {
     super('label', props, template);
     const input = this.getContent().querySelector('input');
-    this._updateErrorStatus(input, validateInputData(input.name, input.type, input.value));
+    if (input) {
+      this._updateErrorStatus(input, validateInputData(input.name, input.type, input.value));
+    }
   }
 
   private _validateError: boolean = false;
@@ -41,8 +44,10 @@ export default class Input extends Block {
 
   _addSpecificEvents() {
     const input = this.getContent().querySelector('input');
-    input.addEventListener('blur', (event) => {
-      this._updateErrorStatus(input, validateInput(event));
-    });
+    if (input) {
+      input.addEventListener('blur', (event) => {
+        this._updateErrorStatus(input, validateInput(event));
+      });
+    }
   }
 }

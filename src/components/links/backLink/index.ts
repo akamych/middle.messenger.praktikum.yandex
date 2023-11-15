@@ -1,5 +1,6 @@
 import Block from '../../../classes/Block.ts';
-import template from './backLink.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './backLink.hbs?raw';
 
 type backLinkPropsType = {
   href: string,

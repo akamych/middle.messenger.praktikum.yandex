@@ -1,5 +1,6 @@
 import Block from '../../../../classes/Block.ts';
-import template from './message.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './message.hbs?raw';
 
 type chatMessageProps = {
   events?: Record<string, Function>,

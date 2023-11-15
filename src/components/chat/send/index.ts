@@ -1,13 +1,13 @@
 import Block from '../../../classes/Block.ts';
-import Input from '../../inputs/input/index.ts';
-import template from './send.hbs';
-import attachIcon from '../../../assets/svg/attach.svg';
-import Button from '../../inputs/button/index.ts';
+// eslint-disable-next-line import/no-unresolved
+import template from './send.hbs?raw';
+// eslint-disable-next-line import/no-unresolved
+import attachIcon from '../../../assets/svg/attach.svg?raw';
+import ChatSendForm from './form/index.ts';
 
 type chatSendProps = {
   attachIcon: attachIcon,
-  input: Input,
-  button: Button,
+  form: ChatSendForm,
 };
 
 export default class ChatSend extends Block {

@@ -1,6 +1,7 @@
 import textBundle from '../../../utils/constants/text.json';
 import Block from '../../../classes/Block.ts';
-import template from './footer.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './footer.hbs?raw';
 import styles from './footer.scss';
 
 type footerPropsType = {

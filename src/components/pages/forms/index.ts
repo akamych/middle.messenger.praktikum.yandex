@@ -1,6 +1,7 @@
 import Block from '../../../classes/Block.ts';
 import consoleForm from '../../../utils/functions/consoleForm.ts';
-import template from './forms.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './forms.hbs?raw';
 import styles from './forms.scss';
 
 type formPageProps = {

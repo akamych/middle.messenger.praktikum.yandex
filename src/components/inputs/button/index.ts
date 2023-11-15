@@ -1,5 +1,6 @@
 import Block from '../../../classes/Block.ts';
-import template from './button.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './button.hbs?raw';
 
 type ButtonPropsType = {
   text: string,

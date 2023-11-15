@@ -1,5 +1,6 @@
 import Block from '../../../classes/Block.ts';
-import template from './messages.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './messages.hbs?raw';
 import ChatMessage from './message/index.ts';
 
 type chatMessagesProps = {

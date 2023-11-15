@@ -1,6 +1,7 @@
 import Block from '../../../classes/Block.ts';
 import Input from '../../inputs/input/index.ts';
-import template from './search.hbs';
+// eslint-disable-next-line import/no-unresolved
+import template from './search.hbs?raw';
 
 type feedSearchProps = {
   link: {

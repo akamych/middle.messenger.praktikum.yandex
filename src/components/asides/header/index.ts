@@ -11,7 +11,7 @@ type headerPropsType = {
 
 class Header extends Block {
   constructor(props: headerPropsType) {
-    super('header', {
+    super({
       ...props,
       styles,
     }, template);

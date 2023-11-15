@@ -12,6 +12,6 @@ type feedUsersProps = {
 
 export default class FeedUsers extends Block {
   constructor(props: feedUsersProps) {
-    super('div', props, template);
+    super(props, template);
   }
 }

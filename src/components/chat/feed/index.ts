@@ -10,6 +10,6 @@ type feedProps = {
 
 export default class Feed extends Block {
   constructor(props: feedProps) {
-    super('main', props, template);
+    super(props, template);
   }
 }

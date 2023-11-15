@@ -11,7 +11,7 @@ type formPageProps = {
 
 export default class FormPage extends Block {
   constructor(props: formPageProps) {
-    super('main', {
+    super({
       ...props,
       styles,
     }, template);

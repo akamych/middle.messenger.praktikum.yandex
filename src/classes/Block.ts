@@ -34,9 +34,9 @@ export default class Block {
   protected props: propType = {};
 
   constructor(
-    tagName: string = 'div',
     props: propType = {},
     template: string = '',
+    tagName?: string = 'div',
   ) {
     this.id = makeUUID();
 

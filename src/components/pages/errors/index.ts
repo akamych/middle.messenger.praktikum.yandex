@@ -12,7 +12,7 @@ type errorPageProps = {
 
 export default class ErrorPage extends Block {
   constructor(props: errorPageProps) {
-    super('main', {
+    super({
       ...props,
       styles,
       backLink: new BackLink(

@@ -17,7 +17,7 @@ type chatPageProps = {
 
 export default class ChatPage extends Block {
   constructor(props: chatPageProps) {
-    super('main', {
+    super({
       ...props,
       styles,
     }, template);

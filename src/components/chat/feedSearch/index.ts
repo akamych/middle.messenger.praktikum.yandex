@@ -14,6 +14,6 @@ type feedSearchProps = {
 
 export default class FeedSearch extends Block {
   constructor(props: feedSearchProps) {
-    super('div', props, template);
+    super(props, template);
   }
 }

@@ -12,6 +12,6 @@ type chatSendProps = {
 
 export default class ChatSend extends Block {
   constructor(props: chatSendProps) {
-    super('div', props, template);
+    super(props, template);
   }
 }

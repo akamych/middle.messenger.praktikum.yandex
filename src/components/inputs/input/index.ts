@@ -15,7 +15,7 @@ type InputPropsType = {
 
 export default class Input extends Block {
   constructor(props: InputPropsType) {
-    super('label', props, template);
+    super(props, template);
     const input = this.getContent().querySelector('input');
     if (input) {
       this._updateErrorStatus(input, validateInputData(input.name, input.type, input.value));

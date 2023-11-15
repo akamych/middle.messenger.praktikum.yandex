@@ -11,6 +11,6 @@ type ButtonPropsType = {
 
 export default class Button extends Block {
   constructor(props: ButtonPropsType) {
-    super('label', props, template);
+    super(props, template);
   }
 }

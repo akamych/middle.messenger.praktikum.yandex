@@ -20,6 +20,6 @@ type chatMenuProps = {
 
 export default class ChatMenu extends Block {
   constructor(props: chatMenuProps) {
-    super('main', props, template);
+    super(props, template);
   }
 }

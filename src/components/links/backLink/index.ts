@@ -9,7 +9,7 @@ type backLinkPropsType = {
 
 export default class BackLink extends Block {
   constructor(props: backLinkPropsType) {
-    super('a', {
+    super({
       ...props,
       events: {
         click: (event) => {

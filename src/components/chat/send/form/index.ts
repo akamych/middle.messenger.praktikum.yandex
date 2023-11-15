@@ -12,7 +12,7 @@ type chatSendFormProps = {
 
 export default class ChatSendForm extends Block {
   constructor(props: chatSendFormProps) {
-    super('div', props, template);
+    super(props, template);
   }
 
   _addSpecificEvents() {

@@ -16,6 +16,6 @@ type chatMessageProps = {
 
 export default class ChatMessage extends Block {
   constructor(props: chatMessageProps) {
-    super('div', props, template);
+    super(props, template);
   }
 }

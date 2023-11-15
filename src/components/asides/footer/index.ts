@@ -11,7 +11,7 @@ type footerPropsType = {
 
 class Footer extends Block {
   constructor(props: footerPropsType) {
-    super('footer', {
+    super({
       ...props,
       styles,
     }, template);

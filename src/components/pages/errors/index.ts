@@ -2,6 +2,7 @@ import Block from '../../../classes/Block.ts';
 import BackLink from '../../links/backLink/index.ts';
 import textBundle from '../../../utils/constants/text.json';
 import pagesData from '../../../utils/constants/pagesData.json';
+// eslint-disable-next-line import/no-unresolved
 import template from './errors.hbs?raw';
 import styles from './errors.scss';
 

@@ -26,8 +26,8 @@ export default class Input extends Block {
 
   _updateErrorStatus(input: HTMLInputElement, result: validateInputType) {
     if (
-      this._validateError !== result.error ||
-      (this._validateError && this.props.label !== result.error)
+      this._validateError !== result.error
+      || (this._validateError && this.props.label !== result.error)
     ) {
       this._validateError = result.error;
 

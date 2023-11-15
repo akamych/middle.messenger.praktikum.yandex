@@ -21,11 +21,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: 'src/index.html',
-        404: 'src/404.html',
-        500: 'src/500.html',
-        login: 'src/login.html',
-        signup: 'src/signup.html',
-        settings: 'src/settings.html',
       },
     },
 

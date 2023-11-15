@@ -1,5 +1,4 @@
 .chatMenu {
-
     position: sticky;
     top: 0;
     background: var(--background);
@@ -33,7 +32,7 @@
         line-height: 1;
 
         a {
-            font-family: var(--fontFamily);
+            font-family: var(--font-family);
             font-size: 0.5em;
             color: var(--grey);
             margin-right: 1em;
@@ -45,7 +44,6 @@
     }
     
     &:hover {
-        
         b {
             grid-row: 1;
         }

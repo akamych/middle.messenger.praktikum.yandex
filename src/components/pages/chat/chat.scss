@@ -1,10 +1,9 @@
-@import '../../chat/menu/menu.scss';
-@import '../../chat/messages/messages.scss';
-@import '../../chat/send/send.scss';
-@import '../../chat/send/form/form.scss';
+@import url('../../chat/menu/menu.scss');
+@import url('../../chat/messages/messages.scss');
+@import url('../../chat/send/send.scss');
+@import url('../../chat/send/form/form.scss');
 
 main.chat {
-
     display: grid;
     grid-template-columns: min(350px, 25vw) 1fr;
     max-height: 100%;
@@ -13,14 +12,13 @@ main.chat {
     justify-items: stretch;
     align-self: stretch;
     justify-self: stretch;
-    font-family: var(--fontFamily);
+    font-family: var(--font-family);
 
     * {
         box-sizing: border-box;
     }
 
     aside {
-
         display: inline-block;
         box-sizing: border-box;
         position: relative;
@@ -28,7 +26,7 @@ main.chat {
         max-height: 100%;
         grid-template-rows: max-content 1fr;
         overflow: auto;
-        background: var(--backgroundGrey);
+        background: var(--background-grey);
 
 
         > div {
@@ -37,7 +35,7 @@ main.chat {
             width: 100%;
             position: sticky;
             top: 0;
-            background: var(--backgroundGrey);
+            background: var(--background-grey);
             padding: 0.5em 1em;
             z-index: 2;
         }
@@ -49,24 +47,22 @@ main.chat {
             margin-bottom: 0.5em;
             color: var(--grey);
             font-size: 0.75em;
-            font-family: var(--fontFamily);
+            font-family: var(--font-family);
             text-transform: lowercase;
         }
 
         > div > label {
-
             input {
                 position: relative;
                 display: block;
                 width: 8ch;
-                border: 0;
                 outline: 0;
                 border-radius: 2em;
-                background: var(--backgroundGrey);
+                background: var(--background-grey);
                 border: 1px solid var(--grey);
                 color: var(--grey);
                 font-size: 1em;
-                font-family: var(--fontFamily);
+                font-family: var(--font-family);
                 padding: 0.25em 0.75em;
                 margin: 0 0 0 auto;
                 text-align: center;
@@ -99,7 +95,6 @@ main.chat {
         }
 
         > ul {
-
             position: relative;
             box-sizing: border-box;
             display: grid;
@@ -114,7 +109,6 @@ main.chat {
             $avatarSize: calc(2 * var(--rem));
 
             li {
-
                 text-align: left;
                 position: relative;
                 display: grid;
@@ -131,7 +125,7 @@ main.chat {
                     height: $avatarSize;
                     border-radius: 50%;
                     grid-row: span 2;
-                    border: 2px solid var(--backgroundGrey);
+                    border: 2px solid var(--background-grey);
                 }
 
                 b {

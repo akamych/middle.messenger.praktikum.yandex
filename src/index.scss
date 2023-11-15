@@ -1,4 +1,4 @@
-@import './assets/css/variables.scss';
+@import url('./assets/css/variables.scss');
 
 @font-face {
     font-family: comfortaa;
@@ -13,7 +13,7 @@ html, body {
     height: 100%;
     background: var(--background);
     color: var(--black);
-    font-family: var(--fontFamily);
+    font-family: var(--font-family);
     font-weight: 400;
     font-variation-settings: 'wght' 450;    
     font-size: var(--rem);
@@ -39,7 +39,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--backgroundGrey);
+    background: var(--background-grey);
     border-radius: 20px;
 }
 
@@ -56,7 +56,7 @@ main {
 }
 
 input {    
-    font-family: var(--fontFamily);
+    font-family: var(--font-family);
     font-size: var(--rem);
 }
 

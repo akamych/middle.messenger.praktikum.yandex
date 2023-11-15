@@ -4,7 +4,7 @@ main {
     align-content: center;    
     color: #1E1E1E;
     text-align: center;
-    font-family: Inter;
+    font-family: var(--font-family);
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -19,7 +19,6 @@ main {
         text-transform: lowercase;
 
         label {
-
             display: block;
 
             &:has(input) {
@@ -39,7 +38,7 @@ main {
                     color: var(--background);
                 }
 
-                &::not(:placeholder-shown) {
+                &:not(:placeholder-shown) {
                     border-bottom-color: var(--grey);
                 };
             };
@@ -49,17 +48,16 @@ main {
                 position: relative;
                 margin: 0 auto;
                 padding: 0.25em 1em;
-                font-family: var(--fontFamily);
+                font-family: var(--font-family);
                 font-size: 12px;
                 line-height: 1;
                 background: var(--blue);
                 color: var(--background);
                 text-transform: lowercase;
-                border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
             }
 
             &:hover {
-
                 input {
                     border-bottom-color: var(--purple);
                 }
@@ -72,7 +70,6 @@ main {
 
             &.hasError,
             &.hasError:hover {
-                
                 input {
                     border-bottom-color: var(--red);
                 }
@@ -84,7 +81,6 @@ main {
             }
 
             button {
-
                 &::before {
                     position: absolute;
                     content: '';
@@ -94,23 +90,22 @@ main {
                     left: 0;
                     bottom: 0;
                     transform: skew(10deg) rotate(-1.5deg);
-                    border-radius: var(--borderRadius);
+                    border-radius: var(--border-radius);
                     z-index: -1;
                 };
 
                 position: relative;
-                font-family: var(--fontFamily);
+                font-family: var(--font-family);
                 font-size: var(--rem);
                 border: 0;
                 color: var(--background);
                 padding: 0.45em 1em;
-                border-radius: var(--borderRadius);
+                border-radius: var(--border-radius);
                 margin: 1em 0;
                 z-index: 0;
                 cursor: pointer;
 
                 &:hover {
-
                     &::before {                        
                         background: var(--purple);
                     }
@@ -121,7 +116,6 @@ main {
         };
 
         > h1 {
-
             position: relative;
             display: none;
             margin-right: 0;
@@ -129,7 +123,7 @@ main {
             width: auto;
             color: var(--background);
             text-align: right;
-            font-family: var(--fontFamily);
+            font-family: var(--font-family);
             font-size: 1.1em;
             font-variation-settings: 'wght' 900;
             font-weight: 900;
@@ -142,7 +136,7 @@ main {
             display: inline-block;
             align-self: end;
             text-decoration: none;
-            font-family: var(--fontFamily);
+            font-family: var(--font-family);
             font-weight: 900;
             color: var(--orange);
             font-size: 0.75em;
@@ -157,7 +151,7 @@ main {
     a {        
         color: #3369F3;
         text-align: center;
-        font-family: Inter;
+        font-family: var(--font-family);
         font-size: 11px;
         font-style: normal;
         font-weight: 500;

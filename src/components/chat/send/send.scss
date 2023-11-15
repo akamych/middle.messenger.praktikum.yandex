@@ -1,5 +1,4 @@
 .chatSend {
-
     position: sticky;
     bottom: 0;
     background: var(--background);
@@ -27,7 +26,6 @@
     }
 
     label {
-
         img {
             width: 2em;
             height: 2em;
@@ -46,9 +44,9 @@
             display: block;
             width: 100%;
             border: 2px solid var(--purple);
-            font-family: var(--fontFamily);
+            font-family: var(--font-family);
             font-size: 0.8em;
-            border-radius: var(--borderRadius);
+            border-radius: var(--border-radius);
             padding: 0.5em;
 
             &::placeholder {
@@ -61,12 +59,12 @@
         }
 
         button {
-            font-family: var(--fontFamily);
+            font-family: var(--font-family);
             font-size: 0.8em;
             background: var(--purple);
             color: var(--background);
             padding: 0.5em 0.75em;
-            border-radius: var(--borderRadius);
+            border-radius: var(--border-radius);
             border: 0;
             outline: 0;
 

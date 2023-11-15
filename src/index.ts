@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () : void => {
   let renderBlock = null;
 
   switch (location) {
+    case '':
     case 'index.html':
       renderBlock = chatPage;
       break;

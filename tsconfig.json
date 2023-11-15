@@ -16,5 +16,5 @@
     },
     "include": [
         "src/utils/types/declaration.d.ts"
-    ],
+    ]
 }

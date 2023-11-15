@@ -13,5 +13,8 @@
         "noUnusedParameters": true,
         "sourceMap": true,
         "strictNullChecks": true
-    }
+    },
+    "include": [
+        "src/utils/types/declaration.d.ts"
+    ],
 }

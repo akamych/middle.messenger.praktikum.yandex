@@ -9,7 +9,8 @@
     "start": "vite --port 3000",
     "preview": "vite preview",
     "lint": "eslint \"**/*.ts\"",
-    "stylelint": "npx stylelint \"**/*.scss\""
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "typescript": "npx tsc --noEmit"
   },
   "devDependencies": {
     "@types/uuid": "^9.0.7",

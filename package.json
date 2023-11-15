@@ -7,7 +7,9 @@
     "dev": "vite --port 3000",
     "build": "vite build",
     "start": "vite --port 3000",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint \"**/*.ts\"",
+    "stylelint": "npx stylelint \"**/*.scss\""
   },
   "devDependencies": {
     "@types/uuid": "^9.0.7",

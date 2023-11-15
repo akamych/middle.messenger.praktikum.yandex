@@ -27,6 +27,7 @@ export default function consoleForm(event : Event) : void {
   });
 
   if (!errors) {
+    // eslint-disable-next-line no-console
     console.log(formData);
   }
 }

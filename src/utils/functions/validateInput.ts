@@ -89,7 +89,7 @@ function validatePassword(value : string) : validateInputType {
     return { error, message };
   }
 
-  error = !/[0-9]$/.test(value);
+  error = !/\d/.test(value);
   message = error ? errorLabels.password.noDigits : undefined;
   return { error, message };
 }

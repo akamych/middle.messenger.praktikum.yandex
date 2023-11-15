@@ -1,0 +1,50 @@
+
+    section.chatMessages {
+
+        display: grid;
+        max-height: 100%;
+        overflow: auto;
+        padding: 0 2em;
+
+        div.messages {
+
+            max-height: 100%;
+            overflow:auto; 
+        
+            div.message {
+                font-size: 0.8em;
+                padding: 10px;
+                max-width: 40%;
+                text-align: left;
+                padding: 1em;
+                margin: 0 auto 1em 0;
+        
+                &.img {
+
+                    margin-bottom: 0;
+                    
+                    img {
+                        width: auto;
+                        height: auto;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+        
+                &[data-my="true"] {
+                    margin: 0 0 1em auto;
+                }
+        
+                &[data-unread="true"] {
+                    border-left: 5px solid var(--orange);
+                    
+                    &[data-my="true"] {
+                        border-right: 5px solid var(--purple);
+                    }
+                }
+            }
+        
+        }
+    
+    }
+       

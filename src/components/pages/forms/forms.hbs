@@ -1,0 +1,18 @@
+<main>
+    <form>
+        <h1>{{ header }}</h1>      
+
+        {{#each inputs }}
+            {{{ this }}}
+        {{/each}}  
+
+        {{#each buttons }}
+            {{{ this }}}
+        {{/each}}
+
+        {{#if backLink }}
+            {{{ backLink }}}
+        {{/if}}
+
+    </form>
+</main>

@@ -10,6 +10,9 @@
         "deleteChat": "Удалить",
         "sendMessage": "Отправить"
     },
+    "headings": {
+        "settings": "Настройки и данные"
+    },
     "labels": {
         "login": "Логин",
         "first_name": "Имя",

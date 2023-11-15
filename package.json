@@ -26,6 +26,7 @@
     "stylelint": "^15.11.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
+    "vite": "^4.4.5",
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {

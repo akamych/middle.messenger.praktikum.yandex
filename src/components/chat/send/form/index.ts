@@ -3,20 +3,17 @@ import Input from '../../../inputs/input/index.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './form.hbs?raw';
 import Button from '../../../inputs/button/index.ts';
-import consoleForm from '../../../../utils/functions/consoleForm.ts';
 
 type chatSendFormProps = {
   input: Input,
   button: Button,
+  events: {
+    submit: Function,
+  },
 };
 
 export default class ChatSendForm extends Block {
   constructor(props: chatSendFormProps) {
     super(props, template);
-  }
-
-  _addSpecificEvents() {
-    const form = this.getContent();
-    form.addEventListener('submit', (event) => consoleForm(event));
   }
 }

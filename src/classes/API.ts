@@ -1,10 +1,13 @@
 type ApiOptionsType = {
-  method: string;
+  method?: string;
   headers?: Record<string, string>;
   // eslint-disable-next-line no-undef
   data?: Document | XMLHttpRequestBodyInit;
   timeout?: number;
 };
+
+// eslint-disable-next-line no-unused-vars
+type ApiMethod = (url: string, options: ApiOptionsType) => Promise<unknown>;
 
 export default class API {
   static METHODS : Record<string, string> = {
@@ -24,27 +27,27 @@ export default class API {
     return { ...options, method };
   }
 
-  get = (url: string, options?: ApiOptionsType) => {
+  get: ApiMethod = (url, options?) => {
     let fullUrl = url;
     if (options && options.data) {
       fullUrl += this._queryStringify(options.data as object);
     }
-    this._request(fullUrl, this._rewriteMethod(API.METHODS.GET, options));
+    return this._request(fullUrl, this._rewriteMethod(API.METHODS.GET, options));
   };
 
-  post = (url: string, options?: ApiOptionsType) => {
-    this._request(url, this._rewriteMethod(API.METHODS.POST, options));
-  };
+  post: ApiMethod = (url, options = {}) => (
+    this._request(url, this._rewriteMethod(API.METHODS.POST, options))
+  );
 
-  put = (url: string, options?: ApiOptionsType) => {
-    this._request(url, this._rewriteMethod(API.METHODS.PUT, options));
-  };
+  put: ApiMethod = (url, options = {}) => (
+    this._request(url, this._rewriteMethod(API.METHODS.PUT, options))
+  );
 
-  delete = (url: string, options?: ApiOptionsType) => {
-    this._request(url, this._rewriteMethod(API.METHODS.DELETE, options));
-  };
+  delete: ApiMethod = (url, options = {}) => (
+    this._request(url, this._rewriteMethod(API.METHODS.DELETE, options))
+  );
 
-  _request = (url: string, options? : ApiOptionsType) => {
+  _request: ApiMethod = (url, options = {}) => {
     const {
       headers = {},
       method,

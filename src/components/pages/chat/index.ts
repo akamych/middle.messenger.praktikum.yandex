@@ -15,6 +15,7 @@ import attachIcon from '../../../assets/svg/attach.svg?raw';
 import ChatSend from '../../chat/send/index.ts';
 import Button from '../../inputs/button/index.ts';
 import ChatSendForm from '../../chat/send/form/index.ts';
+import consoleForm from '../../../utils/functions/consoleForm.ts';
 
 const feedProps = {
   users: [],
@@ -62,7 +63,7 @@ const menu = new ChatMenu({
   },
 });
 
-const chatMessagesProps = {
+const chatMessagesProps: Record<string, ChatMessage[]> = {
   messages: [],
 };
 
@@ -87,6 +88,9 @@ const chatSend = new ChatSend({
       type: 'submit',
       className: 'sendMessage',
     }),
+    events: {
+      submit: (event) => consoleForm(event),
+    },
   }),
 });
 

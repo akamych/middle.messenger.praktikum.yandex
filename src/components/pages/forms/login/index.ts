@@ -4,6 +4,7 @@ import Button from '../../../inputs/button/index.ts';
 import BackLink from '../../../links/backLink/index.ts';
 import textBundle from '../../../../utils/constants/text.json';
 import pagesData from '../../../../utils/constants/pagesData.json';
+import consoleForm from '../../../../utils/functions/consoleForm.ts';
 
 const inputLogin = new Input({
   type: 'text',
@@ -33,6 +34,9 @@ const props = {
   inputs: [inputLogin, inputPassword],
   buttons: [buttonSubmit],
   backLink,
+  events: {
+    submit: (event) => consoleForm(event),
+  },
 };
 
 const loginPage = new FormPage(props);

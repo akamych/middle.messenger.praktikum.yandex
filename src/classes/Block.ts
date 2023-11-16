@@ -36,7 +36,7 @@ export default class Block {
   constructor(
     props: propType,
     template: string,
-    tagName?: string,
+    tagName: string = 'div',
   ) {
     this.id = makeUUID();
 
@@ -44,9 +44,9 @@ export default class Block {
     this._eventBus = () => eventBus;
 
     this._meta = {
-      tagName,
       props,
       template,
+      tagName,
     };
 
     this.props = this._makePropsProxy(props);
@@ -125,12 +125,7 @@ export default class Block {
   }
 
   _addEvents() : void {
-    this._addSpecificEvents();
     this._changeEvents();
-  }
-
-  // добавим отдельные события для отдельных наследников
-  _addSpecificEvents() : void {
   }
 
   _removeEvents() : void {
@@ -140,17 +135,22 @@ export default class Block {
   _changeEvents(deleteEvent: boolean = false) : void {
     const { events } : propType = this.props;
     if (!events) { return; }
-    const element = this.getContent();
+    let element = this.getContent();
 
-    if (element === null) {
+    if (!element) {
       return;
+    }
+
+    // костыль на обработку инпутов вместо лэйблов
+    if (element.tagName.toLowerCase() === 'label') {
+      element = element.querySelector('input');
     }
 
     Object.keys(events).forEach((event) => {
       if (deleteEvent) {
-        element.removeEventListener(event, events[event]);
+        element?.removeEventListener(event, events[event]);
       } else {
-        element.addEventListener(event, events[event]);
+        element?.addEventListener(event, events[event]);
       }
     });
   }
@@ -237,7 +237,7 @@ export default class Block {
       const { 0: id, 1: block } = child;
       const childElement = newFragment.content.querySelector(`[data-id='${id}']`);
       if (childElement) {
-        childElement.replaceWith(block.getContent());
+        childElement.replaceWith(block.getContent() as Node);
       }
     });
 

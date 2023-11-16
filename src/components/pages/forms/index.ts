@@ -1,5 +1,4 @@
 import Block from '../../../classes/Block.ts';
-import consoleForm from '../../../utils/functions/consoleForm.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './forms.hbs?raw';
 import styles from './forms.scss';
@@ -15,10 +14,5 @@ export default class FormPage extends Block {
       ...props,
       styles,
     }, template);
-  }
-
-  _addSpecificEvents() {
-    const form = this.getContent().querySelector('form');
-    form.addEventListener('submit', (event) => consoleForm(event));
   }
 }

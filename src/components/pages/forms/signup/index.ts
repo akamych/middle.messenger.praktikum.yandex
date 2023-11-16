@@ -4,6 +4,7 @@ import Button from '../../../inputs/button/index.ts';
 import BackLink from '../../../links/backLink/index.ts';
 import textBundle from '../../../../utils/constants/text.json';
 import pagesData from '../../../../utils/constants/pagesData.json';
+import consoleForm from '../../../../utils/functions/consoleForm.ts';
 
 const inputEmail = new Input({
   type: 'email',
@@ -71,6 +72,9 @@ const props = {
   ],
   buttons: [buttonSubmit],
   backLink,
+  events: {
+    submit: (event) => consoleForm(event),
+  },
 };
 
 const signupPage = new FormPage(props);

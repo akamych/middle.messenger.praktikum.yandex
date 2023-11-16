@@ -30,9 +30,11 @@ export default class Input extends Block {
 
     super(addedProps, template);
 
-    const input = this.getContent()?.querySelector('input');
-    if (input) {
-      this._updateErrorStatus(validateInputData(input.name, input.type, input.value));
+    if (props.value) {
+      const input = this.getContent()?.querySelector('input');
+      if (input) {
+        this._updateErrorStatus(validateInputData(input.name, input.type, input.value));
+      }
     }
   }
 

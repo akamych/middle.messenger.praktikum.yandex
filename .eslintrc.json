@@ -1,0 +1,17 @@
+{
+    "extends": "airbnb/base",
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+      "no-unused-vars": ["error", { "caughtErrors": "none" }],
+      "max-len": [1, 100],
+      "max-params": [2, 3],
+      "linebreak-style": 0,
+      "no-underscore-dangle": "off",
+      "class-methods-use-this": "off",
+      "import/no-extraneous-dependencies": "off"
+    },
+    "env": {
+      "browser": true
+    }
+  } 

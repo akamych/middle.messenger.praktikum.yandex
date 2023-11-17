@@ -1,0 +1,34 @@
+@import url("../../../index.scss");
+
+main.error {
+    display: grid;
+    justify-items: center;
+    align-items: center; 
+    align-self: center;
+
+    * {          
+        font-family: var(--font-family);
+        font-size: var(--rem);
+    };
+
+    h1 {
+        font-size: 1.5em;
+        font-family: var(--font-family);
+        color: var(--purple);
+        line-height: 1;
+        margin: 0 auto;
+    };
+
+    > a {        
+        margin-top: 2em;
+        font-family: var(--font-family);
+        color: var(--orange);
+        font-size: 0.85em;
+        font-weight: 900;
+
+        &:hover {
+            color: var(--purple);
+        }
+    };
+}
+

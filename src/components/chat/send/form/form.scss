@@ -1,0 +1,84 @@
+.chatSend {
+    position: sticky;
+    bottom: 0;
+    background: var(--background);
+    padding: 0.5em 0;
+    display: grid;
+    grid-gap: 0;
+    width: 100%;
+    grid-template-columns: max-content 1fr;
+    align-content: center;
+    justify-content: stretch;
+
+    > svg {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        padding: 0.2em;
+        fill: var(--purple);
+        stroke: var(--purple);
+        stroke-width: 0.25px;
+        cursor: pointer;
+
+        &:hover {
+            fill: var(--orange);
+        }
+    }
+
+    > form {
+        display: inline-grid;        
+        grid-template-columns: 1fr max-content;
+
+        label {
+            img {
+                width: 2em;
+                height: 2em;
+            }
+
+            &:has(input) {
+                width: 100%;
+            }
+
+            &:has(button) {
+                margin-left: 1em;
+                width: auto;
+            }
+
+            input {
+                display: block;
+                width: 100%;
+                border: 2px solid var(--purple);
+                font-family: var(--font-family);
+                font-size: 0.8em;
+                border-radius: var(--border-radius);
+                padding: 0.5em;
+
+                &::placeholder {
+                    color: var(--background);
+                }
+            }
+
+            span.label {
+                display: none;
+            }
+
+            button {
+                font-family: var(--font-family);
+                font-size: 0.8em;
+                background: var(--purple);
+                color: var(--background);
+                padding: 0.5em 0.75em;
+                border-radius: var(--border-radius);
+                border: 0;
+                outline: 0;
+
+                &:hover {
+                    background: var(--orange);
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+
+}

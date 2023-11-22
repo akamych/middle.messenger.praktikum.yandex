@@ -20,6 +20,11 @@ type chatMenuProps = {
 
 export default class ChatMenu extends Block {
   constructor(props: chatMenuProps) {
-    super(props, template);
+    super({
+      ...props,
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

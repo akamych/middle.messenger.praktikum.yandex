@@ -11,6 +11,11 @@ type ButtonPropsType = {
 
 export default class Button extends Block {
   constructor(props: ButtonPropsType) {
-    super(props, template);
+    super({
+      ...props,
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

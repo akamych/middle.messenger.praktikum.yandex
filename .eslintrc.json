@@ -5,7 +5,7 @@
     "rules": {
       "no-unused-vars": ["error", { "caughtErrors": "none" }],
       "max-len": [1, 100],
-      "max-params": [2, 3],
+      "max-params": [2, 4],
       "linebreak-style": 0,
       "no-underscore-dangle": "off",
       "class-methods-use-this": "off",

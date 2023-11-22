@@ -14,6 +14,11 @@ type feedSearchProps = {
 
 export default class FeedSearch extends Block {
   constructor(props: feedSearchProps) {
-    super(props, template);
+    super({
+      ...props,
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

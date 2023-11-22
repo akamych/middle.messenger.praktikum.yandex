@@ -22,6 +22,9 @@ export default class ErrorPage extends Block {
           text: textBundle.buttons.goBackToChats,
         },
       ),
-    }, template);
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

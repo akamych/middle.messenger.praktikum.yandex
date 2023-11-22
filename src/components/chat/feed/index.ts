@@ -10,6 +10,11 @@ type feedProps = {
 
 export default class Feed extends Block {
   constructor(props: feedProps) {
-    super(props, template);
+    super({
+      ...props,
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

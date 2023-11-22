@@ -19,6 +19,9 @@ export default class BackLink extends Block {
           window.location.href = props.href;
         },
       },
-    }, template);
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

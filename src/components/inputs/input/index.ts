@@ -21,14 +21,17 @@ export default class Input extends Block {
     if (!props.events || !props.events.blur) {
       addedProps.events = {
         ...props.events,
-        blur: (event) => {
+        blur: (event: Event) => {
           event.stopPropagation();
           this._updateErrorStatus(validateInput(event));
         },
       };
     }
 
-    super(addedProps, template);
+    super({
+      ...addedProps,
+      template,
+    });
 
     if (props.value) {
       const input = this.getContent()?.querySelector('input');

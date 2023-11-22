@@ -10,6 +10,11 @@ type chatMessagesProps = {
 
 export default class ChatMessages extends Block {
   constructor(props: chatMessagesProps) {
-    super(props, template);
+    super({
+      ...props,
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

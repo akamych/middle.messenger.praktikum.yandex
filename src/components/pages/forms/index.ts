@@ -13,6 +13,9 @@ export default class FormPage extends Block {
     super({
       ...props,
       styles,
-    }, template);
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

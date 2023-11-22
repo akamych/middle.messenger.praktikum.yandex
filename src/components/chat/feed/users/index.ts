@@ -12,6 +12,11 @@ type feedUsersProps = {
 
 export default class FeedUsers extends Block {
   constructor(props: feedUsersProps) {
-    super(props, template);
+    super({
+      ...props,
+      template,
+    });
   }
+
+  protected static _template: string = template;
 }

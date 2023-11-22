@@ -4,7 +4,7 @@ import EventBus from './EventBus.ts';
 
 // any используется потому что unknown не назначается
 // параметром на объект (например, в метод _changeEvents)
-type propType = Record<string, any>;
+export type propType = Record<string, any>;
 
 // eslint-disable-next-line no-use-before-define
 type childType = Block[];
@@ -26,16 +26,24 @@ export default class Block {
   protected _meta: {
     tagName: string,
     props: propType,
-    template: string
   };
 
   protected _children: childType = [];
 
   protected props: propType = {};
 
+  protected static _template: string = '';
+
+  public static getTemplate() : string {
+    return this._template;
+  }
+
+  protected _addChildren(props: propType): propType {
+    return props;
+  }
+
   constructor(
     props: propType,
-    template: string,
     tagName: string = 'div',
   ) {
     this.id = makeUUID();
@@ -43,13 +51,14 @@ export default class Block {
     const eventBus = new EventBus();
     this._eventBus = () => eventBus;
 
+    const updatedProps: propType = this._addChildren(props);
+
     this._meta = {
-      props,
-      template,
+      props: { ...updatedProps },
       tagName,
     };
 
-    this.props = this._makePropsProxy(props);
+    this.props = this._makePropsProxy(updatedProps);
 
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
@@ -117,7 +126,7 @@ export default class Block {
   }
 
   render() : string {
-    return this._meta.template;
+    return this.props.template;
   }
 
   getContent() : HTMLElement | null {

@@ -7,10 +7,7 @@ import Input from '../../inputs/input/index.js';
 // eslint-disable-next-line import/no-unresolved
 import template from './chat.hbs?raw';
 import styles from './chat.scss';
-
-// to be removed when interactive
-import pagesData from '../../../utils/constants/pagesData.json';
-import textBundle from '../../../utils/constants/text.json';
+import { useStore } from '../../../classes/Store.ts';
 
 type chatPageProps = {
     events?: Record<string, Function>,
@@ -20,28 +17,24 @@ type chatPageProps = {
     messages: ChatMessages,
 };
 
-export default class ChatPage extends Block {
-  constructor(props: chatPageProps) {
+class ChatPage extends Block {
+  constructor(props: chatPageProps, state: propType) {
     super({
       ...props,
       styles,
       template,
-    });
+    }, state);
   }
 
   protected static _template: string = template;
 
   protected _addChildren(props: propType): propType {
     const feedSearchData = {
-      link: {
-        href: pagesData.settings.link,
-        title: textBundle.buttons.profile,
-        text: textBundle.buttons.profile,
-      },
+      ...this.getState().feedSearch,
       input: new Input({
         type: 'text',
         name: 'feedSearch',
-        placeholder: textBundle.labels.search,
+        placeholder: this.getState().feedSearch.input.placeholder,
       }),
     };
 
@@ -53,3 +46,18 @@ export default class ChatPage extends Block {
     };
   }
 }
+
+const useStoreImpl = useStore((state) => ({
+  feedSearch: {
+    link: {
+      href: state.bundle.pages.settings.link,
+      title: state.bundle.buttons.profile,
+      text: state.bundle.buttons.profile,
+    },
+    input: {
+      placeholder: state.bundle.labels.search,
+    },
+  },
+}));
+
+export default useStoreImpl(ChatPage);

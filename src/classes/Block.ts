@@ -1,6 +1,7 @@
 import { v4 as makeUUID } from 'uuid';
 import HandleBars from 'handlebars';
 import EventBus from './EventBus.ts';
+import isEqual from '../utils/functions/isEqual.ts';
 
 // any используется потому что unknown не назначается
 // параметром на объект (например, в метод _changeEvents)
@@ -23,14 +24,11 @@ export default class Block {
 
   protected _element: HTMLElement | null = null;
 
-  protected _meta: {
-    tagName: string,
-    props: propType,
-  };
-
   protected _children: childType = [];
 
-  protected props: propType = {};
+  protected _props: propType = {};
+
+  protected _state: propType = {};
 
   protected static _template: string = '';
 
@@ -42,23 +40,14 @@ export default class Block {
     return props;
   }
 
-  constructor(
-    props: propType,
-    tagName: string = 'div',
-  ) {
+  constructor(props: propType, state: propType = {}) {
     this.id = makeUUID();
 
     const eventBus = new EventBus();
     this._eventBus = () => eventBus;
-
+    this._state = state;
     const updatedProps: propType = this._addChildren(props);
-
-    this._meta = {
-      props: { ...updatedProps },
-      tagName,
-    };
-
-    this.props = this._makePropsProxy(updatedProps);
+    this._props = this._makePropsProxy(updatedProps);
 
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
@@ -71,12 +60,12 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources(tagName : string = this._meta.tagName): HTMLElement {
+  _createResources(tagName : string = 'div'): HTMLElement {
     return document.createElement(tagName);
   }
 
   init() : void {
-    this._createResources(this._meta.tagName);
+    this._createResources();
     this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -97,7 +86,22 @@ export default class Block {
   }
 
   componentDidUpdate(oldProps: propType, newProps: propType) : boolean {
-    return oldProps !== newProps;
+    return !isEqual(oldProps, newProps);
+  }
+
+  _updateState(newState: propType) : void {
+    if (this.componentDidUpdate(this._state, newState)) {
+      this._state = newState;
+      this._props = {
+        ...this._props,
+        ...newState,
+      };
+      this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    }
+  }
+
+  getState(): propType {
+    return this._state;
   }
 
   setProps = (nextProps: propType) : void => {
@@ -105,7 +109,7 @@ export default class Block {
       return;
     }
 
-    Object.assign(this.props, nextProps);
+    Object.assign(this._props, nextProps);
   };
 
   get element() : HTMLElement | null {
@@ -126,7 +130,7 @@ export default class Block {
   }
 
   render() : string {
-    return this.props.template;
+    return this._props.template;
   }
 
   getContent() : HTMLElement | null {
@@ -142,7 +146,7 @@ export default class Block {
   }
 
   _changeEvents(deleteEvent: boolean = false) : void {
-    const { events } : propType = this.props;
+    const { events } : propType = this._props;
     if (!events) { return; }
     let element = this.getContent();
 
@@ -224,23 +228,23 @@ export default class Block {
   compile(): DocumentFragment {
     const newFragment = document.createElement('template');
 
-    Object.entries(this.props).forEach((prop: propType) => {
+    Object.entries(this._props).forEach((prop: propType) => {
       const { 0: propKey, 1: propValue } = prop;
 
       // поиск блоков
       if (propValue instanceof Block) {
-        this.props[propKey] = this._saltCreate(propValue.id);
+        this._props[propKey] = this._saltCreate(propValue.id);
         this._children[propValue.id] = propValue;
       }
 
       // рекурсивно фигачим поиск в массивах
       if (Array.isArray(propValue)) {
-        this._findBlockRecursion(propKey, propValue, this.props);
+        this._findBlockRecursion(propKey, propValue, this._props);
       }
     });
 
-    const handleBarser = HandleBars.compile(this.render(), this.props);
-    newFragment.innerHTML = handleBarser(this.props);
+    const handleBarser = HandleBars.compile(this.render(), this._props);
+    newFragment.innerHTML = handleBarser(this._props);
 
     Object.entries(this._children).forEach((child) => {
       const { 0: id, 1: block } = child;

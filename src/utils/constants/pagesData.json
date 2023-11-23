@@ -1,26 +1,26 @@
 {
     "index": {
-        "link": "/index.html",
+        "link": "/",
         "title": "Счат'е здесь!"
     },
     "login": {
-        "link": "/login.html",
+        "link": "/login",
         "title": "Войди в Счат'е!"
     },
     "signup": {
-        "link": "/signup.html",
+        "link": "/sign-up",
         "title": "Тебе надо в Счат'е!"
     },
     "settings": {
-        "link": "/settings.html",
+        "link": "/settings",
         "title": "Подстроим Счат'е!"
     },
     "500": {
-        "link": "/500.html",
+        "link": "/500",
         "title": "Ну, не шмагла!"
     },
     "404": {
-        "link": "/404.html",
+        "link": "/404",
         "title": "Ну и куда ты попал_а?"
     }
 }

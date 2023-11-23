@@ -55,6 +55,6 @@ export default class Route {
     if (!root || block.getContent() === null) {
       return;
     }
-    root.appendChild(block.getContent() as HTMLElement);
+    root.replaceWith(block.getContent() as HTMLElement);
   }
 }

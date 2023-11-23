@@ -1,31 +1,33 @@
-import pagesData from '../../../utils/constants/pagesData.json';
 import Block from '../../../classes/Block.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './header.hbs?raw';
 import styles from './header.scss';
+import { useStore } from '../../../classes/Store';
+import { propType } from '../../../utils/types/propType.js';
 
 type headerPropsType = {
     href: string,
     text: string,
+    title: string,
 };
 
 class Header extends Block {
-  constructor(props: headerPropsType) {
+  constructor(props: headerPropsType, state: propType) {
     super({
       ...props,
+      ...state,
       styles,
       template,
-    });
+    }, state);
   }
 
   protected static _template: string = template;
 }
 
-const headerProps = {
-  href: pagesData.index.link,
-  text: pagesData.index.title,
-};
+const useStoreImpl = useStore((state) => ({
+  href: state.bundle.pages.index.link,
+  title: state.bundle.pages.index.title,
+  text: state.bundle.headerLink,
+}));
 
-const header = new Header(headerProps);
-
-export default header;
+export default useStoreImpl(Header);

@@ -46,13 +46,13 @@ export default class Input extends Block {
   _updateErrorStatus(result: validateInputType) {
     if (
       this._validateError !== result.error
-      || (this._validateError && this.props.label !== result.error)
+      || (this._validateError && this._props.label !== result.error)
     ) {
       this._validateError = result.error;
 
       const input = this.getContent()?.querySelector('input');
-      this.props = {
-        ...this.props,
+      this._props = {
+        ...this._props,
         label: result.error ? result.message : this._meta.props.label,
         className: result.error ? 'hasError' : undefined,
         value: input?.value,

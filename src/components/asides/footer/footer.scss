@@ -12,3 +12,9 @@ footer {
         }
     }
 }
+
+body:has(main.chat) {
+    footer {
+        display: none;
+    }
+}

@@ -14,3 +14,9 @@ header {
         }
     }
 }
+
+body:has(main.chat) {
+    header {
+        display: none;
+    }
+}

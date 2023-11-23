@@ -40,5 +40,10 @@
     "akamych": {
         "link": "https://www.swing.school",
         "text": "by akamych"
+    },
+    "headerLink": {
+        "part1": "С",
+        "part2": "ЧАТ'",
+        "part3": "Е"
     }
 }

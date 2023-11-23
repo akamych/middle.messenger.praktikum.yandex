@@ -1,7 +1,7 @@
 import Block from './Block.ts';
 import Route from './Route.ts';
 
-export default class Router {
+class Router {
   // eslint-disable-next-line no-use-before-define
   private static __instance: Router | null = null;
 
@@ -73,3 +73,7 @@ export default class Router {
     return this.routes.find((route) => route.match(pathname));
   }
 }
+
+const router = new Router('body > main');
+
+export default router;

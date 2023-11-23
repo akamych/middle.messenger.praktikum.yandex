@@ -1,7 +1,7 @@
 import footer from './components/asides/footer/';
-import header from './components/asides/header/';
+import Header from './components/asides/header/';
 import ChatPage from './components/pages/chat/';
-import Router from './classes/Router.js';
+import router from './classes/Router.js';
 // import error404Page from './components/pages/errors/404/index.ts';
 // import error500Page from './components/pages/errors/500/index.ts';
 // import loginPage from './components/pages/forms/login/index.ts';
@@ -9,8 +9,6 @@ import Router from './classes/Router.js';
 // import SignUpPage from './components/pages/forms/signup/index.js';
 
 function startApp() : void {
-  const router = new Router('body > main');
-
   router
     .use('/', ChatPage)
     .use('/messenger', ChatPage)
@@ -19,15 +17,16 @@ function startApp() : void {
     // .use('/login', loginPage)
     .start();
 
+  const header = new Header({});
   const headerDom = document.querySelector('body > header');
   if (headerDom) {
-    headerDom.appendChild(header.getContent())
+    headerDom.replaceWith(header.getContent() as HTMLElement);
   }
 
   const footerDom = document.querySelector('body > footer');
   if (footerDom) {
-    footerDom.appendChild(footer.getContent())
+    footerDom.replaceWith(footer.getContent() as HTMLElement);
   }
-};
+}
 
 startApp();

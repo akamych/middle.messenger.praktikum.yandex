@@ -5,9 +5,9 @@ import ChatMenu from '../../chat/menu/index.js';
 import ChatMessages from '../../chat/messages/index.js';
 import Input from '../../inputs/input/index.js';
 // eslint-disable-next-line import/no-unresolved
-import template from './chat.hbs?raw';
-import styles from './chat.scss';
-import { useStore } from '../../../classes/Store.ts';
+import template from './chatPage.hbs?raw';
+import styles from './chatPage.scss';
+import { useStore } from '../../../classes/Store.js';
 
 type chatPageProps = {
     events?: Record<string, Function>,

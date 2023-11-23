@@ -1,0 +1,42 @@
+{
+    "email": {
+        "type": "email",
+        "name": "email"
+    },
+    "phone": {
+        "type": "tel",
+        "name": "phone"
+    },
+    "login": {
+        "type": "text",
+        "name": "login"
+    },
+    "display_name": {
+        "type": "text",
+        "name": "display_name"
+    },
+    "first_name": {
+        "type": "text",
+        "name": "first_name"
+    },
+    "second_name": {
+        "type": "text",
+        "name": "second_name"
+    },
+    "password": {
+        "type": "password",
+        "name": "password"
+    },
+    "passwordConfirmation": {
+        "type": "password",
+        "name": "passwordConfirmation"
+    },
+    "oldPassword": {
+        "type": "password",
+        "name": "oldPassword"
+    },
+    "newPassword": {
+        "type": "password",
+        "name": "newPassword"
+    }
+}

@@ -1,21 +1,24 @@
 import footer from './components/asides/footer/';
 import Header from './components/asides/header/';
-import ChatPage from './components/pages/chat/';
-import router from './classes/Router.js';
+import ChatPage from './components/pages/chat/chatPage.ts';
+import SettingsPage from './components/pages/forms/settings/settingsPage.ts';
+import router, { ACCESS_LEVELS, CHAT_PAGES } from './classes/Router.js';
+import authApi from './api/Auth.ts';
 // import error404Page from './components/pages/errors/404/index.ts';
 // import error500Page from './components/pages/errors/500/index.ts';
-// import loginPage from './components/pages/forms/login/index.ts';
-// import settingsPage from './components/pages/forms/settings/index.ts';
+import LoginPage from './components/pages/forms/login/loginPage.ts';
 // import SignUpPage from './components/pages/forms/signup/index.js';
 
 function startApp() : void {
   router
-    .use('/', ChatPage)
-    .use('/messenger', ChatPage)
+    .use(CHAT_PAGES.INDEX, ChatPage, ACCESS_LEVELS.USERS)
+    .use(CHAT_PAGES.MESSENGER, ChatPage, ACCESS_LEVELS.USERS)
+    .use(CHAT_PAGES.SETTINGS, SettingsPage, ACCESS_LEVELS.USERS)
     // .use('/sign-up', signupPage)
-    // .use('/settings', settingsPage)
-    // .use('/login', loginPage)
+    .use(CHAT_PAGES.LOGIN, LoginPage, ACCESS_LEVELS.GUESTS)
     .start();
+
+  authApi.getUserData();
 
   const header = new Header({});
   const headerDom = document.querySelector('body > header');

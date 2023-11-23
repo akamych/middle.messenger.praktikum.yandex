@@ -5,6 +5,7 @@ import { stateMapper } from '../utils/types/stateMapper.ts';
 import set from '../utils/functions/set.ts';
 import pages from '../utils/constants/pagesData.json';
 import bundle from '../utils/constants/text.json';
+import inputTypes from '../utils/constants/inputTypes.json';
 
 export enum StoreEvents {
     // eslint-disable-next-line no-unused-vars
@@ -16,6 +17,7 @@ class Store extends EventBus {
     bundle: {
       ...bundle,
       pages,
+      inputTypes,
     },
   };
 

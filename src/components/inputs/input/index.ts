@@ -53,7 +53,7 @@ export default class Input extends Block {
       const input = this.getContent()?.querySelector('input');
       this._props = {
         ...this._props,
-        label: result.error ? result.message : this._meta.props.label,
+        label: result.error ? result.message : this._props.label,
         className: result.error ? 'hasError' : undefined,
         value: input?.value,
       };

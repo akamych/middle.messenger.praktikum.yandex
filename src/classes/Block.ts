@@ -2,10 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import HandleBars from 'handlebars';
 import EventBus from './EventBus.ts';
 import isEqual from '../utils/functions/isEqual.ts';
-
-// any используется потому что unknown не назначается
-// параметром на объект (например, в метод _changeEvents)
-export type propType = Record<string, any>;
+import { propType } from '../utils/types/propType.js';
 
 // eslint-disable-next-line no-use-before-define
 type childType = Block[];

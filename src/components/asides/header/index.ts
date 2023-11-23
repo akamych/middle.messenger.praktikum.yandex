@@ -4,6 +4,7 @@ import template from './header.hbs?raw';
 import styles from './header.scss';
 import { useStore } from '../../../classes/Store';
 import { propType } from '../../../utils/types/propType.js';
+import router, { CHAT_PAGES } from '../../../classes/Router.js';
 
 type headerPropsType = {
     href: string,
@@ -18,6 +19,12 @@ class Header extends Block {
       ...state,
       styles,
       template,
+      events: {
+        click: (event : Event) => {
+          event.preventDefault();
+          router.go(CHAT_PAGES.INDEX);
+        },
+      },
     }, state);
   }
 

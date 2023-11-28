@@ -1,6 +1,6 @@
-import Block from '../../../classes/Block.ts';
+import Block from '../../../classes/Block.js';
 // eslint-disable-next-line max-len
-import { validateInput, validateInputType, validateInputData } from '../../../utils/functions/validateInput.ts';
+import { validateInput, validateInputType, validateInputData } from '../../../utils/functions/validateInput.js';
 // eslint-disable-next-line import/no-unresolved
 import template from './input.hbs?raw';
 
@@ -15,11 +15,12 @@ export type InputPropsType = {
 
 export default class Input extends Block {
   constructor(props: InputPropsType) {
+    const updatedProps = props;
+
     // добавляем блёровскую проверку на все инпуты,
     // если специфическая не указана в пропсах
-    const addedProps = props;
     if (!props.events || !props.events.blur) {
-      addedProps.events = {
+      updatedProps.events = {
         ...props.events,
         blur: (event: Event) => {
           event.stopPropagation();
@@ -28,8 +29,13 @@ export default class Input extends Block {
       };
     }
 
+    // ставим лэйбл плейсхолдером, если его нет
+    if (!props.placeholder) {
+      updatedProps.placeholder = props.label;
+    }
+
     super({
-      ...addedProps,
+      ...updatedProps,
       template,
     });
 

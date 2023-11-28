@@ -1,7 +1,7 @@
 import Block from '../../../classes/Block.ts';
-import BackLink from '../../links/backLink/index.ts';
-import textBundle from '../../../utils/constants/text.json';
-import pagesData from '../../../utils/constants/pagesData.json';
+import Link from '../../links/index.ts';
+import textBundle from '../../../utils/bundle/text.json';
+import pagesData from '../../../utils/bundle/pagesData.json';
 // eslint-disable-next-line import/no-unresolved
 import template from './errors.hbs?raw';
 import styles from './errors.scss';
@@ -16,7 +16,7 @@ export default class ErrorPage extends Block {
     super({
       ...props,
       styles,
-      backLink: new BackLink(
+      link: new Link(
         {
           href: pagesData.index.link,
           text: textBundle.buttons.goBackToChats,

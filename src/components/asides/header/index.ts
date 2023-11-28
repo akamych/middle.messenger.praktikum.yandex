@@ -2,7 +2,7 @@ import Block from '../../../classes/Block.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './header.hbs?raw';
 import styles from './header.scss';
-import { useStore } from '../../../classes/Store';
+import store, { useStore } from '../../../classes/Store';
 import { propType } from '../../../utils/types/propType.js';
 import router, { CHAT_PAGES } from '../../../classes/Router.js';
 

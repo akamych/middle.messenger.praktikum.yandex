@@ -3,9 +3,10 @@ import Block from './Block.ts';
 import { propType } from '../utils/types/propType.ts';
 import { stateMapper } from '../utils/types/stateMapper.ts';
 import set from '../utils/functions/set.ts';
-import pages from '../utils/constants/pagesData.json';
-import bundle from '../utils/constants/text.json';
-import inputTypes from '../utils/constants/inputTypes.json';
+import pages from '../utils/bundle/pagesData.json';
+import bundle from '../utils/bundle/text.json';
+import inputTypes from '../utils/bundle/inputTypes.json';
+import errorsText from '../utils/bundle/errorsText.json';
 
 export enum StoreEvents {
     // eslint-disable-next-line no-unused-vars
@@ -18,6 +19,7 @@ class Store extends EventBus {
       ...bundle,
       pages,
       inputTypes,
+      errorsText,
     },
   };
 
@@ -45,6 +47,24 @@ export const useStore = (mapState: stateMapper) => (BlockClass: typeof Block) =>
   }
 
   return storeAdded;
+};
+
+// eslint-disable-next-line max-len, no-unused-vars
+export const useStoreForComponent = (
+  mapState: stateMapper,
+  props: propType,
+  BlockClass: typeof Block,
+) => {
+  const initialState: propType = mapState(store.getState());
+
+  class ComponentWithStore extends BlockClass {
+    constructor(props: any) {
+      super(props, initialState);
+      store.on(StoreEvents.Updated, () => this._updateState(mapState(store.getState())));
+    }
+  }
+
+  return new ComponentWithStore(props);
 };
 
 export default store;

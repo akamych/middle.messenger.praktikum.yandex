@@ -37,7 +37,7 @@ export default class Route {
 
   leave() : void {
     if (this._block) {
-      this._block.hide();
+      this._block = null;
     }
   }
 
@@ -52,10 +52,9 @@ export default class Route {
         template: this._blockClass.getTemplate(),
       });
       this.renderDom(this._props.rootQuery, this._block);
-      return;
     }
 
-    this._block.show();
+    // this._block.show();
   }
 
   renderDom(query: string, block: Block) : void {

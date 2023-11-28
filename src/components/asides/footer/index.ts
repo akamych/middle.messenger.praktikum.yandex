@@ -1,4 +1,4 @@
-import textBundle from '../../../utils/constants/text.json';
+import textBundle from '../../../utils/bundle/text.json';
 import Block from '../../../classes/Block.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './footer.hbs?raw';

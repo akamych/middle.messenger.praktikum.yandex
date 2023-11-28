@@ -1,8 +1,8 @@
-import Block from '../../../../classes/Block.ts';
+import Block from '../../../../classes/Block.js';
 // eslint-disable-next-line import/no-unresolved
-import template from './users.hbs?raw';
+import template from './feedChats.hbs?raw';
 
-type feedUsersProps = {
+type feedChatsProps = {
   user: string,
   lastByMe: boolean,
   text: string,
@@ -10,8 +10,8 @@ type feedUsersProps = {
   new?: Number
 };
 
-export default class FeedUsers extends Block {
-  constructor(props: feedUsersProps) {
+export default class FeedChats extends Block {
+  constructor(props: feedChatsProps) {
     super({
       ...props,
       template,

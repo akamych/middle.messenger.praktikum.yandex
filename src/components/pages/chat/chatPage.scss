@@ -108,7 +108,7 @@ main.chat {
 
             $avatarSize: calc(2 * var(--rem));
 
-            li {
+            li.feedChat {
                 text-align: left;
                 position: relative;
                 display: grid;
@@ -179,6 +179,32 @@ main.chat {
                     span {
                         color: var(--background);
                     }
+                }
+
+            }
+
+            li.empty {
+
+                padding: 2em 0;
+                font-size: 0.75em;
+                line-height: 1.5;
+
+                a {
+                    font-size: 1.1em;
+                    display: block;
+                    color: var(--orange);
+                    margin: 0.75em auto;
+                }
+
+            }
+
+            li.createChat {
+
+                a {
+                    font-size: 1em;
+                    display: block;
+                    color: var(--orange);
+                    margin: 0.75em auto;
                 }
 
             }

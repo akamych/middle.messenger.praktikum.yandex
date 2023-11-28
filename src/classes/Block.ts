@@ -29,6 +29,8 @@ export default class Block {
 
   protected static _template: string = '';
 
+  protected _display: string = 'block';
+
   public static getTemplate() : string {
     return this._template;
   }
@@ -196,7 +198,7 @@ export default class Block {
   toggle(hideElement : boolean = false) : void {
     const content = this.getContent();
     if (content !== null) {
-      content.style.display = hideElement ? 'none' : 'block';
+      content.style.display = hideElement ? 'none' : this._display;
     }
   }
 

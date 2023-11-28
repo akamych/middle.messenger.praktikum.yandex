@@ -1,4 +1,4 @@
-import textBundle from '../../../../utils/constants/text.json';
+import textBundle from '../../../../utils/bundle/text.json';
 import ErrorPage from '../index.ts';
 
 const error404Page = new ErrorPage({

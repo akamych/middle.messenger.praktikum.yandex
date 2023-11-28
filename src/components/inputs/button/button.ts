@@ -1,4 +1,4 @@
-import Block from '../../../classes/Block.ts';
+import Block from '../../../classes/Block.js';
 // eslint-disable-next-line import/no-unresolved
 import template from './button.hbs?raw';
 

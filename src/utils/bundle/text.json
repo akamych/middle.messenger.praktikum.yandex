@@ -8,7 +8,8 @@
         "addContact": "В контакты",
         "clearChat": "Очистить",
         "deleteChat": "Удалить",
-        "sendMessage": "Отправить"
+        "sendMessage": "Отправить",
+        "createChat": "»"
     },
     "headings": {
         "settings": "Настройки и данные"
@@ -25,7 +26,8 @@
         "oldPassword": "Текущий пароль",
         "newPassword": "Новый пароль",
         "search": "Поиск",
-        "messageText": "Текст сообщения..."
+        "messageText": "Текст сообщения...",
+        "chat_name": "Название чата"
     },
     "errors": {
         "404" : {
@@ -45,5 +47,10 @@
         "part1": "С",
         "part2": "ЧАТ'",
         "part3": "Е"
+    },
+    "feed": {        
+        "noChats": "Как-то печальненько у тебя пока с коммуникацией...",
+        "createChat": "Создать чат",
+        "chatName": "Название чата"
     }
 }

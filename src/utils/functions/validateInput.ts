@@ -1,4 +1,4 @@
-import errorLabels from '../constants/errors.json';
+import errorLabels from '../bundle/inputErrors.json';
 
 export type validateInputType = {
   error: boolean,
@@ -37,7 +37,7 @@ function validateLogin(value : string) : validateInputType {
     return valueAbsentError();
   }
   let error = !/[A-Za-z0-9-_]{3,20}$/.test(value);
-  let message = errorLabels.login.wrong;
+  let message: string | undefined = errorLabels.login.wrong;
 
   if (error) {
     return { error, message };
@@ -94,7 +94,8 @@ function validatePassword(value : string) : validateInputType {
   return { error, message };
 }
 
-export function validateInputData(name: string, type: string, value?: string) : validateInputType {
+// eslint-disable-next-line max-len
+export function validateInputData(name: string, type: string, value: string = '') : validateInputType {
   switch (type.toLowerCase()) {
     case 'email': return validateEmail(value);
     case 'tel': return validatePhone(value);
@@ -110,7 +111,7 @@ export function validateInputData(name: string, type: string, value?: string) : 
           return validateNames(value);
         case 'message':
           return validateMessage(value);
-        case 'feedSearch':
+        case 'search':
           return { error: false };
         default: return { error: false };
       }

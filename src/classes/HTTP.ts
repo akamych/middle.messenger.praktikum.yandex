@@ -3,9 +3,10 @@ import { propType } from "../utils/types/propType";
 type ApiOptionsType = {
   method?: string;
   headers?: Record<string, string>;
-  // eslint-disable-next-line no-undef
-  data?: Document | XMLHttpRequestBodyInit;
+  data?: Record<string, any>;
   timeout?: number;
+  sendJSON?: boolean;
+  withCredentials?: boolean;
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -21,12 +22,12 @@ export default class HTTP {
     DELETE: 'DELETE',
   };
 
-  static RESPONSE_CODES : Record<string, Number> = {
+  static CODES : Record<string, Number> = {
     SUCCESS: 200,
     UNAUTHORIZED: 401,
   };
 
-  protected _yandexUrl: string = 'https://ya-praktikum.tech/api/v2';
+  protected _yandexUrl: string = 'https://ya-praktikum.tech/api/v2/';
 
   protected _baseUrl: string;
 
@@ -42,7 +43,7 @@ export default class HTTP {
 
   _createResponse(data: Record<string, any>): propType {
     const { status, responseText } = data;
-    const response = JSON.parse(responseText);
+    const response = responseText.substring(0,1) === '{' ? JSON.parse(responseText) : responseText;
     return { status, response };
   }
 
@@ -75,10 +76,17 @@ export default class HTTP {
       headers = {},
       method,
       data,
+      sendJSON,
+      withCredentials = true,
       timeout = 5000,
     } = options;
 
     const fullUrl = this._yandexUrl + this._baseUrl + url;
+    let jsonData: string | undefined;
+    if (sendJSON) {
+      headers['Content-Type'] = 'application/json; charset=utf-8';
+      jsonData = JSON.stringify(data);
+    }
 
     return new Promise((resolve, reject) => {
       if (!method) {
@@ -99,11 +107,14 @@ export default class HTTP {
       xhr.onabort = reject;
       xhr.onerror = reject;
       xhr.ontimeout = reject;
+      xhr.withCredentials = withCredentials;
 
       if (method === HTTP.METHODS.GET || !data) {
         xhr.send();
+      } else if (jsonData) {
+        xhr.send(jsonData);
       } else {
-        xhr.send(data);
+        // xhr.send(data);
       }
     });
   };

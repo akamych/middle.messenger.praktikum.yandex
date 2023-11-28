@@ -18,21 +18,26 @@ function isArrayOrObject(value: unknown): value is [] | PlainObject {
   return isPlainObject(value) || isArray(value);
 }
 
+
 function isEqual(lhs: PlainObject, rhs: PlainObject) {
   if (Object.keys(lhs).length !== Object.keys(rhs).length) {
     return false;
   }
 
-  Object.keys(lhs).forEach((key) => {
-    const value = lhs[key];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, value] of Object.entries(lhs)) {
     const rightValue = rhs[key];
-    if (
-      (isArrayOrObject(value) && isArrayOrObject(rightValue) && !isEqual(value, rightValue))
-      || value !== rightValue
-    ) {
+    if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
+      if (isEqual(value, rightValue)) {
+        continue;
+      }
       return false;
     }
-  });
+
+    if (value !== rightValue) {
+      return false;
+    }
+  };
 
   return true;
 }

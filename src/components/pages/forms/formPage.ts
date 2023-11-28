@@ -1,6 +1,7 @@
 import Block from '../../../classes/Block.js';
+import store, { useStoreForComponent } from '../../../classes/Store.js';
 import { propType } from '../../../utils/types/propType.js';
-import Input from '../../inputs/input/index.js';
+import Input from '../../inputs/input/input.js';
 // eslint-disable-next-line import/no-unresolved
 import template from './formPage.hbs?raw';
 import styles from './formPage.scss';
@@ -16,6 +17,8 @@ export type formPageInputProps = {
 };
 
 export default class FormPage extends Block {
+  protected _display: string = 'grid';
+
   constructor(props: formPageProps, state: propType) {
     super({
       ...props,
@@ -29,12 +32,24 @@ export default class FormPage extends Block {
   protected _createInputs(inputs: formPageInputProps[]): Block[] {
     const inputBlocks: Block[] = [];
 
+    // так как все formPage - это или гостевые, или настройки пользователя
+    // то привяжем их всех к пользователю в сторе
     inputs.forEach((input: formPageInputProps) => {
-      inputBlocks.push(new Input({
-        ...this.getState().inputTypes[input.type],
-        label: this.getState().labels[input.type],
-        value: input.value,
-      }));
+      inputBlocks.push(
+        useStoreForComponent(
+          (state: propType) => ({
+            ...state.bundle.inputTypes[input.type],
+            label: state.bundle.labels[input.type],
+            value: state.user?.authorized ? state.user[input.type] : null,
+          }),
+          {
+            ...store.getState().bundle?.inputTypes[input.type],
+            label: store.getState().bundle?.labels[input.type],
+            value: store.getState().user?.authorized ? store.getState().user[input.type] : null,
+          },
+          Input,
+        ),
+      );
     });
 
     return inputBlocks;

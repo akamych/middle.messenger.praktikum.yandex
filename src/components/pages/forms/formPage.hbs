@@ -6,12 +6,16 @@
             {{{ this }}}
         {{/each}}  
 
+        {{#if errors.active }}
+            <div class="error">{{ errors.text }}</div>            
+        {{/if}}
+
         {{#each buttons }}
             {{{ this }}}
         {{/each}}
 
-        {{#if backLink }}
-            {{{ backLink }}}
+        {{#if link }}
+            {{{ link }}}
         {{/if}}
 
     </form>

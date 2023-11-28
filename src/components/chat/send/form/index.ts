@@ -1,8 +1,8 @@
 import Block from '../../../../classes/Block.ts';
-import Input from '../../../inputs/input/index.ts';
+import Input from '../../../inputs/input/input.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './form.hbs?raw';
-import Button from '../../../inputs/button/index.ts';
+import Button from '../../../inputs/button/button.ts';
 
 type chatSendFormProps = {
   input: Input,

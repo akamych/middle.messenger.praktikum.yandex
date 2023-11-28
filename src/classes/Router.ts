@@ -78,7 +78,6 @@ class Router {
 
     if (nextRoute.getAccessLevel() === ACCESS_LEVELS.USERS
       && store.getState().user.authorized === false) {
-        console.log('you shall not pass!');
       return false;
     }
 
@@ -86,6 +85,10 @@ class Router {
   }
 
   go(pathname: string) : void {
+    if (!store.getState().user.authorized && pathname === CHAT_PAGES.INDEX) {
+      this.go(CHAT_PAGES.LOGIN);
+      return;
+    }
     if (!this.checkAccess(pathname)) { return; }
     this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
@@ -95,6 +98,13 @@ class Router {
     if (this._currentRoute === null
         || this._currentRoute.getAccessLevel() === ACCESS_LEVELS.USERS) {
       this.go(CHAT_PAGES.LOGIN);
+    }
+  }
+
+  usersRedirect() : void {
+    if (this._currentRoute === null
+        || this._currentRoute.getAccessLevel() === ACCESS_LEVELS.GUESTS) {
+      this.go(CHAT_PAGES.INDEX);
     }
   }
 

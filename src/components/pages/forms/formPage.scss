@@ -37,10 +37,6 @@ main {
                 &::placeholder {
                     color: var(--background);
                 }
-
-                &:not(:placeholder-shown) {
-                    border-bottom-color: var(--grey);
-                };
             };
 
             span.label {    
@@ -72,6 +68,10 @@ main {
             &.hasError:hover {
                 input {
                     border-bottom-color: var(--red);
+
+                    &::placeholder {
+                        color: var(--red);
+                    }
                 }
                 
                 span.label {    
@@ -145,6 +145,15 @@ main {
                 color: var(--purple);
             }
         };
+
+        div.error {
+            font-size: 0.8em;
+            margin: 1em auto;
+            padding: 0.5em 1em;
+            border-radius: calc(3 * var(--border-radius));
+            color: var(--background);
+            background: var(--red);
+        }
 
     };
 

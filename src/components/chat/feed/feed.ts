@@ -7,7 +7,9 @@ import Form from '../../inputs/form/form.js';
 // eslint-disable-next-line import/no-unresolved
 import template from './feed.hbs?raw';
 import Button from '../../inputs/button/button.js';
-import chatsApi from '../../../api/Chats.js';
+import chatService from '../../../services/ChatService.js';
+import FeedChat, { feedChatProps } from './chats/chats.js';
+import FeedSearch from './search/search.js';
 
 const createLinkStoreMapper = (state: propType) => ({
   href: '#',
@@ -38,7 +40,7 @@ const buttonStoreMapper = (state: propType) => ({
   text: state.bundle?.buttons.createChat,
 });
 
-const button = useStoreForComponent(buttonStoreMapper, buttonStoreMapper(store.getState), Button);
+const button = useStoreForComponent(buttonStoreMapper, buttonStoreMapper(store.getState()), Button);
 
 const form = new Form({
   inputs: [input],
@@ -56,33 +58,64 @@ const form = new Form({
       const chatName = input.value;
       input.value = '';
 
-      chatsApi.create(chatName);
+      chatService.create(chatName);
     },
   },
 });
 
+const feedSearch = new FeedSearch();
+
 class Feed extends Block {
-  constructor(props?: propType) {
+  constructor() {
     super({
-      ...props,
       template,
       link: useStoreForComponent(
         createLinkStoreMapper,
-        createLinkStoreMapper(store.getState),
+        createLinkStoreMapper(store.getState()),
         Link,
       ),
       form,
+      feedSearch,
     });
-    console.log(props);
   }
 
   protected static _template: string = template;
 }
 
-const useStoreImpl = useStore((state) => ({
-  noChats: state.bundle?.feed.noChats,
-  createChat: state.feed?.createChat,
-  chats: state.chats,
-}));
+type feedChatType = {
+  noChats: string,
+  createChat: boolean,
+  chats: Block[],
+}
+
+const useStoreImpl = useStore((state) => {
+  const model: feedChatType = {
+    noChats: state.bundle?.feed.noChats,
+    createChat: state.feed?.createChat,
+    chats: [],
+  };
+
+  const { chats } = state;
+  if (!chats) { return {}; }
+
+  // TODO: sort the chats
+  // chats = chats.sort((a: feedChatProps, b: feedChatProps) => {
+  //   if (a.last_message !== null && b.last_message !== null) {
+  //     return Date.parse(a.last_message.time).compare(b.last_message.time, )
+  //   }
+  // });
+
+  for (let i = 0; i < chats.length; i += 1) {
+    model.chats.push(new FeedChat({
+      ...chats[i],
+      events: {
+        click: () => chatService.open(chats[i]),
+      },
+    } as feedChatProps));
+  }
+
+  // eslint-disable-next-line consistent-return
+  return model as propType;
+});
 
 export default useStoreImpl(Feed);

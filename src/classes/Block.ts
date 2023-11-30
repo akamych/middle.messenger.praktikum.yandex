@@ -89,7 +89,7 @@ export default class Block {
   }
 
   _updateState(newState: propType) : void {
-    if (this.componentDidUpdate(this._state, newState)) {
+    if (newState && this.componentDidUpdate(this._state, newState)) {
       this._state = newState;
       this._props = {
         ...this._props,

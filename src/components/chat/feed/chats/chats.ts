@@ -1,17 +1,20 @@
 import Block from '../../../../classes/Block.js';
+import { propType } from '../../../../utils/types/propType.js';
 // eslint-disable-next-line import/no-unresolved
-import template from './feedChats.hbs?raw';
+import template from './chats.hbs?raw';
 
-type feedChatsProps = {
-  user: string,
-  lastByMe: boolean,
-  text: string,
-  time: string,
-  new?: Number
+export type feedChatProps = {
+  avatar: string | null,
+  created_by: Number,
+  id: Number,
+  last_message: propType | null,
+  title: string,
+  unread_count: Number,
+  events?: propType,
 };
 
-export default class FeedChats extends Block {
-  constructor(props: feedChatsProps) {
+export default class FeedChat extends Block {
+  constructor(props: feedChatProps) {
     super({
       ...props,
       template,

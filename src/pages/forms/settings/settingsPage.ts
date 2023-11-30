@@ -1,14 +1,14 @@
 import FormPage, { formPageInputProps } from '../formPage.ts';
-import Button from '../../../inputs/button/button.ts';
-import { propType } from '../../../../utils/types/propType.ts';
-import store, { useStore, useStoreForComponent } from '../../../../classes/Store.ts';
-import Block from '../../../../classes/Block.ts';
-import checkForm from '../../../../utils/functions/checkForm.ts';
-import { formData } from '../../../../utils/types/formData.ts';
-import userApi, { settingsData } from '../../../../api/User.ts';
-import authApi from '../../../../api/Auth.ts';
-import Link from '../../../links/link.ts';
-import router from '../../../../classes/Router.ts';
+import Button from '../../../components/inputs/button/button.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import Block from '../../../classes/Block.ts';
+import checkForm from '../../../utils/functions/checkForm.ts';
+import { formData } from '../../../utils/types/formData.ts';
+import { settingsData } from '../../../api/User.ts';
+import usersService from '../../../services/UsersService.js';
+import authService from '../../../services/AuthService.js';
+import Link from '../../../components/links/link.ts';
 
 class SettingsPage extends FormPage {
   protected _addChildren(props: propType): propType {
@@ -47,7 +47,7 @@ class SettingsPage extends FormPage {
           click: (event: Event) => {
             event.preventDefault();
             event.stopPropagation();
-            authApi.logout();
+            authService.logout();
           },
         },
       }),
@@ -58,7 +58,7 @@ class SettingsPage extends FormPage {
           click: (event: Event) => {
             event.preventDefault();
             event.stopPropagation();
-            authApi.logout();
+            authService.logout();
           },
         },
       },
@@ -79,7 +79,7 @@ class SettingsPage extends FormPage {
         phone: data.phone,
       };
 
-      userApi.update(requestData);
+      usersService.update(requestData);
     };
 
     const updatedProps = props;

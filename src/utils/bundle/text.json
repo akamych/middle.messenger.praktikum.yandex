@@ -5,11 +5,14 @@
         "login": "Войти",
         "signup": "Зарегистрироваться",
         "save": "Сохранить",
-        "addContact": "В контакты",
+        "chatUsers": "Кто в чате?",
         "clearChat": "Очистить",
         "deleteChat": "Удалить",
         "sendMessage": "Отправить",
-        "createChat": "»"
+        "createChat": "»",
+        "goBackLeft": "« Закрыть",
+        "addUserToChat": "Впустить в чат",
+        "removeUserFromChat": "Выгнать к чертям"
     },
     "headings": {
         "settings": "Настройки и данные"
@@ -52,5 +55,9 @@
         "noChats": "Как-то печальненько у тебя пока с коммуникацией...",
         "createChat": "Создать чат",
         "chatName": "Название чата"
+    },
+    "usersList": {        
+        "noUsers": "Мир игнорирует тебя? Неудивительно!",
+        "noFoundUsers": "Даже людей нормально найти не можешь!"
     }
 }

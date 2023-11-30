@@ -1,9 +1,13 @@
 <div class="chatMenu">
-    <b>{{ user.display_name }}</b>
-    <div class="avatar"></div>
+    <b>{{ title }}</b>
+    <div class="avatar">
+        {{#if avatar}}
+            <img src={{ avatar }} />
+        {{/if}}
+    </div>
     <nav>
-        <a href="{{ addContact.href }}" href="{{ addContact.title }}" >{{ addContact.text }}</a>
-        <a href="{{ clearChat.href }}" href="{{ clearChat.title }}" >{{ clearChat.text }}</a>
-        <a href="{{ deleteChat.href }}" href="{{ deleteChat.title }}" >{{ deleteChat.text }}</a>
+        {{{ listUsers }}}
+        {{{ clearChat }}}
+        {{{ deleteChat }}}
     </nav>
 </div>

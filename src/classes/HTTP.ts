@@ -41,10 +41,10 @@ export default class HTTP {
     return { ...options, method };
   }
 
-  _createResponse(data: Record<string, any>): propType {
-    const { status, responseText } = data;
-    const response = responseText.substring(0,1) === '{' ? JSON.parse(responseText) : responseText;
-    return { status, response };
+  _createResponse(response: Record<string, any>) {
+    const { status, responseText } = response;
+    const data = responseText.substring(0, 1) === '{' ? JSON.parse(responseText) : responseText;
+    return { status, data };
   }
 
   _parseJSON(data: string): propType {

@@ -1,21 +1,21 @@
-import Block, { propType } from '../../../classes/Block.ts';
-import Feed from '../../chat/feed/feed.ts';
-import Search from '../../chat/search/search.ts';
-import ChatMenu from '../../chat/menu/index.ts';
-import ChatMessages from '../../chat/messages/index.ts';
+import Block, { propType } from '../../classes/Block.ts';
+import Feed from '../../components/chat/feed/feed.ts';
+import ChatMenu from '../../components/chat/menu/menu.ts';
+import ChatMessages from '../../components/chat/messages/index.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './chatPage.hbs?raw';
 import styles from './chatPage.scss';
-import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import { useStore } from '../../classes/Store.ts';
+import UsersList from '../../components/chat/usersList/usersList.js';
 
 type chatPageProps = {
     events?: Record<string, Function>,
-    menu: ChatMenu,
     messages: ChatMessages,
 };
 
-const search = new Search();
-const feed = new Feed();
+const feed = new Feed({});
+const usersList = new UsersList({});
+const menu = new ChatMenu({});
 
 class ChatPage extends Block {
   constructor(props: chatPageProps, state: propType) {
@@ -23,8 +23,9 @@ class ChatPage extends Block {
       ...props,
       styles,
       template,
-      search,
       feed,
+      usersList,
+      menu,
     }, state);
   }
 

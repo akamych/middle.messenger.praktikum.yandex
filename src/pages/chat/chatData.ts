@@ -1,6 +1,6 @@
 import ChatPage from './index.js';
 import Feed from '../../chat/feed/index.js';
-import Search from '../../chat/search/search.js';
+import Search from '../../chat/feed/search/search.js';
 import ChatMenu from '../../chat/menu/index.js';
 import Input from '../../inputs/input/input.js';
 import messagesData from '../../../utils/bundle/messages.json';
@@ -46,10 +46,10 @@ const menu = new ChatMenu({
   user: {
     display_name: usersData[1].user,
   },
-  addContact: {
+  chatUsers: {
     href: '#',
-    title: textBundle.buttons.addContact,
-    text: textBundle.buttons.addContact,
+    title: textBundle.buttons.chatUsers,
+    text: textBundle.buttons.chatUsers,
   },
   clearChat: {
     href: '#',

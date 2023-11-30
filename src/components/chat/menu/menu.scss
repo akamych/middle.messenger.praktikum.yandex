@@ -43,7 +43,7 @@
         }
     }
     
-    &:hover {
+    &:has(b:not(:empty)) {
         b {
             grid-row: 1;
         }

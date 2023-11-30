@@ -1,12 +1,13 @@
 import FormPage, { formPageInputProps } from '../formPage.ts';
-import Button from '../../../inputs/button/button.js';
-import { propType } from '../../../../utils/types/propType.js';
-import checkForm from '../../../../utils/functions/checkForm.js';
-import store, { useStore, useStoreForComponent } from '../../../../classes/Store.js';
-import Block from '../../../../classes/Block.js';
-import Link from '../../../links/link.ts'
-import authApi, { loginData } from '../../../../api/Auth.js';
-import { formData } from '../../../../utils/types/formData.js';
+import Button from '../../../components/inputs/button/button.js';
+import { propType } from '../../../utils/types/propType.js';
+import checkForm from '../../../utils/functions/checkForm.js';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
+import Block from '../../../classes/Block.js';
+import Link from '../../../components/links/link.ts'
+import { loginData } from '../../../api/Auth.js';
+import authService from '../../../services/AuthService.js';
+import { formData } from '../../../utils/types/formData.js';
 
 class LoginPage extends FormPage {
   protected _addChildren(props: propType): propType {
@@ -57,7 +58,7 @@ class LoginPage extends FormPage {
         password: data.password,
       };
 
-      authApi.login(requestData);
+      authService.login(requestData);
     };
 
     updatedProps.events = {

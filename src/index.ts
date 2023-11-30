@@ -1,14 +1,14 @@
 import footer from './components/asides/footer/';
 import Header from './components/asides/header/';
-import ChatPage from './components/pages/chat/chatPage.ts';
-import SettingsPage from './components/pages/forms/settings/settingsPage.ts';
+import ChatPage from './pages/chat/chatPage.ts';
+import SettingsPage from './pages/forms/settings/settingsPage.ts';
 import router, { ACCESS_LEVELS, CHAT_PAGES } from './classes/Router.js';
-import authApi from './api/Auth.ts';
-// import error404Page from './components/pages/errors/404/index.ts';
-// import error500Page from './components/pages/errors/500/index.ts';
-import LoginPage from './components/pages/forms/login/loginPage.ts';
-import SignupPage from './components/pages/forms/signup/signupPage.ts';
-// import SignUpPage from './components/pages/forms/signup/index.js';
+import authService from './services/AuthService.ts';
+// import error404Page from './pages/errors/404/index.ts';
+// import error500Page from './pages/errors/500/index.ts';
+import LoginPage from './pages/forms/login/loginPage.ts';
+import SignupPage from './pages/forms/signup/signupPage.ts';
+// import SignUpPage from './pages/forms/signup/index.js';
 
 function startApp() : void {
   router
@@ -19,7 +19,7 @@ function startApp() : void {
     .use(CHAT_PAGES.LOGIN, LoginPage, ACCESS_LEVELS.GUESTS)
     .start();
 
-  authApi.getUserData();
+  authService.getUserData();
 
   const header = new Header({});
   const headerDom = document.querySelector('body > header');

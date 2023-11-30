@@ -1,11 +1,11 @@
-@import url('../../chat/menu/menu.scss');
-@import url('../../chat/messages/messages.scss');
-@import url('../../chat/send/send.scss');
-@import url('../../chat/send/form/form.scss');
+@import url('../../components/chat/menu/menu.scss');
+@import url('../../components/chat/messages/messages.scss');
+@import url('../../components/chat/send/send.scss');
+@import url('../../components/chat/send/form/form.scss');
 
 main.chat {
     display: grid;
-    grid-template-columns: min(350px, 25vw) 1fr;
+    grid-template-columns: var(--left-aside-width) 1fr;
     max-height: 100%;
     align-content: start;
     align-items: start;
@@ -28,72 +28,6 @@ main.chat {
         overflow: auto;
         background: var(--background-grey);
 
-
-        > div {
-            box-sizing: border-box;
-            display: inline-block;
-            width: 100%;
-            position: sticky;
-            top: 0;
-            background: var(--background-grey);
-            padding: 0.5em 1em;
-            z-index: 2;
-        }
-
-        > div > a {
-            display: block;
-            text-align: right;
-            padding: 0.25em 0;
-            margin-bottom: 0.5em;
-            color: var(--grey);
-            font-size: 0.75em;
-            font-family: var(--font-family);
-            text-transform: lowercase;
-        }
-
-        > div > label {
-            input {
-                position: relative;
-                display: block;
-                width: 8ch;
-                outline: 0;
-                border-radius: 2em;
-                background: var(--background-grey);
-                border: 1px solid var(--grey);
-                color: var(--grey);
-                font-size: 1em;
-                font-family: var(--font-family);
-                padding: 0.25em 0.75em;
-                margin: 0 0 0 auto;
-                text-align: center;
-
-                &::placeholder {
-                    text-transform: lowercase;
-                    font-size: 0.7em;
-                }
-
-                &:active, 
-                &:target, 
-                &:hover, 
-                &:focus {
-                    width: 100%;
-                    background: var(--blue);
-                    border-color: var(--blue);
-                    color: var(--background);
-
-                    &::placeholder {
-                        color: var(--background);
-                    }
-
-                }
-            }
-
-            span.label {
-                display: none;
-            }
-    
-        }
-
         > ul {
             position: relative;
             box-sizing: border-box;
@@ -105,10 +39,75 @@ main.chat {
             padding: 0;
             align-items: center;
             align-content: center;
+            
+            div.search {
+                box-sizing: border-box;
+                display: inline-block;
+                width: 100%;
+                position: sticky;
+                top: 0;
+                background: var(--background-grey);
+                padding: 0.5em 1em;
+                z-index: 2;
+            }
+
+            div.search > a {
+                display: block;
+                text-align: right;
+                padding: 0.25em 0;
+                margin-bottom: 0.5em;
+                color: var(--grey);
+                font-size: 0.75em;
+                font-family: var(--font-family);
+                text-transform: lowercase;
+            }
+
+            div.search > label {
+                input {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    outline: 0;
+                    border-radius: 2em;
+                    background: var(--background-grey);
+                    border: 1px solid var(--grey);
+                    color: var(--grey);
+                    font-size: 1em;
+                    font-family: var(--font-family);
+                    padding: 0.25em 0.75em;
+                    margin: 0 0 0 auto;
+                    text-align: center;
+
+                    &::placeholder {
+                        text-transform: lowercase;
+                        font-size: 0.7em;
+                    }
+
+                    &:active, 
+                    &:target, 
+                    &:hover, 
+                    &:focus {
+                        width: 100%;
+                        background: var(--blue);
+                        border-color: var(--blue);
+                        color: var(--background);
+
+                        &::placeholder {
+                            color: var(--background);
+                        }
+
+                    }
+                }
+
+                span.label {
+                    display: none;
+                }
+        
+            }
 
             $avatarSize: calc(2 * var(--rem));
 
-            li.feedChat {
+            li {
                 text-align: left;
                 position: relative;
                 display: grid;
@@ -171,7 +170,7 @@ main.chat {
                     }
                 }
 
-                &:hover {
+                &:not(.empty):hover {
                     background: var(--blue);
                     color: var(--background);
                     cursor: pointer;
@@ -184,10 +183,11 @@ main.chat {
             }
 
             li.empty {
-
+                display: block;
                 padding: 2em 0;
                 font-size: 0.75em;
                 line-height: 1.5;
+                text-align: center;
 
                 a {
                     font-size: 1.1em;
@@ -207,6 +207,26 @@ main.chat {
                     margin: 0.75em auto;
                 }
 
+            }
+
+            &.usersList {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                overflow: hidden;
+                background: var(--background-grey);
+                align-content: start;
+                z-index: 2;
+
+                &.active {
+                    width: var(--left-aside-width);
+                }
+
+                .empty {
+                    padding: 1em 0.5em;
+                }
             }
 
         }

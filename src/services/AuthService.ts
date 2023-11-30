@@ -1,39 +1,25 @@
-import HTTP from '../classes/HTTP.ts';
+import HTTP from '../classes/HTTP.js';
 import router from '../classes/Router.js';
 import store from '../classes/Store.js';
-import chatsApi from './Chats.js';
+import chatService from './ChatService.js';
+import AuthApi, { loginData, signupData } from '../api/AuthApi.js';
+import Service from '../classes/Service.js';
 
-export type loginData = {
-  'login': string,
-  'password': string,
-};
-
-export type signupData = {
-  'first_name': string,
-  'second_name': string,
-  'login': string,
-  'email': string,
-  'password': string,
-  'phone': string,
-};
-
-class AuthApi extends HTTP {
-  protected _baseUrl: string = 'auth/';
-
+class AuthService extends Service {
   getUserData() {
-    this
-      .get('user')
-      .then((responseData) => {
-        if (!responseData) { return; }
-        const { status, response } = this._createResponse(responseData);
+    AuthApi.getUserData()
+      .then((response) => {
+        if (!response) { return; }
+        const { status, data } = this._createResponse(response);
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
+            console.log({ status, data });
             store.set('user', {
               authorized: true,
-              ...response,
+              ...data,
             });
-            chatsApi.list();
+            chatService.list();
             router.usersRedirect();
             break;
 
@@ -42,20 +28,14 @@ class AuthApi extends HTTP {
             router.guestRedirect();
             break;
         }
-      })
-      .catch((error) => console.error(error));
+      });
   }
 
   login(requestData: loginData) {
-    this
-      .post('signin', {
-        data: requestData,
-        sendJSON: true,
-      })
-      .then((responseData) => {
-        if (!responseData) { return; }
-
-        const { status, response } = this._createResponse(responseData);
+    AuthApi.login(requestData)
+      .then((response) => {
+        if (!response) { return; }
+        const { status } = this._createResponse(response);
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
@@ -75,19 +55,14 @@ class AuthApi extends HTTP {
             router.guestRedirect();
             break;
         }
-      })
-      .catch((error) => console.error(error));
+      });
   }
 
   signup(requestData: signupData) {
-    this
-      .post('signup', {
-        data: requestData,
-        sendJSON: true,
-      })
-      .then((responseData) => {
-        if (!responseData) { return; }
-        const { status, response } = this._createResponse(responseData);
+    AuthApi.signup(requestData)
+      .then((response) => {
+        if (!response) { return; }
+        const { status } = this._createResponse(response);
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
@@ -101,16 +76,15 @@ class AuthApi extends HTTP {
             });
             break;
         }
-      })
-      .catch((error) => console.error(error));
+      });
   }
 
   logout() {
-    this
-      .post('logout', {})
-      .then((responseData) => {
-        if (!responseData) { return; }
-        const { status } = this._createResponse(responseData);
+    AuthApi.logout()
+      .then((response) => {
+        if (!response) { return; }
+        const { status } = this._createResponse(response);
+
         switch (status) {
           case HTTP.CODES.SUCCESS:
             store.set('user', { authorized: false });
@@ -120,9 +94,8 @@ class AuthApi extends HTTP {
           default:
             break;
         }
-      })
-      .catch((error) => console.error(error));
+      });
   }
 }
 
-export default new AuthApi();
+export default new AuthService();

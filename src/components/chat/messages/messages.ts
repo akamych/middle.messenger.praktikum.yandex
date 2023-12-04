@@ -5,10 +5,13 @@ import ChatMessage from './message/message.js';
 import { getMessageDate, getMessageTime } from '../../../utils/functions/dateTime.js';
 // eslint-disable-next-line import/no-unresolved
 import template from './messages.hbs?raw';
+import LoadMoreMessages from './loadMore/loadMore.js';
+import CONSTANTS from '../../../utils/bundle/constants.js';
 
+const loadMoreMessages = new LoadMoreMessages();
 class ChatMessages extends Block {
   constructor() {
-    super({ template });
+    super({ loadMoreMessages, template });
   }
 
   protected static _template: string = template;
@@ -36,7 +39,11 @@ const useStoreImpl = useStore((state) => {
   const model: propType = {
     messages: [],
     myAvatar: state.user?.avatar,
+    noMoreMessages: state.noMoreMessages === true
+      || !state.activeChat
+      || state.messages?.length < CONSTANTS.MESSAGES_PER_REQUEST,
   };
+  console.log(model);
 
   const { messages } = state;
   if (!messages) { return {}; }
@@ -44,7 +51,6 @@ const useStoreImpl = useStore((state) => {
   for (let i = 0; i < messages.length; i += 1) {
     const props = prepareProp(messages[i], state);
     if (props === null) { continue; }
-    console.log(props);
     model.messages.push(new ChatMessage(props));
   }
   return model;

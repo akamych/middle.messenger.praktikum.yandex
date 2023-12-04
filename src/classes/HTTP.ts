@@ -118,7 +118,6 @@ export default class HTTP {
       } else if (jsonData) {
         xhr.send(jsonData);
       } else if (sendForm) {
-        console.log({formData: data!.formData, entries: data!.formData.entries().next(), headers });
         xhr.send(data!.formData);
       } else {
         // xhr.send(data);

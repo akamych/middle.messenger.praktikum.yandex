@@ -13,6 +13,22 @@ section.chatMessages {
         overflow: auto; 
         display: flex;
         flex-direction: column-reverse;
+
+        .loadMoreMessages {
+            display: inline-block;
+            font-size: 0.7em;
+            margin: 0 auto 1em auto;
+            padding: 0.5em 0.75em;
+            border: 2px solid var(--orange);
+            border-radius: 2em;
+            color: var(--orange);
+
+            &:hover{
+                background: var(--orange);
+                color: var(--background);
+                cursor: pointer;
+            }
+        }
     
         div.message {
             display: grid;

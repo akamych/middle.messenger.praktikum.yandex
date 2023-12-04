@@ -50,6 +50,7 @@ class ChatService extends Service {
 
   open(chat: feedChatProps) {
     store.set('feed.createChat', false);
+    store.set('noMoreMessages', false);
     store.set('activeChat', chat);
     // eslint-disable-next-line camelcase
     const { unread_count } = chat;
@@ -77,6 +78,11 @@ class ChatService extends Service {
   sendMessage(message: string) {
     if (!this._ws) { return; }
     this._ws.sendMessage(message);
+  }
+
+  loadMoreMessages() {
+    if (!this._ws) { return; }
+    this._ws.loadMoreMessages();
   }
 
   users() {

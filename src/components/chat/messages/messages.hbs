@@ -2,4 +2,7 @@
     {{#each messages }}
         {{{ this }}}
     {{/each }}
+    {{#unless noMoreMessages }}
+        {{{ loadMoreMessages }}}
+    {{/unless}}
 </div>

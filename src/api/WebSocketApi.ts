@@ -31,7 +31,7 @@ export default class WebSocketApi {
     setTimeout(this.ping.bind(this), 15000);
   }
 
-  getNewMessages(unread: number = CONSTANTS.MESSAGES_PER_REQUEST) {
+  getOldMessages(unread: number = CONSTANTS.MESSAGES_PER_REQUEST) {
     const requestsNumber : number = (unread > CONSTANTS.MESSAGES_PER_REQUEST)
       ? Math.ceil(unread / CONSTANTS.MESSAGES_PER_REQUEST)
       : 1;
@@ -42,6 +42,13 @@ export default class WebSocketApi {
         type: 'get old',
       });
     }
+  }
+
+  loadMoreMessages() {
+    this._send({
+      content: store.getState().messages.length,
+      type: 'get old',
+    });
   }
 
   sendMessage(content: string) {
@@ -61,38 +68,35 @@ export default class WebSocketApi {
     this._ws
       .addEventListener('open', () => {
         this.ping();
-        this.getNewMessages(unread);
+        this.getOldMessages(unread);
       });
 
     this._ws.addEventListener('message', (event: MessageEvent) => {
       const data = JSON.parse(event.data);
       const newMessages: propType[] = [];
-      let lastMessage;
+      const oldMessages: propType[] = [];
 
       if (Array.isArray(data)) {
         data.forEach((message) => {
           if (message.type === 'message') {
-            newMessages.push(message);
-            lastMessage = message;
+            oldMessages.push(message);
           }
         });
+
+        if (data.length < CONSTANTS.MESSAGES_PER_REQUEST) {
+          store.set('noMoreMessages', true);
+        }
       } else if (data.type === 'message') {
         newMessages.push(data);
-        lastMessage = data;
       }
 
-      if (lastMessage) {
-        const { messages } = store.getState();
-        const combined = [
-          ...newMessages,
-          ...messages,
-        ];
-        store.set('messages', combined);
-        const chat = document.querySelector(`.feedChat[data-chat-id="${this._chat}"] p`);
-        if (chat) {
-          chat.textContent = lastMessage.content;
-        }
-      }
+      const { messages } = store.getState();
+      const combined = [
+        ...newMessages,
+        ...messages,
+        ...oldMessages,
+      ];
+      store.set('messages', combined);
     });
 
     this._ws.addEventListener('close', () => {

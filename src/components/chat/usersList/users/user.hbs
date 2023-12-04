@@ -1,9 +1,9 @@
 <li class="user" data-user-id={{ id }}>
-    <div class="avatar">
-        {{#if avatar }}
-            <img src="https://ya-praktikum.tech/api/v2/resources{{ avatar }}" />
-        {{/if}}        
-    </div>
+    {{#if avatar }}
+        <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{ avatar }}" />
+    {{/else}}  
+        <div class="avatar"></div>
+    {{/if}}        
     <b>{{ display_name }}</b>
     <p>{{ first_name }} {{ second_name }}</p>
     {{#if inActiveChat }}

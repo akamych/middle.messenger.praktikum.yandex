@@ -1,7 +1,7 @@
 import EventBus from './EventBus.ts';
 import Block from './Block.ts';
-import { propType } from '../utils/types/propType.ts';
-import { stateMapper } from '../utils/types/stateMapper.ts';
+import { PropType } from '../utils/types/propType.ts';
+import { StateMapper } from '../utils/types/stateMapper.ts';
 import set from '../utils/functions/set.ts';
 import pages from '../utils/bundle/pagesData.json';
 import bundle from '../utils/bundle/text.json';
@@ -14,7 +14,7 @@ export enum StoreEvents {
 }
 
 class Store extends EventBus {
-  private state: propType = {
+  private state: PropType = {
     bundle: {
       ...bundle,
       pages,
@@ -36,8 +36,8 @@ class Store extends EventBus {
 const store = new Store();
 
 // eslint-disable-next-line max-len, no-unused-vars
-export const useStore = (mapState: stateMapper) => (BlockClass: typeof Block) => {
-  const initialState: propType = mapState(store.getState());
+export const useStore = (mapState: StateMapper) => (BlockClass: typeof Block) => {
+  const initialState: PropType = mapState(store.getState());
 
   class storeAdded extends BlockClass {
     constructor(props: any) {
@@ -51,11 +51,11 @@ export const useStore = (mapState: stateMapper) => (BlockClass: typeof Block) =>
 
 // eslint-disable-next-line max-len, no-unused-vars
 export const useStoreForComponent = (
-  mapState: stateMapper,
-  props: propType,
+  mapState: StateMapper,
+  props: PropType,
   BlockClass: typeof Block,
 ) => {
-  const initialState: propType = mapState(store.getState());
+  const initialState: PropType = mapState(store.getState());
 
   class ComponentWithStore extends BlockClass {
     constructor(props: any) {

@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import HandleBars from 'handlebars';
 import EventBus from './EventBus.ts';
 import isEqual from '../utils/functions/isEqual.ts';
-import { propType } from '../utils/types/propType.ts';
+import { PropType } from '../utils/types/propType.ts';
 
 // eslint-disable-next-line no-use-before-define
 type childType = Block[];
@@ -23,9 +23,9 @@ export default class Block {
 
   protected _children: childType = [];
 
-  protected _props: propType = {};
+  protected _props: PropType = {};
 
-  protected _state: propType = {};
+  protected _state: PropType = {};
 
   protected static _template: string = '';
 
@@ -35,17 +35,17 @@ export default class Block {
     return this._template;
   }
 
-  protected _addChildren(props: propType): propType {
+  protected _addChildren(props: PropType): PropType {
     return props;
   }
 
-  constructor(props: propType, state: propType = {}) {
+  constructor(props: PropType, state: PropType = {}) {
     this.id = makeUUID();
 
     const eventBus = new EventBus();
     this._eventBus = () => eventBus;
     this._state = state;
-    const updatedProps: propType = this._addChildren(props);
+    const updatedProps: PropType = this._addChildren(props);
     this._props = this._makePropsProxy(updatedProps);
 
     this._registerEvents(eventBus);
@@ -78,17 +78,17 @@ export default class Block {
     this._eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps: propType, newProps: propType) : void {
+  _componentDidUpdate(oldProps: PropType, newProps: PropType) : void {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  componentDidUpdate(oldProps: propType, newProps: propType) : boolean {
+  componentDidUpdate(oldProps: PropType, newProps: PropType) : boolean {
     return !isEqual(oldProps, newProps);
   }
 
-  _updateState(newState: propType) : void {
+  _updateState(newState: PropType) : void {
     if (newState && this.componentDidUpdate(this._state, newState)) {
       this._state = newState;
       this._props = {
@@ -99,11 +99,11 @@ export default class Block {
     }
   }
 
-  getState(): propType {
+  getState(): PropType {
     return this._state;
   }
 
-  setProps = (nextProps: propType) : void => {
+  setProps = (nextProps: PropType) : void => {
     if (!nextProps) {
       return;
     }
@@ -145,7 +145,7 @@ export default class Block {
   }
 
   _changeEvents(deleteEvent: boolean = false) : void {
-    const { events } : propType = this._props;
+    const { events } : PropType = this._props;
     if (!events) { return; }
     let element = this.getContent();
 
@@ -167,7 +167,7 @@ export default class Block {
     });
   }
 
-  _makePropsProxy(props: propType) : propType {
+  _makePropsProxy(props: PropType) : PropType {
     const self = this;
 
     return new Proxy(props, {
@@ -206,7 +206,7 @@ export default class Block {
     return `<div data-id="${id}"></div>`;
   }
 
-  _findBlockRecursion(key: string, value: unknown, props: propType) {
+  _findBlockRecursion(key: string, value: unknown, props: PropType) {
     if (Array.isArray(value)) {
       for (let i = 0; i < value.length; i += 1) {
         if (value[i] instanceof Block) {
@@ -227,7 +227,7 @@ export default class Block {
   compile(): DocumentFragment {
     const newFragment = document.createElement('template');
 
-    Object.entries(this._props).forEach((prop: propType) => {
+    Object.entries(this._props).forEach((prop: PropType) => {
       const { 0: propKey, 1: propValue } = prop;
 
       // поиск блоков

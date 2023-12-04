@@ -1,6 +1,6 @@
 <li class="user" data-user-id={{ id }}>
     {{#if avatar }}
-        <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{ avatar }}" />
+        <img class="avatar" src="{{ resourcesUrl }}{{ avatar }}" alt="{{ avatarAlt }}" />
     {{else}}  
         <div class="avatar"></div>
     {{/if}}        

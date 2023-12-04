@@ -1,7 +1,7 @@
 import chatApi from '../api/ChatApi.ts';
 import HTTP from '../classes/HTTP.ts';
 import store from '../classes/Store.ts';
-import { feedChatProps } from '../components/chat/feed/chats/chats.ts';
+import { FeedChatProps } from '../components/chat/feed/chats/chats.ts';
 import Service from '../classes/Service.ts';
 import WebSocketApi from '../api/WebSocketApi.ts';
 import router from '../classes/Router.ts';
@@ -27,7 +27,8 @@ class ChatService extends Service {
             console.log({ status, data });
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   create(title: string) {
@@ -45,10 +46,11 @@ class ChatService extends Service {
             console.log({ status, data });
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
-  open(chat: feedChatProps) {
+  open(chat: FeedChatProps) {
     store.set('feed.createChat', false);
     store.set('noMoreMessages', false);
     store.set('activeChat', chat);
@@ -72,7 +74,8 @@ class ChatService extends Service {
             console.log({ status, data });
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   sendMessage(message: string) {
@@ -107,7 +110,8 @@ class ChatService extends Service {
             store.set('usersList', { active: false });
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   addUser(user: Number) {
@@ -127,7 +131,8 @@ class ChatService extends Service {
             console.log({ status, data });
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   removeUser(user: Number) {
@@ -147,7 +152,8 @@ class ChatService extends Service {
             console.log({ status, data });
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   updateAvatar(requestData: FormData) {

@@ -3,7 +3,7 @@ import Block from '../../../classes/Block.ts';
 import template from './header.hbs?raw';
 import styles from './header.scss';
 import { useStore } from '../../../classes/Store.ts';
-import { propType } from '../../../utils/types/propType.ts';
+import { PropType } from '../../../utils/types/propType.ts';
 import router, { CHAT_PAGES } from '../../../classes/Router.ts';
 
 type headerPropsType = {
@@ -13,7 +13,7 @@ type headerPropsType = {
 };
 
 class Header extends Block {
-  constructor(props: headerPropsType, state: propType) {
+  constructor(props: headerPropsType, state: PropType) {
     super({
       ...props,
       ...state,
@@ -22,7 +22,7 @@ class Header extends Block {
       events: {
         click: (event : Event) => {
           event.preventDefault();
-          router.go(CHAT_PAGES.INDEX);
+          router.go(CHAT_PAGES.MESSENGER);
         },
       },
     }, state);

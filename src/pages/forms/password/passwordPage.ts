@@ -1,10 +1,10 @@
 import FormPage, { formPageInputProps } from '../formPage.ts';
 import Button from '../../../components/inputs/button/button.ts';
-import { propType } from '../../../utils/types/propType.ts';
+import { PropType } from '../../../utils/types/propType.ts';
 import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
 import Block from '../../../classes/Block.ts';
 import checkForm from '../../../utils/functions/checkForm.ts';
-import { formData } from '../../../utils/types/formData.ts';
+import { FormDataType } from '../../../utils/types/formData.ts';
 import { settingsData } from '../../../api/UsersApi.ts';
 import usersService from '../../../services/UsersService.ts';
 import Link from '../../../components/links/link.ts';
@@ -13,7 +13,7 @@ import avatarLink from '../../../components/links/settingsPage/avatar.ts';
 import router, { CHAT_PAGES } from '../../../classes/Router.ts';
 
 class PasswordPage extends FormPage {
-  protected _addChildren(props: propType): propType {
+  protected _addChildren(props: PropType): PropType {
     const formInputs: formPageInputProps[] = [
       { type: 'oldPassword' },
       { type: 'newPassword' },
@@ -23,7 +23,7 @@ class PasswordPage extends FormPage {
 
     const buttons: Block[] = [
       useStoreForComponent(
-        (state: propType) => ({
+        (state: PropType) => ({
           className: 'important',
           type: 'submit',
           text: state.bundle?.buttons?.save,
@@ -37,7 +37,7 @@ class PasswordPage extends FormPage {
       ),
     ];
 
-    const dataMapper = (state: propType) => ({
+    const dataMapper = (state: PropType) => ({
       href: '#',
       text: state.bundle?.buttons?.changeData,
       events: {
@@ -57,7 +57,7 @@ class PasswordPage extends FormPage {
 
     const headerLinks = [avatarLink, dataLink];
 
-    const sendForm = (data: formData) => {
+    const sendForm = (data: FormDataType) => {
       if (data === null) {
         return;
       }

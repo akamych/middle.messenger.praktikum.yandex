@@ -40,7 +40,7 @@ class UsersService extends Service {
               authorized: true,
               ...data,
             });
-            router.go(CHAT_PAGES.INDEX);
+            router.go(CHAT_PAGES.MESSENGER);
             break;
 
           case HTTP.CODES.UNAUTHORIZED:
@@ -63,7 +63,7 @@ class UsersService extends Service {
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
-            router.go(CHAT_PAGES.INDEX);
+            router.go(CHAT_PAGES.MESSENGER);
             store.set('errors.passwordPage', { active: false });
             break;
 
@@ -94,7 +94,7 @@ class UsersService extends Service {
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
-            router.go(CHAT_PAGES.INDEX);
+            router.go(CHAT_PAGES.MESSENGER);
             store.set('user', {
               authorized: true,
               ...data,

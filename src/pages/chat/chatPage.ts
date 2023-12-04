@@ -1,4 +1,4 @@
-import Block, { propType } from '../../classes/Block.ts';
+import Block, { PropType } from '../../classes/Block.ts';
 import Feed from '../../components/chat/feed/feed.ts';
 import ChatMenu from '../../components/chat/menu/menu.ts';
 import ChatMessages from '../../components/chat/messages/messages.ts';
@@ -15,7 +15,7 @@ const chatSend = new ChatSend();
 const chatMessages = new ChatMessages();
 
 class ChatPage extends Block {
-  constructor(props: propType, state: propType) {
+  constructor(props: PropType, state: PropType) {
     super({
       ...props,
       styles,

@@ -1,7 +1,7 @@
-import { feedChatProps } from '../../components/chat/feed/chats/chats.ts';
+import { FeedChatProps } from '../../components/chat/feed/chats/chats.ts';
 
-export default function sortChats(chats: feedChatProps[]) {
-  return chats.sort((a: feedChatProps, b: feedChatProps) : number => {
+export default function sortChats(chats: FeedChatProps[]) {
+  return chats.sort((a: FeedChatProps, b: FeedChatProps) : number => {
     if (a.last_message === null && b.last_message === null) {
       return Number(b.id) - Number(a.id);
     }

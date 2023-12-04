@@ -1,3 +1,4 @@
+import sanitizeHtml from 'sanitize-html';
 import errorLabels from '../bundle/inputErrors.json';
 
 export type validateInputType = {
@@ -95,7 +96,8 @@ function validatePassword(value : string) : validateInputType {
 }
 
 // eslint-disable-next-line max-len
-export function validateInputData(name: string, type: string, value: string = '') : validateInputType {
+export function validateInputData(name: string, type: string, nonCheckedValue: string = '') : validateInputType {
+  const value = sanitizeHtml(nonCheckedValue);
   switch (type.toLowerCase()) {
     case 'email': return validateEmail(value);
     case 'tel': return validatePhone(value);

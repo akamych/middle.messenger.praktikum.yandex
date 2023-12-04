@@ -43,7 +43,6 @@ const useStoreImpl = useStore((state) => {
       || !state.activeChat
       || state.messages?.length < CONSTANTS.MESSAGES_PER_REQUEST,
   };
-  console.log(model);
 
   const { messages } = state;
   if (!messages) { return {}; }

@@ -26,7 +26,7 @@ const prepareProp = (message: PropType, state: PropType) : PropType | null => {
       Object.entries(state.usersList.users).forEach(([, user]) => {
         const { id, userAvatar } = user as PropType;
         if (id === message.user_id) {
-          avatar = userAvatar;
+          avatar = userAvatar as string | null;
         }
       });
     }
@@ -53,10 +53,14 @@ const useStoreImpl = useStore((state) => {
     messages: [],
     myAvatar: state.user?.avatar,
     avatarAlt: state.bundle?.alts.avatar,
-    noMoreMessages: state.noMoreMessages === true
-      || !state.activeChat
-      || state.messages?.length < CONSTANTS.MESSAGES_PER_REQUEST,
+    showMoreMessages: state.noMoreMessages === false
+      || (
+        !state.noMoreMessages
+        && (state.activeChat?.id || state.messages?.length >= CONSTANTS.MESSAGES_PER_REQUEST)
+      ),
   };
+
+  console.log(model);
 
   const { messages } = state;
   if (!messages) { return {}; }

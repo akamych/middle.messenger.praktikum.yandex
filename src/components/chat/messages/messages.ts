@@ -19,13 +19,23 @@ class ChatMessages extends Block {
 
 const prepareProp = (message: propType, state: propType) : propType | null => {
   if (message.user_id && message.content) {
+    let avatar: string | null = null;
+    if (message.user_id === state.user?.id) {
+      avatar = state.user.avatar;
+    } else if (state.usersList?.users?.length > 0) {
+      Object.entries(state.usersList.users).forEach(([, user]) => {
+        const { id, userAvatar } = user as propType;
+        if (id === message.user_id) {
+          avatar = userAvatar;
+        }
+      });
+    }
     return ({
       id: message.id,
       content: message.content,
       unread: !message.is_read,
       byMe: message.user_id === state.user?.id,
-      avatar: message.user_id === state.user?.id ? state.user.avatar : null,
-      avatarSrc: state.user?.avatar,
+      avatar,
       date: getMessageDate(message.time),
       time: getMessageTime(message.time),
       user: message.user_id,

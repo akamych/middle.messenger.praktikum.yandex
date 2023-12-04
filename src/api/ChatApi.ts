@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
-import HTTP from '../classes/HTTP.js';
-import store from '../classes/Store.js';
+import HTTP from '../classes/HTTP.ts';
+import store from '../classes/Store.ts';
 
 class ChatApi extends HTTP {
   protected _baseUrl: string = 'chats';

@@ -1,12 +1,12 @@
-import footer from './components/asides/footer/';
-import Header from './components/asides/header/';
+import footer from './components/asides/footer/footer.ts';
+import Header from './components/asides/header/header.ts';
 import ChatPage from './pages/chat/chatPage.ts';
 import SettingsPage from './pages/forms/settings/settingsPage.ts';
-import router, { ACCESS_LEVELS, CHAT_PAGES } from './classes/Router.js';
+import router, { ACCESS_LEVELS, CHAT_PAGES } from './classes/Router.ts';
 import authService from './services/AuthService.ts';
 import LoginPage from './pages/forms/login/loginPage.ts';
 import SignupPage from './pages/forms/signup/signupPage.ts';
-import PasswordPage from './pages/forms/password/passwordPage';
+import PasswordPage from './pages/forms/password/passwordPage.ts';
 
 function startApp() : void {
   router

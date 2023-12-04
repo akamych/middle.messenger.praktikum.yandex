@@ -1,7 +1,7 @@
-import store, { useStoreForComponent } from '../../../classes/Store';
-import { propType } from '../../../utils/types/propType';
-import InputFile from '../../inputs/files/files';
-import usersService from '../../../services/UsersService';
+import store, { useStoreForComponent } from '../../../classes/Store.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import InputFile from '../../inputs/files/files.ts';
+import usersService from '../../../services/UsersService.ts';
 
 const mapper = (state: propType) => ({
   fileButton: state.bundle?.buttons?.changeAvatar,

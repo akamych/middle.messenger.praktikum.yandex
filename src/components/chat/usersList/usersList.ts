@@ -1,14 +1,14 @@
-import Block from '../../../classes/Block.js';
-import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
-import { propType } from '../../../utils/types/propType.js';
-import Link from '../../links/link.js';
-import Input from '../../inputs/input/input.js';
+import Block from '../../../classes/Block.ts';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import Link from '../../links/link.ts';
+import Input from '../../inputs/input/input.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './usersList.hbs?raw';
-import usersService from '../../../services/UsersService.js';
-import UserListUser from './users/user.js';
-import { userType } from '../../../utils/types/user.js';
-import ChatService from '../../../services/ChatService.js';
+import usersService from '../../../services/UsersService.ts';
+import UserListUser from './users/user.ts';
+import { userType } from '../../../utils/types/user.ts';
+import ChatService from '../../../services/ChatService.ts';
 
 const linkStoreMapper = (state: propType) => ({
   href: '#',

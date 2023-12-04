@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import HTTP from '../classes/HTTP.js';
+import HTTP from '../classes/HTTP.ts';
 
 export type settingsData = {
   'display_name': string,

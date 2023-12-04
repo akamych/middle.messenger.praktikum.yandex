@@ -1,5 +1,5 @@
-import Block from '../../../../classes/Block.js';
-import { propType } from '../../../../utils/types/propType.js';
+import Block from '../../../../classes/Block.ts';
+import { propType } from '../../../../utils/types/propType.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './chats.hbs?raw';
 

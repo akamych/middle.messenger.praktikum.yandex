@@ -1,6 +1,8 @@
-import Block from '../../../classes/Block.ts';
-import Link from '../../links/index.ts';
+import Block from '../../classes/Block.ts';
+import Link from '../../components/links/link.ts';
+// eslint-disable-next-line import/no-unresolved
 import textBundle from '../../../utils/bundle/text.json';
+// eslint-disable-next-line import/no-unresolved
 import pagesData from '../../../utils/bundle/pagesData.json';
 // eslint-disable-next-line import/no-unresolved
 import template from './errors.hbs?raw';

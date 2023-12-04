@@ -1,5 +1,5 @@
-import { formData } from '../types/formData.js';
-import { validateInputData, validateInputType } from './validateInput.js';
+import { formData } from '../types/formData.ts';
+import { validateInputData, validateInputType } from './validateInput.ts';
 
 export default function checkForm(event : Event) : formData {
   event.stopPropagation();

@@ -1,13 +1,14 @@
-import Block from '../../../classes/Block.js';
-import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
-import { propType } from '../../../utils/types/propType.js';
-import Input from '../../inputs/input/input.js';
-import Form from '../../inputs/form/form.js';
+import Block from '../../../classes/Block.ts';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import Input from '../../inputs/input/input.ts';
+import Form from '../../inputs/form/form.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './send.hbs?raw';
-import Button from '../../inputs/button/button.js';
+import Button from '../../inputs/button/button.ts';
+// eslint-disable-next-line import/no-unresolved
 import attachIcon from '../../../assets/svg/attach.svg?raw';
-import chatService from '../../../services/ChatService.js';
+import chatService from '../../../services/ChatService.ts';
 
 const inputStoreMapper = (state: propType) => ({
   type: 'text',

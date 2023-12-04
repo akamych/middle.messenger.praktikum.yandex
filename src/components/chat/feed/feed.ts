@@ -1,16 +1,16 @@
-import Block from '../../../classes/Block.js';
-import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
-import { propType } from '../../../utils/types/propType.js';
-import Link from '../../links/link.js';
-import Input from '../../inputs/input/input.js';
-import Form from '../../inputs/form/form.js';
+import Block from '../../../classes/Block.ts';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import Link from '../../links/link.ts';
+import Input from '../../inputs/input/input.ts';
+import Form from '../../inputs/form/form.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './feed.hbs?raw';
-import Button from '../../inputs/button/button.js';
-import chatService from '../../../services/ChatService.js';
-import FeedChat, { feedChatProps } from './chats/chats.js';
-import FeedSearch from './search/search.js';
-import sortChats from '../../../utils/functions/sort.js';
+import Button from '../../inputs/button/button.ts';
+import chatService from '../../../services/ChatService.ts';
+import FeedChat, { feedChatProps } from './chats/chats.ts';
+import FeedSearch from './search/search.ts';
+import sortChats from '../../../utils/functions/sort.ts';
 
 const createLinkStoreMapper = (state: propType) => ({
   href: '#',

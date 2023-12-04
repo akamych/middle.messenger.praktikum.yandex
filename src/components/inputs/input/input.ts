@@ -1,6 +1,6 @@
-import Block from '../../../classes/Block.js';
+import Block from '../../../classes/Block.ts';
 // eslint-disable-next-line max-len
-import { validateInput, validateInputType, validateInputData } from '../../../utils/functions/validateInput.js';
+import { validateInput, validateInputType, validateInputData } from '../../../utils/functions/validateInput.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './input.hbs?raw';
 

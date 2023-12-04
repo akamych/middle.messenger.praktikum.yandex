@@ -1,9 +1,9 @@
-import HTTP from '../classes/HTTP.js';
-import router from '../classes/Router.js';
-import store from '../classes/Store.js';
-import chatService from './ChatService.js';
-import AuthApi, { loginData, signupData } from '../api/AuthApi.js';
-import Service from '../classes/Service.js';
+import HTTP from '../classes/HTTP.ts';
+import router from '../classes/Router.ts';
+import store from '../classes/Store.ts';
+import chatService from './ChatService.ts';
+import AuthApi, { loginData, signupData } from '../api/AuthApi.ts';
+import Service from '../classes/Service.ts';
 
 class AuthService extends Service {
   getUserData() {

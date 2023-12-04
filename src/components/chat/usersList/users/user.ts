@@ -1,5 +1,5 @@
-import Block from '../../../../classes/Block.js';
-import { userType } from '../../../../utils/types/user.js';
+import Block from '../../../../classes/Block.ts';
+import { userType } from '../../../../utils/types/user.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './user.hbs?raw';
 

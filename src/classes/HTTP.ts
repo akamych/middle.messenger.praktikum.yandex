@@ -1,4 +1,4 @@
-import { propType } from "../utils/types/propType";
+import { propType } from '../utils/types/propType.ts';
 
 type ApiOptionsType = {
   method?: string;

@@ -1,7 +1,7 @@
-import Block from '../../classes/Block.js';
-import store, { useStoreForComponent } from '../../classes/Store.js';
-import { propType } from '../../utils/types/propType.js';
-import Input from '../../components/inputs/input/input.js';
+import Block from '../../classes/Block.ts';
+import store, { useStoreForComponent } from '../../classes/Store.ts';
+import { propType } from '../../utils/types/propType.ts';
+import Input from '../../components/inputs/input/input.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './formPage.hbs?raw';
 import styles from './formPage.scss';

@@ -1,6 +1,6 @@
-import store from '../classes/Store';
-import CONSTANTS from '../utils/bundle/constants';
-import { propType } from '../utils/types/propType';
+import store from '../classes/Store.ts';
+import CONSTANTS from '../utils/bundle/constants.ts';
+import { propType } from '../utils/types/propType.ts';
 
 export default class WebSocketApi {
   private _domain: string = 'wss://ya-praktikum.tech/ws/chats/';

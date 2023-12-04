@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Block from './Block.ts';
 import Route from './Route.ts';
-import store from './Store.js';
+import store from './Store.ts';
 
 export enum ACCESS_LEVELS {
   GUESTS = 'GUESTS',

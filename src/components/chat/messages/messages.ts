@@ -1,12 +1,12 @@
-import Block from '../../../classes/Block.js';
-import { useStore } from '../../../classes/Store.js';
-import { propType } from '../../../utils/types/propType.js';
-import ChatMessage from './message/message.js';
-import { getMessageDate, getMessageTime } from '../../../utils/functions/dateTime.js';
+import Block from '../../../classes/Block.ts';
+import { useStore } from '../../../classes/Store.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import ChatMessage from './message/message.ts';
+import { getMessageDate, getMessageTime } from '../../../utils/functions/dateTime.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './messages.hbs?raw';
-import LoadMoreMessages from './loadMore/loadMore.js';
-import CONSTANTS from '../../../utils/bundle/constants.js';
+import LoadMoreMessages from './loadMore/loadMore.ts';
+import CONSTANTS from '../../../utils/bundle/constants.ts';
 
 const loadMoreMessages = new LoadMoreMessages();
 class ChatMessages extends Block {
@@ -59,6 +59,7 @@ const useStoreImpl = useStore((state) => {
 
   for (let i = 0; i < messages.length; i += 1) {
     const props = prepareProp(messages[i], state);
+    // eslint-disable-next-line no-continue
     if (props === null) { continue; }
     model.messages.push(new ChatMessage(props));
   }

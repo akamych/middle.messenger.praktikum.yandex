@@ -5,13 +5,12 @@ import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts
 import Block from '../../../classes/Block.ts';
 import checkForm from '../../../utils/functions/checkForm.ts';
 import { formData } from '../../../utils/types/formData.ts';
-import { settingsData } from '../../../api/User.ts';
-import usersService from '../../../services/UsersService.js';
-import authService from '../../../services/AuthService.js';
+import { settingsData } from '../../../api/UsersApi.ts';
+import usersService from '../../../services/UsersService.ts';
 import Link from '../../../components/links/link.ts';
-import logoutLink from '../../../components/links/settingsPage/logout.js';
-import avatarLink from '../../../components/links/settingsPage/avatar.js';
-import router, { CHAT_PAGES } from '../../../classes/Router.js';
+import logoutLink from '../../../components/links/settingsPage/logout.ts';
+import avatarLink from '../../../components/links/settingsPage/avatar.ts';
+import router, { CHAT_PAGES } from '../../../classes/Router.ts';
 
 class SettingsPage extends FormPage {
   protected _addChildren(props: propType): propType {

@@ -1,10 +1,10 @@
-import chatApi from '../api/ChatApi.js';
-import HTTP from '../classes/HTTP.js';
-import store from '../classes/Store.js';
-import { feedChatProps } from '../components/chat/feed/chats/chats.js';
-import Service from '../classes/Service.js';
-import WebSocketApi from '../api/WebSocketApi.js';
-import router from '../classes/Router.js';
+import chatApi from '../api/ChatApi.ts';
+import HTTP from '../classes/HTTP.ts';
+import store from '../classes/Store.ts';
+import { feedChatProps } from '../components/chat/feed/chats/chats.ts';
+import Service from '../classes/Service.ts';
+import WebSocketApi from '../api/WebSocketApi.ts';
+import router from '../classes/Router.ts';
 
 class ChatService extends Service {
   private _ws: WebSocketApi;

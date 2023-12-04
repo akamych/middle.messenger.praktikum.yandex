@@ -1,13 +1,13 @@
-import FormPage, { formPageInputProps } from '../formPage.js';
-import Button from '../../../components/inputs/button/button.js';
-import { propType } from '../../../utils/types/propType.js';
-import checkForm from '../../../utils/functions/checkForm.js';
-import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
-import Block from '../../../classes/Block.js';
-import Link from '../../../components/links/link.js'
-import { signupData } from '../../../api/Auth.js';
-import authService from '../../../services/AuthService.js';
-import { formData } from '../../../utils/types/formData.js';
+import FormPage, { formPageInputProps } from '../formPage.ts';
+import Button from '../../../components/inputs/button/button.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import checkForm from '../../../utils/functions/checkForm.ts';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import Block from '../../../classes/Block.ts';
+import Link from '../../../components/links/link.ts';
+import { signupData } from '../../../api/AuthApi.ts';
+import authService from '../../../services/AuthService.ts';
+import { formData } from '../../../utils/types/formData.ts';
 
 class SignupPage extends FormPage {
   protected _addChildren(props: propType): propType {

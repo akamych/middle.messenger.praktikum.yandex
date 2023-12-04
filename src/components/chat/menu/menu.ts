@@ -1,9 +1,9 @@
-import Block from '../../../classes/Block.js';
-import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
-import { propType } from '../../../utils/types/propType.js';
-import Link from '../../links/link.js';
-import InputFile from '../../inputs/files/files.js';
-import chatService from '../../../services/ChatService.js';
+import Block from '../../../classes/Block.ts';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import Link from '../../links/link.ts';
+import InputFile from '../../inputs/files/files.ts';
+import chatService from '../../../services/ChatService.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './menu.hbs?raw';
 
@@ -56,4 +56,3 @@ const useStoreImpl = useStore((state) => ({
 }));
 
 export default useStoreImpl(ChatMenu);
-

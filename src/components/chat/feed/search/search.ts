@@ -1,11 +1,11 @@
-import Block from '../../../../classes/Block.js';
-import Input from '../../../inputs/input/input.js';
-import Link from '../../../links/link.js';
-import store, { useStoreForComponent } from '../../../../classes/Store.js';
+import Block from '../../../../classes/Block.ts';
+import Input from '../../../inputs/input/input.ts';
+import Link from '../../../links/link.ts';
+import store, { useStoreForComponent } from '../../../../classes/Store.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './search.hbs?raw';
-import { propType } from '../../../../utils/types/propType.js';
-import chatService from '../../../../services/ChatService.js';
+import { propType } from '../../../../utils/types/propType.ts';
+import chatService from '../../../../services/ChatService.ts';
 
 const linkStoreMapper = (state: propType) => ({
   href: state.bundle?.pages.settings.link,

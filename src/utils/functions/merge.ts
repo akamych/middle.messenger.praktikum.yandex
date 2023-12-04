@@ -4,7 +4,7 @@ export default function merge(base: Indexed, additional: Indexed): Indexed {
   const newBase = base;
   const newAdditional = additional;
 
-  Object.keys(newAdditional).forEach(key => {
+  Object.keys(newAdditional).forEach((key) => {
     if (!Object.prototype.hasOwnProperty.call(newAdditional, key)) {
       return;
     }

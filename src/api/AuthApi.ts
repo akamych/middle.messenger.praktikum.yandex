@@ -1,4 +1,4 @@
-import HTTP from '../classes/HTTP.js';
+import HTTP from '../classes/HTTP.ts';
 
 export type loginData = {
   'login': string,

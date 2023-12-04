@@ -1,4 +1,4 @@
-import Block from "../../classes/Block";
+import Block from '../../classes/Block.ts';
 
 export type userType = {
     id: Number,

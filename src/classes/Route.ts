@@ -1,5 +1,5 @@
 import Block, { propType } from './Block.ts';
-import { ACCESS_LEVELS } from './Router.js';
+import { ACCESS_LEVELS } from './Router.ts';
 
 export default class Route {
   private _pathname: string;

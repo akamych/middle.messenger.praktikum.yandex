@@ -12,7 +12,8 @@
       "import/no-extraneous-dependencies": "off",
       "no-shadow": "off",
       "max-classes-per-file": "off",
-      "no-case-declarations": "off"
+      "no-case-declarations": "off",
+      "no-console": "off"
     },
     "env": {
       "browser": true

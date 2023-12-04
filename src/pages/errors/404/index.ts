@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import textBundle from '../../../../utils/bundle/text.json';
 import ErrorPage from '../index.ts';
 

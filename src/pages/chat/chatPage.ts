@@ -5,8 +5,8 @@ import ChatMessages from '../../components/chat/messages/messages.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './chatPage.hbs?raw';
 import styles from './chatPage.scss';
-import UsersList from '../../components/chat/usersList/usersList.js';
-import ChatSend from '../../components/chat/send/send.js';
+import UsersList from '../../components/chat/usersList/usersList.ts';
+import ChatSend from '../../components/chat/send/send.ts';
 
 const feed = new Feed({});
 const usersList = new UsersList({});

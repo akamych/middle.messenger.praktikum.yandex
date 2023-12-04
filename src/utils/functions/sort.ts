@@ -1,4 +1,4 @@
-import { feedChatProps } from '../../components/chat/feed/chats/chats';
+import { feedChatProps } from '../../components/chat/feed/chats/chats.ts';
 
 export default function sortChats(chats: feedChatProps[]) {
   return chats.sort((a: feedChatProps, b: feedChatProps) : number => {

@@ -1,14 +1,14 @@
-import FormPage, { formPageInputProps } from '../formPage.js';
-import Button from '../../../components/inputs/button/button.js';
-import { propType } from '../../../utils/types/propType.js';
-import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
-import Block from '../../../classes/Block.js';
-import checkForm from '../../../utils/functions/checkForm.js';
-import { formData } from '../../../utils/types/formData.js';
-import { settingsData } from '../../../api/User.ts';
-import usersService from '../../../services/UsersService.js';
-import authService from '../../../services/AuthService.js';
-import Link from '../../../components/links/link.js';
+import FormPage, { formPageInputProps } from '../formPage.ts';
+import Button from '../../../components/inputs/button/button.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
+import Block from '../../../classes/Block.ts';
+import checkForm from '../../../utils/functions/checkForm.ts';
+import { formData } from '../../../utils/types/formData.ts';
+import { settingsData } from '../../../api/UsersApi.ts';
+import usersService from '../../../services/UsersService.ts';
+import authService from '../../../services/AuthService.ts';
+import Link from '../../../components/links/link.ts';
 
 class SettingsPage extends FormPage {
   protected _addChildren(props: propType): propType {

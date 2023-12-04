@@ -1,7 +1,7 @@
-import store, { useStoreForComponent } from '../../../classes/Store';
-import AuthService from '../../../services/AuthService';
-import { propType } from '../../../utils/types/propType';
-import Link from '../link';
+import store, { useStoreForComponent } from '../../../classes/Store.ts';
+import AuthService from '../../../services/AuthService.ts';
+import { propType } from '../../../utils/types/propType.ts';
+import Link from '../link.ts';
 
 const mapper = (state: propType) => ({
   href: state.bundle?.pages?.logout.link,

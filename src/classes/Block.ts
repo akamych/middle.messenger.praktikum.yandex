@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import HandleBars from 'handlebars';
 import EventBus from './EventBus.ts';
 import isEqual from '../utils/functions/isEqual.ts';
-import { propType } from '../utils/types/propType.js';
+import { propType } from '../utils/types/propType.ts';
 
 // eslint-disable-next-line no-use-before-define
 type childType = Block[];

@@ -1,8 +1,8 @@
-import Block from '../../../../classes/Block.js';
+import Block from '../../../../classes/Block.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './loadMore.hbs?raw';
-import { useStore } from '../../../../classes/Store.js';
-import ChatService from '../../../../services/ChatService.js';
+import { useStore } from '../../../../classes/Store.ts';
+import ChatService from '../../../../services/ChatService.ts';
 
 class LoadMoreMessages extends Block {
   constructor() {

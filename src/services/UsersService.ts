@@ -1,8 +1,8 @@
-import usersApi, { changePasswordData, settingsData } from '../api/UsersApi.js';
-import HTTP from '../classes/HTTP.js';
-import store from '../classes/Store.js';
-import Service from '../classes/Service.js';
-import router, { CHAT_PAGES } from '../classes/Router.js';
+import usersApi, { changePasswordData, settingsData } from '../api/UsersApi.ts';
+import HTTP from '../classes/HTTP.ts';
+import store from '../classes/Store.ts';
+import Service from '../classes/Service.ts';
+import router, { CHAT_PAGES } from '../classes/Router.ts';
 
 class UsersService extends Service {
   search(name: string) {

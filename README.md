@@ -19,7 +19,7 @@
      * [index](https://yandex-praktikum-akamych-1.netlify.app/)
      * [messenger](https://yandex-praktikum-akamych-1.netlify.app/messenger)
      * [sign up](https://yandex-praktikum-akamych-1.netlify.app/sign-up)
-     * [settings](https://yandex-praktikum-akamych-1.netlify.app/settings/)
+     * [settings](https://yandex-praktikum-akamych-1.netlify.app/settings)
      * [password](https://yandex-praktikum-akamych-1.netlify.app/settings/password)
 
 ## Скрипты для линтинга

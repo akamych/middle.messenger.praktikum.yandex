@@ -85,6 +85,46 @@ class UsersService extends Service {
       })
       .catch((error) => console.error(error));
   }
+
+  updateAvatar(requestData: FormData) {
+    usersApi.updateAvatar(requestData)
+      .then((response) => {
+        if (!response) { return; }
+        const { status, data } = this._createResponse(response);
+
+        switch (status) {
+          case HTTP.CODES.SUCCESS:
+            router.go(CHAT_PAGES.INDEX);
+            store.set('user', {
+              authorized: true,
+              ...data,
+            });
+            store.set('errors.passwordPage', { active: false });
+            store.set('errors.settingsPage', { active: false });
+            break;
+
+          case HTTP.CODES.BAD_REQUEST:
+            store.set('errors.passwordPage', {
+              active: true,
+              text: data.reason,
+            });
+            store.set('errors.settingsPage', {
+              active: true,
+              text: data.reason,
+            });
+            break;
+
+          case HTTP.CODES.UNAUTHORIZED:
+            store.set('user', { authorized: false });
+            router.guestRedirect();
+            break;
+
+          default:
+            break;
+        }
+      })
+      .catch((error) => console.error(error));
+  }
 }
 
 export default new UsersService();

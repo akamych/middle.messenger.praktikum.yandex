@@ -9,6 +9,9 @@ export type InputFilePropsType = {
   events: {
     change: Function,
   },
+  allow: {
+    pictures?: boolean,
+  },
 };
 
 export default class InputFile extends Block {

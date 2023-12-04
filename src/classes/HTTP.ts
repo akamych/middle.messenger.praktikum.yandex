@@ -6,6 +6,7 @@ type ApiOptionsType = {
   data?: Record<string, any>;
   timeout?: number;
   sendJSON?: boolean;
+  sendForm?: boolean;
   withCredentials?: boolean;
 };
 
@@ -78,12 +79,14 @@ export default class HTTP {
       method,
       data,
       sendJSON,
+      sendForm,
       withCredentials = true,
       timeout = 5000,
     } = options;
 
     const fullUrl = this._yandexUrl + this._baseUrl + url;
-    let jsonData: string | undefined;
+    let jsonData: string;
+
     if (sendJSON) {
       headers['Content-Type'] = 'application/json; charset=utf-8';
       jsonData = JSON.stringify(data);
@@ -114,6 +117,9 @@ export default class HTTP {
         xhr.send();
       } else if (jsonData) {
         xhr.send(jsonData);
+      } else if (sendForm) {
+        console.log({formData: data!.formData, entries: data!.formData.entries().next(), headers });
+        xhr.send(data!.formData);
       } else {
         // xhr.send(data);
       }

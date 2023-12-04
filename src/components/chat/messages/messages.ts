@@ -21,6 +21,8 @@ const prepareProp = (message: propType, state: propType) : propType | null => {
       content: message.content,
       unread: !message.is_read,
       byMe: message.user_id === state.user?.id,
+      avatar: message.user_id === state.user?.id ? state.user.avatar : null,
+      avatarSrc: state.user?.avatar,
       date: getMessageDate(message.time),
       time: getMessageTime(message.time),
       user: message.user_id,
@@ -33,6 +35,7 @@ const prepareProp = (message: propType, state: propType) : propType | null => {
 const useStoreImpl = useStore((state) => {
   const model: propType = {
     messages: [],
+    myAvatar: state.user?.avatar,
   };
 
   const { messages } = state;
@@ -41,6 +44,7 @@ const useStoreImpl = useStore((state) => {
   for (let i = 0; i < messages.length; i += 1) {
     const props = prepareProp(messages[i], state);
     if (props === null) { continue; }
+    console.log(props);
     model.messages.push(new ChatMessage(props));
   }
   return model;

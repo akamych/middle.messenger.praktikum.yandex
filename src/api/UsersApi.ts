@@ -34,6 +34,16 @@ class UsersApi extends HTTP {
       });
   }
 
+  updateAvatar(requestData: FormData) {
+    return this
+      .put('/profile/avatar', {
+        data: {
+          formData: requestData,
+        },
+        sendForm: true,
+      });
+  }
+
   search(login: string) {
     return this
       .post('/search', {

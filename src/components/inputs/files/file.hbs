@@ -6,6 +6,9 @@
     <input
         type = "file"
         name = {{ name }}
+        {{#if allow.pictures }} 
+            accept = "image/png, image/jpeg, image/gif"
+        {{/if}}
     />
     {{{ fileButton }}}
 </label>

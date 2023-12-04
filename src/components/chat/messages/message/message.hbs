@@ -11,6 +11,11 @@
 {{/if}}
 
 <div class="message" data-my="{{ byMe }}" data-unread="{{ unread }}">
-    {{ content }}
-    <span>{{ date }} {{ time }}</span>    
+    <div>{{ content }}</div>
+    <span>{{ date }} {{ time }}</span>
+    {{#if avatar }}
+        <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{ avatar }}" />
+    {{else}}
+        <div class="avatar" />
+    {{/if}}
 </div>

@@ -23,13 +23,18 @@ main {
             grid-template-columns: repeat(2, 1fr);
             margin-bottom: 1.5em;
 
-            a {
+            a, label {
+                line-height: 1;
                 font-size: 0.8em;
                 color: var(--orange);
 
                 &:hover {
                     color: var(--purple);
                 }
+            }
+
+            input {
+                display: none;
             }
         }
 

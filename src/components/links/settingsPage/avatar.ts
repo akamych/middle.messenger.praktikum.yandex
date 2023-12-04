@@ -1,19 +1,26 @@
 import store, { useStoreForComponent } from '../../../classes/Store';
 import { propType } from '../../../utils/types/propType';
-import Link from '../link';
+import InputFile from '../../inputs/files/file';
+import usersService from '../../../services/UsersService';
 
 const mapper = (state: propType) => ({
-  href: '#',
-  text: state.bundle?.buttons?.changeAvatar,
+  fileButton: state.bundle?.buttons?.changeAvatar,
+  name: 'avatar',
+  allow: {
+    pictures: true,
+  },
   events: {
-    click: (event: Event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      console.log(event);
+    change: (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      if (!input || !input.files) { return; }
+
+      const formData = new FormData();
+      formData.append('avatar', input.files[0]);
+      usersService.updateAvatar(formData);
     },
   },
 });
 
-const avatarLink = useStoreForComponent(mapper, mapper(store.getState()), Link);
+const avatarLink = useStoreForComponent(mapper, mapper(store.getState()), InputFile);
 
 export default avatarLink;

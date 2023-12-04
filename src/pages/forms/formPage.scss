@@ -18,6 +18,21 @@ main {
         padding: 0;
         text-transform: lowercase;
 
+        .headerLinks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 1.5em;
+
+            a {
+                font-size: 0.8em;
+                color: var(--orange);
+
+                &:hover {
+                    color: var(--purple);
+                }
+            }
+        }
+
         label {
             display: block;
 

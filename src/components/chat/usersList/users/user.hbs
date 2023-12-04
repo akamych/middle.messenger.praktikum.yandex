@@ -4,11 +4,8 @@
             <img src="{{ avatar }}" />
         {{/if}}        
     </div>
-
     <b>{{ display_name }}</b>
-    <i>{{ first_name }} {{ second_name }}</i>
-    <b>{{ inActiveChat }}</b>
-
+    <p>{{ first_name }} {{ second_name }}</p>
     {{#if inActiveChat }}
         {{{ removeUser }}}
     {{else}}

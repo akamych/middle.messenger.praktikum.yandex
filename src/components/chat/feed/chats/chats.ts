@@ -5,11 +5,11 @@ import template from './chats.hbs?raw';
 
 export type feedChatProps = {
   avatar: string | null,
-  created_by: Number,
-  id: Number,
+  created_by: number,
+  id: number,
   last_message: propType | null,
   title: string,
-  unread_count: Number,
+  unread_count: number,
   events?: propType,
 };
 

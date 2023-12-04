@@ -65,7 +65,7 @@ type usersListType = {
 const moveUserEvent = (event: Event, id: Number, remove: boolean = false) => {
   event.stopPropagation();
   if (remove) {
-
+    ChatService.removeUser(id);
   } else {
     ChatService.addUser(id);
   }
@@ -113,11 +113,6 @@ const useStoreImpl = useStore((state) => {
           removeLinkMapper(store.getState()),
           Link,
         ),
-        events: {
-          click: () => {
-            console.log('//TODO: show user info');
-          },
-        },
       } as userType));
     }
   }

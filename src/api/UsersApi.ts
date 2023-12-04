@@ -10,12 +10,25 @@ export type settingsData = {
   'phone': string,
 };
 
+export type changePasswordData = {
+  'oldPassword': string,
+  'newPassword': string,
+};
+
 class UsersApi extends HTTP {
   protected _baseUrl: string = 'user';
 
   update(requestData: settingsData) {
     return this
       .put('/profile', {
+        data: requestData,
+        sendJSON: true,
+      });
+  }
+
+  updatePassword(requestData: changePasswordData) {
+    return this
+      .put('/password', {
         data: requestData,
         sendJSON: true,
       });

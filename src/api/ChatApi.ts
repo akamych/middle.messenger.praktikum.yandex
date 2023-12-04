@@ -17,10 +17,7 @@ class ChatApi extends HTTP {
   }
 
   users(id: Number) {
-    let url = '/';
-    url += id;
-    url += '/users';
-    return this.get(url);
+    return this.get(`/${id}/users`);
   }
 
   addUser(user: Number) {
@@ -39,6 +36,13 @@ class ChatApi extends HTTP {
         users: [user],
         chatId: store.getState().activeChat?.id,
       },
+      sendJSON: true,
+    });
+  }
+
+  getToken(id: Number) {
+    return this.post(`/token/${id}`, {
+      data: { id },
       sendJSON: true,
     });
   }

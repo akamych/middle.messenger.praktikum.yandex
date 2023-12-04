@@ -12,20 +12,8 @@ const listUsersMapper = (state: propType) => ({
   title: state.bundle?.buttons.chatUsers,
   text: state.bundle?.buttons.chatUsers,
   events: {
-    click: () => ChatService.users(),
+    click: () => store.set('usersList.active', true),
   },
-});
-
-const clearChatMapper = (state: propType) => ({
-  href: '#',
-  title: state.bundle?.buttons.clearChat,
-  text: state.bundle?.buttons.clearChat,
-});
-
-const deleteChatMapper = (state: propType) => ({
-  href: '#',
-  title: state.bundle?.buttons.deleteChat,
-  text: state.bundle?.buttons.deleteChat,
 });
 
 class ChatMenu extends Block {
@@ -33,8 +21,6 @@ class ChatMenu extends Block {
     super({
       ...props,
       listUsers: useStoreForComponent(listUsersMapper, listUsersMapper(store.getState()), Link),
-      clearChat: useStoreForComponent(clearChatMapper, clearChatMapper(store.getState()), Link),
-      deleteChat: useStoreForComponent(deleteChatMapper, deleteChatMapper(store.getState()), Link),
       template,
     });
   }
@@ -43,6 +29,7 @@ class ChatMenu extends Block {
 }
 
 const useStoreImpl = useStore((state) => ({
+  activeChat: state.activeChat,
   title: state.activeChat?.title,
   avatar: state.activeChat?.avatar,
 }));

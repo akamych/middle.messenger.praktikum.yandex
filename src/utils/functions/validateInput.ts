@@ -59,8 +59,8 @@ function validateNames(value : string) : validateInputType {
   if (checkValuePresence(value)) {
     return valueAbsentError();
   }
-  let error = !/[A-Za-zА-Яа-я-]+$/.test(value);
-  let message = errorLabels.names.wrong;
+  let error: boolean = !/[A-Za-zА-Яа-я-]+$/.test(value);
+  let message: string | undefined = errorLabels.names.wrong;
 
   if (error) {
     return { error, message };
@@ -75,8 +75,8 @@ function validatePassword(value : string) : validateInputType {
   if (checkValuePresence(value)) {
     return valueAbsentError();
   }
-  let error = value.length > 40 || value.length < 8;
-  let message = errorLabels.password.length;
+  let error: boolean = value.length > 40 || value.length < 8;
+  let message: string | undefined = errorLabels.password.length;
 
   if (error) {
     return { error, message };

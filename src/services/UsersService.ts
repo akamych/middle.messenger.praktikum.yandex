@@ -1,4 +1,4 @@
-import usersApi, { settingsData } from '../api/UsersApi.js';
+import usersApi, { changePasswordData, settingsData } from '../api/UsersApi.js';
 import HTTP from '../classes/HTTP.js';
 import store from '../classes/Store.js';
 import Service from '../classes/Service.js';
@@ -41,6 +41,37 @@ class UsersService extends Service {
               ...data,
             });
             router.go(CHAT_PAGES.INDEX);
+            break;
+
+          case HTTP.CODES.UNAUTHORIZED:
+            store.set('user', { authorized: false });
+            router.guestRedirect();
+            break;
+
+          default:
+            break;
+        }
+      })
+      .catch((error) => console.error(error));
+  }
+
+  updatePassword(requestData: changePasswordData) {
+    usersApi.updatePassword(requestData)
+      .then((response) => {
+        if (!response) { return; }
+        const { status, data } = this._createResponse(response);
+
+        switch (status) {
+          case HTTP.CODES.SUCCESS:
+            router.go(CHAT_PAGES.INDEX);
+            store.set('errors.passwordPage', { active: false });
+            break;
+
+          case HTTP.CODES.BAD_REQUEST:
+            store.set('errors.passwordPage', {
+              active: true,
+              text: data.reason,
+            });
             break;
 
           case HTTP.CODES.UNAUTHORIZED:

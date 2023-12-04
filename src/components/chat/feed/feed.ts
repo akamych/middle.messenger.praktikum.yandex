@@ -10,6 +10,7 @@ import Button from '../../inputs/button/button.js';
 import chatService from '../../../services/ChatService.js';
 import FeedChat, { feedChatProps } from './chats/chats.js';
 import FeedSearch from './search/search.js';
+import sortChats from '../../../utils/functions/sort.js';
 
 const createLinkStoreMapper = (state: propType) => ({
   href: '#',
@@ -36,7 +37,6 @@ const input = useStoreForComponent(inputStoreMapper, inputStoreMapper(store.getS
 
 const buttonStoreMapper = (state: propType) => ({
   type: 'submit',
-  name: 'chat_name',
   text: state.bundle?.buttons.createChat,
 });
 
@@ -50,7 +50,9 @@ const form = new Form({
       event.preventDefault();
       event.stopPropagation();
 
-      const input = event.target?.querySelector('input[name="chat_name"]');
+      const form = event.target as HTMLFormElement;
+
+      const input: HTMLInputElement | null = form.querySelector('input[name="chat_name"]');
       if (!input) {
         return;
       }
@@ -79,6 +81,17 @@ class Feed extends Block {
     });
   }
 
+  _updateState(newState: propType) : void {
+    if (newState && this.componentDidUpdate(this._state, newState)) {
+      this._state = newState;
+      this._props = {
+        ...this._props,
+        ...newState,
+      };
+      this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    }
+  }
+
   protected static _template: string = template;
 }
 
@@ -96,24 +109,18 @@ const useStoreImpl = useStore((state) => {
   };
 
   const { chats } = state;
-  if (!chats) { return {}; }
+  if (!chats) { return model; }
 
-  // TODO: sort the chats
-  // chats = chats.sort((a: feedChatProps, b: feedChatProps) => {
-  //   if (a.last_message !== null && b.last_message !== null) {
-  //     return Date.parse(a.last_message.time).compare(b.last_message.time, )
-  //   }
-  // });
-
-  for (let i = 0; i < chats.length; i += 1) {
-    model.chats.push(new FeedChat({
-      ...chats[i],
+  const sorted = sortChats(chats);
+  for (let i = 0; i < sorted.length; i += 1) {
+    const chat = new FeedChat({
+      ...sorted[i],
       events: {
-        click: () => chatService.open(chats[i]),
+        click: () => chatService.open(sorted[i]),
       },
-    } as feedChatProps));
+    } as feedChatProps);
+    model.chats.push(chat);
   }
-
   // eslint-disable-next-line consistent-return
   return model as propType;
 });

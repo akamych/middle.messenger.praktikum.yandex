@@ -24,6 +24,7 @@ export default class HTTP {
 
   static CODES : Record<string, Number> = {
     SUCCESS: 200,
+    BAD_REQUEST: 400,
     UNAUTHORIZED: 401,
   };
 

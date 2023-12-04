@@ -1,7 +1,6 @@
 @import url('../../components/chat/menu/menu.scss');
 @import url('../../components/chat/messages/messages.scss');
 @import url('../../components/chat/send/send.scss');
-@import url('../../components/chat/send/form/form.scss');
 
 main.chat {
     display: grid;
@@ -117,6 +116,32 @@ main.chat {
                 grid-template-rows: 1fr 1fr;
                 padding: 1em 0.75em;
 
+                &.user {                    
+                    grid-template-rows: repeat(3, auto);
+
+                    a {
+                        display: inline-block;
+                        grid-column: span 2;
+                        padding: 0.5em 1em;
+                        color: var(--blue);
+                        border-radius: 1em;
+                        border: 1px solid var(--blue);
+                        justify-self: end;
+
+                        &:hover {
+                            color: var(--orange);
+                        }
+                    }
+
+                    &:hover {                    
+                        grid-template-rows: repeat(3, auto);
+    
+                        a {
+                            background: var(--background);
+                        }
+                    }
+                }
+
                 .avatar {
                     display: inline-block;
                     background: var(--blue);
@@ -200,11 +225,54 @@ main.chat {
 
             li.createChat {
 
+                display: block;
+
                 a {
                     font-size: 1em;
                     display: block;
                     color: var(--orange);
                     margin: 0.75em auto;
+                }
+
+                form {
+                    display: grid;
+                    grid-template-columns: 1fr max-content;
+                    grid-gap: 0;
+
+                    input {
+                        width: 100%;
+                        padding: 0.25em;
+                        border: 2px solid var(--blue);
+                        border-radius: 1em 0 0 1em;
+                        text-align: center;
+                        outline: none;
+                        font-size: 0.85em;
+                    }
+
+                    button {
+                        outline: none;
+                        height: 100%;
+                        border: 2px solid var(--blue);
+                        background: var(--blue);
+                        border-radius: 0 1em 1em 0;
+                        color: var(--background);
+                        padding: 0 0.5em;
+                    }
+
+                }
+
+                &:hover {
+                    a {
+                        color: var(--background);
+                    }
+
+                    input {
+                        border-color:  var(--background);
+                    }
+
+                    button {
+                        border-color:  var(--background);
+                    }
                 }
 
             }

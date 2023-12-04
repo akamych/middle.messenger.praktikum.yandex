@@ -14,7 +14,6 @@ class AuthService extends Service {
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
-            console.log({ status, data });
             store.set('user', {
               authorized: true,
               ...data,
@@ -24,6 +23,7 @@ class AuthService extends Service {
             break;
 
           default:
+            console.error({ status, data });
             store.set('user', { authorized: false });
             router.guestRedirect();
             break;
@@ -35,7 +35,7 @@ class AuthService extends Service {
     AuthApi.login(requestData)
       .then((response) => {
         if (!response) { return; }
-        const { status } = this._createResponse(response);
+        const { status, data } = this._createResponse(response);
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
@@ -51,6 +51,7 @@ class AuthService extends Service {
             break;
 
           default:
+            console.error({ status, data });
             store.set('user', { authorized: false });
             router.guestRedirect();
             break;
@@ -62,7 +63,7 @@ class AuthService extends Service {
     AuthApi.signup(requestData)
       .then((response) => {
         if (!response) { return; }
-        const { status } = this._createResponse(response);
+        const { status, data } = this._createResponse(response);
 
         switch (status) {
           case HTTP.CODES.SUCCESS:
@@ -70,6 +71,7 @@ class AuthService extends Service {
             break;
 
           default:
+            console.error({ status, data });
             store.set('errors.signupForm', {
               active: true,
               text: store.getState().bundle.errorsText.signupForm.wrongData,

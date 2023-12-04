@@ -11,7 +11,8 @@
       "class-methods-use-this": "off",
       "import/no-extraneous-dependencies": "off",
       "no-shadow": "off",
-      "max-classes-per-file": "off"
+      "max-classes-per-file": "off",
+      "no-case-declarations": "off"
     },
     "env": {
       "browser": true

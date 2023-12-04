@@ -15,6 +15,7 @@ export enum CHAT_PAGES {
   LOGIN = '/login',
   SIGNUP = '/sign-up',
   SETTINGS = '/settings',
+  SETTINGS_PASSWORD = '/settings/password',
 }
 
 class Router {
@@ -90,6 +91,19 @@ class Router {
       return;
     }
     if (!this.checkAccess(pathname)) { return; }
+
+    switch (pathname) {
+      case CHAT_PAGES.SETTINGS:
+        store.set('errors.settingsPage', { active: false });
+        break;
+
+      case CHAT_PAGES.SETTINGS_PASSWORD:
+        store.set('errors.passwordPage', { active: false });
+        break;
+
+      default: break;
+    }
+
     this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }

@@ -60,8 +60,6 @@ const useStoreImpl = useStore((state) => {
       ),
   };
 
-  console.log(model);
-
   const { messages } = state;
   if (!messages) { return {}; }
 

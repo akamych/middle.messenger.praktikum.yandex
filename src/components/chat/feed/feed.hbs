@@ -1,0 +1,23 @@
+<ul class="feed">
+
+    {{{ feedSearch }}}
+
+    {{#if chats }}
+        {{#each chats }}
+            {{{ this }}}
+        {{/each }}
+    {{else }}
+        <li class="empty">
+            {{{ noChats }}}
+        </li>
+    {{/if}}
+
+    <li class="createChat">
+        {{#if createChat }}
+            {{{ form }}}
+        {{else }}
+            {{{ link }}}
+        {{/if}}
+    </li>
+    
+</ul>

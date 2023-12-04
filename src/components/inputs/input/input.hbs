@@ -1,11 +1,19 @@
-<label>
+<label
+    {{#if className }} 
+        class = {{ className }}
+    {{/if}}
+>
     <input
         type = {{ type }}
         name = {{ name }}
-        placeholder = {{ label }}
+        {{#if placeholder }} 
+            placeholder = {{ placeholder }}
+        {{/if}}
         {{#if value }} 
             value = {{ value }}
         {{/if}}
     />
-    <span class="label">{{ label }}</span>
+    {{#if label }} 
+        <span class="label">{{ label }}</span>
+    {{/if}}
 </label>

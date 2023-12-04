@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "es2016",
+        "declaration": false,
+        "module": "CommonJS",
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,        
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "sourceMap": true,
+        "strictNullChecks": true
+    },
+    "include": [
+        "src/utils/types/declaration.d.ts"
+    ]
+}

@@ -1,0 +1,21 @@
+{{#if attachments.img }}
+    <div
+        class="message img"
+        data-my="{{ byYou }}" 
+        {{#if unread }}
+            data-unread="{{ unread }}"
+        {{/if}}
+    >
+        <img src="{{ img }}" />
+    </div>
+{{/if}}
+
+<div class="message" data-my="{{ byMe }}" data-unread="{{ unread }}">
+    <div>{{ content }}</div>
+    <span>{{ date }} {{ time }}</span>
+    {{#if avatar }}
+        <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{ avatar }}" />
+    {{else}}
+        <div class="avatar"></div>
+    {{/if}}
+</div>

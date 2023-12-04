@@ -1,18 +1,27 @@
 # Мессенджер (Яндекс.Практикум)
 
-Данный репозиторий представляет из себя учебное задание (пока ещё) первого спринта в рамках обучения курсу Middle Frontend Developer в Яндекс.Практикум
+Данный репозиторий представляет из себя учебное задание третьего спринта в рамках обучения курсу Middle Frontend Developer в Яндекс.Практикум.
+В рамках спринта были добавлены роутинг, стор, санитайзинг, работа с api яндекс-практикума. Окончательно сформирована тематика чата - жёсткая смесь пассивной агрессии с капелькой бирюлёвской "доброты" 90-х.
 
 ## Disclaimer
 
-Сразу извиняюсь перед ревьюером за дилетантский шаблон и верстку - "потерял" первую неделю спринта, поэтому не стал всё делать красиво - постарался максимально минималистично и безстатично. Не всегда в CSS соблюдаю DRY. Хотел бы сдать эту работу в ближайшие дни и доделать более красивый макет и стили уже в рамках второго спринта, где будет возможность тратить на учёбу больше времени. 
+Есть несколько моментов, которые не были пока реализованы, т.к. не было жёсткого требования к их реализации сейчас, а жёсткий дедлайн был вчера :)
+1. пока не сделана отсылка файлов в чат - только аватары;
+2. основные ошибки апи-запросов обрабатываются, но менее существенные пока обрабатываются ужасно - выводом в консоль. Хоть это и противоречит безопасности, пока на их обработку решил не тратить силы и время, а дописать соответствующую модалку попозже;
+3. пока нет анимации или скроллинга к нужному месту при подгрузке старых сообщений;
+4. есть баг с обновлением стора, из-за которого иногда глючит список чатов - этот баг обещаю исправить в рамках 4-го спринта, но пока не понимаю его причину, о чём собираюсь писать наставнику в ближайшие дни.
+
 
 ### Нужные ссылки
 
 1. [Figma: MVC](https://www.figma.com/file/sbtB0RzeT89V7y3rvyzy6x/Yandex-Praktikum%3A-Sprint-1?type=design&node-id=0%3A1&mode=design&t=Si48pxi8MbvwfP5q-1)
 2. [Netlify](https://yandex-praktikum-akamych-1.netlify.app/):
      * [index](https://yandex-praktikum-akamych-1.netlify.app/)
-     * [login](https://yandex-praktikum-akamych-1.netlify.app/login.html)
-     * [sign up](https://yandex-praktikum-akamych-1.netlify.app/signup.html)
-     * [settings](https://yandex-praktikum-akamych-1.netlify.app/settings.html)
-     * [404](https://yandex-praktikum-akamych-1.netlify.app/404.html)
-     * [500](https://yandex-praktikum-akamych-1.netlify.app/500.html)
+     * [messenger](https://yandex-praktikum-akamych-1.netlify.app/messenger)
+     * [sign up](https://yandex-praktikum-akamych-1.netlify.app/sign-up)
+     * [settings](https://yandex-praktikum-akamych-1.netlify.app/settings/)
+     * [password](https://yandex-praktikum-akamych-1.netlify.app/settings/password)
+
+## Скрипты для линтинга
+1. npm run lint
+2. npm run stylelint

@@ -1,0 +1,303 @@
+@import url('../../components/chat/menu/menu.scss');
+@import url('../../components/chat/messages/messages.scss');
+@import url('../../components/chat/send/send.scss');
+
+main.chat {
+    display: grid;
+    grid-template-columns: var(--left-aside-width) 1fr;
+    max-height: 100%;
+    align-content: start;
+    align-items: start;
+    justify-items: stretch;
+    align-self: stretch;
+    justify-self: stretch;
+    font-family: var(--font-family);
+
+    * {
+        box-sizing: border-box;
+    }
+
+    aside {
+        display: inline-block;
+        box-sizing: border-box;
+        position: relative;
+        padding: 0;
+        max-height: 100%;
+        grid-template-rows: max-content 1fr;
+        overflow: auto;
+        background: var(--background-grey);
+
+        > ul {
+            position: relative;
+            box-sizing: border-box;
+            display: grid;
+            max-height: 100%;
+            overflow: auto;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            align-content: center;
+            
+            div.search {
+                box-sizing: border-box;
+                display: inline-block;
+                width: 100%;
+                position: sticky;
+                top: 0;
+                background: var(--background-grey);
+                padding: 0.5em 1em;
+                z-index: 2;
+            }
+
+            div.search > a {
+                display: block;
+                text-align: right;
+                padding: 0.25em 0;
+                margin-bottom: 0.5em;
+                color: var(--grey);
+                font-size: 0.75em;
+                font-family: var(--font-family);
+                text-transform: lowercase;
+            }
+
+            div.search > label {
+                input {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    outline: 0;
+                    border-radius: 2em;
+                    background: var(--background-grey);
+                    border: 1px solid var(--grey);
+                    color: var(--grey);
+                    font-size: 1em;
+                    font-family: var(--font-family);
+                    padding: 0.25em 0.75em;
+                    margin: 0 0 0 auto;
+                    text-align: center;
+
+                    &::placeholder {
+                        text-transform: lowercase;
+                        font-size: 0.7em;
+                    }
+
+                    &:active, 
+                    &:target, 
+                    &:hover, 
+                    &:focus {
+                        width: 100%;
+                        background: var(--blue);
+                        border-color: var(--blue);
+                        color: var(--background);
+
+                        &::placeholder {
+                            color: var(--background);
+                        }
+
+                    }
+                }
+
+                span.label {
+                    display: none;
+                }
+        
+            }
+
+            $avatarSize: calc(2 * var(--rem));
+
+            li {
+                text-align: left;
+                position: relative;
+                display: grid;
+                width: 100%;
+                grid-gap: 0.25em 0.5em;
+                grid-template-columns: $avatarSize 1fr;
+                grid-template-rows: 1fr 1fr;
+                padding: 1em 0.75em;
+
+                &.user {                    
+                    grid-template-rows: repeat(3, auto);
+
+                    a {
+                        display: inline-block;
+                        grid-column: span 2;
+                        padding: 0.5em 1em;
+                        color: var(--blue);
+                        border-radius: 1em;
+                        border: 1px solid var(--blue);
+                        justify-self: end;
+
+                        &:hover {
+                            color: var(--orange);
+                        }
+                    }
+
+                    &:hover {                    
+                        grid-template-rows: repeat(3, auto);
+    
+                        a {
+                            background: var(--background);
+                        }
+                    }
+                }
+
+                .avatar {
+                    display: inline-block;
+                    background: var(--blue);
+                    width: $avatarSize;
+                    height: $avatarSize;
+                    border-radius: 50%;
+                    grid-row: span 2;
+                    border: 2px solid var(--background-grey);
+                }
+
+                b {
+                    font-size: calc(0.8 * var(--rem));
+                    font-weight: 900;
+                    line-height: 1;
+                }
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                    font-size: calc(0.6 * var(--rem));
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                    overflow: hidden;
+                    line-height: 1;
+                }
+
+                span {
+                    display: inline-block;
+                    position: absolute;
+                    color: var(--grey);
+                    font-size: 0.5em;
+                    top: 0.5em;
+                    right: 1em;
+
+                    &.new {
+                        color: var(--background);
+                        background: var(--orange);
+                        width: 2em;
+                        height: 2em;
+                        border-radius: 50%;
+                        top: auto;
+                        bottom: 2em;
+                        padding: 0;
+                        line-height: 2em;
+                        text-align: center;
+
+                        &:empty {
+                            display: none;
+                        }
+                    }
+                }
+
+                &:not(.empty):hover {
+                    background: var(--blue);
+                    color: var(--background);
+                    cursor: pointer;
+
+                    span {
+                        color: var(--background);
+                    }
+                }
+
+            }
+
+            li.empty {
+                display: block;
+                padding: 2em 0;
+                font-size: 0.75em;
+                line-height: 1.5;
+                text-align: center;
+
+                a {
+                    font-size: 1.1em;
+                    display: block;
+                    color: var(--orange);
+                    margin: 0.75em auto;
+                }
+
+            }
+
+            li.createChat {
+                display: block;
+
+                a {
+                    font-size: 1em;
+                    display: block;
+                    color: var(--orange);
+                    margin: 0.75em auto;
+                }
+
+                form {
+                    display: grid;
+                    grid-template-columns: 1fr max-content;
+                    grid-gap: 0;
+
+                    input {
+                        width: 100%;
+                        padding: 0.25em;
+                        border: 2px solid var(--blue);
+                        border-radius: 1em 0 0 1em;
+                        text-align: center;
+                        outline: none;
+                        font-size: 0.85em;
+                    }
+
+                    button {
+                        outline: none;
+                        height: 100%;
+                        border: 2px solid var(--blue);
+                        background: var(--blue);
+                        border-radius: 0 1em 1em 0;
+                        color: var(--background);
+                        padding: 0 0.5em;
+                    }
+
+                }
+
+                &:hover {
+                    a {
+                        color: var(--background);
+                    }
+
+                    input {
+                        border-color:  var(--background);
+                    }
+
+                    button {
+                        border-color:  var(--background);
+                    }
+                }
+
+            }
+
+            &.usersList {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                overflow: hidden;
+                background: var(--background-grey);
+                align-content: start;
+                z-index: 2;
+
+                &.active {
+                    width: var(--left-aside-width);
+                }
+
+                .empty {
+                    padding: 1em 0.5em;
+                }
+            }
+
+        }
+
+    };
+
+}

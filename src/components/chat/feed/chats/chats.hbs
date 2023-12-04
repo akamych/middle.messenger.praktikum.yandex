@@ -1,0 +1,16 @@
+<li class="feedChat" data-chat-id={{ id }}>
+    {{#if avatar }}
+        <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{ avatar }}" />
+    {{else}}
+        <div class="avatar"></div>
+    {{/if}}
+    <b>{{ title }}</b>
+    <p>
+        {{#if last_message }}
+            {{ last_message.content }}
+        {{/if}}
+    </p>
+    {{#if unread_count }}
+        <span class="new">{{ unread_count }}</span>
+    {{/if}}
+</li>

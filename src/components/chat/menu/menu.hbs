@@ -1,0 +1,14 @@
+<div class="chatMenu">
+    {{#if activeChat}}
+        <b>{{ title }}</b>
+        {{#if avatar }}
+            <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{ avatar }}" />
+        {{else}}
+            <div class="avatar"></div>
+        {{/if}}
+        <nav>
+            {{{ listUsers }}}
+            {{{ changeAvatar }}}
+        </nav>
+    {{/if}}
+</div>

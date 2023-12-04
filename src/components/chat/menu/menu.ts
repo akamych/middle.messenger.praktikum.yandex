@@ -1,11 +1,31 @@
 import Block from '../../../classes/Block.js';
 import store, { useStore, useStoreForComponent } from '../../../classes/Store.js';
-import ChatService from '../../../services/ChatService.js';
-import UsersService from '../../../services/UsersService.js';
 import { propType } from '../../../utils/types/propType.js';
 import Link from '../../links/link.js';
+import InputFile from '../../inputs/files/files.js';
+import chatService from '../../../services/ChatService.js';
 // eslint-disable-next-line import/no-unresolved
 import template from './menu.hbs?raw';
+
+const avatarMapper = (state: propType) => ({
+  fileButton: state.bundle?.buttons?.changeAvatar,
+  name: 'avatar',
+  allow: {
+    pictures: true,
+  },
+  events: {
+    change: (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      if (!input || !input.files) { return; }
+
+      const formData = new FormData();
+      formData.append('avatar', input.files[0]);
+      chatService.updateAvatar(formData);
+    },
+  },
+});
+
+const changeAvatar = useStoreForComponent(avatarMapper, avatarMapper(store.getState()), InputFile);
 
 const listUsersMapper = (state: propType) => ({
   href: '#',
@@ -22,6 +42,7 @@ class ChatMenu extends Block {
       ...props,
       listUsers: useStoreForComponent(listUsersMapper, listUsersMapper(store.getState()), Link),
       template,
+      changeAvatar,
     });
   }
 

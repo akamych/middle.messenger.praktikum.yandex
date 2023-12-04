@@ -4,6 +4,7 @@ import store from '../classes/Store.js';
 import { feedChatProps } from '../components/chat/feed/chats/chats.js';
 import Service from '../classes/Service.js';
 import WebSocketApi from '../api/WebSocketApi.js';
+import router from '../classes/Router.js';
 
 class ChatService extends Service {
   private _ws: WebSocketApi;
@@ -141,6 +142,30 @@ class ChatService extends Service {
             break;
         }
       });
+  }
+
+  updateAvatar(requestData: FormData) {
+    chatApi.updateAvatar(requestData)
+      .then((response) => {
+        if (!response) { return; }
+        const { status, data } = this._createResponse(response);
+
+        switch (status) {
+          case HTTP.CODES.SUCCESS:
+            store.set('activeChat', data);
+            break;
+
+          case HTTP.CODES.UNAUTHORIZED:
+            store.set('user', { authorized: false });
+            router.guestRedirect();
+            break;
+
+          default:
+            console.log({ status, data });
+            break;
+        }
+      })
+      .catch((error) => console.error(error));
   }
 }
 

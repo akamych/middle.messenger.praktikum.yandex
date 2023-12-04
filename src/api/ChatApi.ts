@@ -46,6 +46,17 @@ class ChatApi extends HTTP {
       sendJSON: true,
     });
   }
+
+  updateAvatar(requestData: FormData) {
+    requestData.append('chatId', store.getState().activeChat?.id);
+    return this
+      .put('/avatar', {
+        data: {
+          formData: requestData,
+        },
+        sendForm: true,
+      });
+  }
 }
 
 export default new ChatApi();

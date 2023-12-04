@@ -1,6 +1,6 @@
 import store, { useStoreForComponent } from '../../../classes/Store';
 import { propType } from '../../../utils/types/propType';
-import InputFile from '../../inputs/files/file';
+import InputFile from '../../inputs/files/files';
 import usersService from '../../../services/UsersService';
 
 const mapper = (state: propType) => ({

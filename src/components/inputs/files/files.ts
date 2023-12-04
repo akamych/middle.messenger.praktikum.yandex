@@ -1,6 +1,6 @@
 import Block from '../../../classes/Block.js';
 // eslint-disable-next-line import/no-unresolved
-import template from './file.hbs?raw';
+import template from './files.hbs?raw';
 
 export type InputFilePropsType = {
   fileButton: unknown,

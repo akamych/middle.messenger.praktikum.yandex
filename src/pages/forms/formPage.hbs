@@ -1,0 +1,34 @@
+<main>
+    <form>
+        <h1>{{ header }}</h1>    
+
+        <div class="avatar">
+            {{#if myAvatar }}
+                <img src="{{ myAvatar }}" alt="{{ avatarAlt }}">
+            {{/if}}
+        </div> 
+
+        <div class="headerLinks">
+            {{#each headerLinks }}
+                {{{ this }}}
+            {{/each}}
+        </div>
+
+        {{#each inputs }}
+            {{{ this }}}
+        {{/each}}  
+
+        {{#if errors.active }}
+            <div class="error">{{ errors.text }}</div>            
+        {{/if}}
+
+        {{#each buttons }}
+            {{{ this }}}
+        {{/each}}
+
+        {{#if link }}
+            {{{ link }}}
+        {{/if}}
+
+    </form>
+</main>

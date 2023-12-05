@@ -1,19 +1,73 @@
 section.chatMessages {
     display: grid;
+    grid-template-rows: max-content auto max-content;
+    position: relative;
+    height: 100%;
     max-height: 100%;
     overflow: auto;
     padding: 0 2em;
 
+    --avatar-size: min(2.5em, 5vw);
+
     div.messages {
-        max-height: 100%;
-        overflow:auto; 
+        height: 100%;
+        overflow: auto; 
+        display: flex;
+        flex-direction: column-reverse;
+
+        .loadMoreMessages {
+            display: inline-block;
+            font-size: 0.7em;
+            margin: 0 auto 1em;
+            padding: 0.5em 0.75em;
+            border: 2px solid var(--orange);
+            border-radius: 2em;
+            color: var(--orange);
+
+            &:hover{
+                background: var(--orange);
+                color: var(--background);
+                cursor: pointer;
+            }
+        }
     
         div.message {
+            display: grid;
+            grid-gap: 0 0.75em;
+            grid-template-columns: var(--avatar-size) auto;
+            grid-template-rows: auto max-content;
+            position: relative;
             font-size: 0.8em;
-            max-width: 40%;
+            width: 80%;
             text-align: left;
-            padding: 1em;
-            margin: 0 auto 1em 0;
+            padding: 0.5em 0 1em;
+            margin: 0.5em auto 0.5em 0;
+
+            div {
+                grid-row: 1;
+            }
+
+            .avatar {
+                grid-row-start: 1;
+                grid-row-end: span 2;
+                grid-column: 1;
+                width: var(--avatar-size);
+                height: var(--avatar-size);
+                border-radius: 50%;
+                background: var(--purple);
+            }
+
+            span {
+                font-size: 0.5em;
+                color: var(--background);
+                white-space: nowrap;
+            }
+            
+            &:hover {
+                span {
+                    color: var(--blue);
+                }
+            }
     
             &.img {
                 margin-bottom: 0;
@@ -27,15 +81,19 @@ section.chatMessages {
             }
     
             &[data-my="true"] {
-                margin: 0 0 1em auto;
+                grid-template-columns: auto var(--avatar-size);
+                margin: 0.5em 0 0.5em auto;
+                justify-items: end;
+    
+                .avatar {
+                    grid-column: 2;
+                    background: var(--orange);
+                }
             }
     
-            &[data-unread="true"] {
+            &[data-unread="true"]:not([data-my="true"]) {
                 border-left: 5px solid var(--orange);
-                
-                &[data-my="true"] {
-                    border-right: 5px solid var(--purple);
-                }
+                padding-left: 1em;
             }
         }
     

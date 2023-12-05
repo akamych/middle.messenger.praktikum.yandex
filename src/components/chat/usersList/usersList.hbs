@@ -1,0 +1,31 @@
+<ul
+    class="usersList {{#if active }}active{{/if}}"
+>
+    <div class="search">
+        {{{ link }}}
+        {{{ input }}}
+    </div>
+
+    {{#if search }}
+        {{#if found }}
+            {{#each found }}
+                {{{ this }}}
+            {{/each }}
+        {{else }}
+            <li class="empty">
+                {{{ noFoundUsers }}}
+            </li>
+        {{/if}}
+    {{else }}
+        {{#if users }}
+            {{#each users }}
+                {{{ this }}}
+            {{/each }}
+        {{else }}
+            <li class="empty">
+                {{{ noUsers }}}
+            </li>
+        {{/if}}
+    {{/if}}
+    
+</ul>

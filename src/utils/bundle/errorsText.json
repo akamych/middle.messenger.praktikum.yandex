@@ -1,0 +1,8 @@
+{
+    "loginForm": {
+        "wrongData": "ну не выдумывай... вспоминай!"
+    },
+    "passwordForm": {
+        "samePasswords": "Шило на мыло не меняем!"
+    }
+}

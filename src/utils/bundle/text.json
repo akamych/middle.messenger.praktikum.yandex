@@ -1,0 +1,70 @@
+{
+    "buttons": {
+        "goBackToChats": "Назад к Счат'у!",
+        "profile": "Профиль >",
+        "login": "Войти",
+        "signup": "Зарегистрироваться",
+        "save": "Сохранить",
+        "chatUsers": "Кто в чате?",
+        "clearChat": "Очистить",
+        "deleteChat": "Удалить",
+        "sendMessage": "Отправить",
+        "moreMessages": "Больше сообщений богу сообщений!",
+        "changeData": "данные",
+        "changeAvatar": "аватар",
+        "changePassword": "пароль",
+        "createChat": "»",
+        "goBackLeft": "« Закрыть",
+        "addUserToChat": "Впустить в чат",
+        "removeUserFromChat": "Выгнать к чертям"
+    },
+    "headings": {
+        "settings": "Настройки и данные"
+    },
+    "labels": {
+        "login": "Логин",
+        "first_name": "Имя",
+        "second_name": "Фамилия",
+        "display_name": "Отображаемое имя",
+        "email": "Почта",
+        "phone": "Телефон",
+        "password": "Пароль",
+        "passwordConfirmation": "Пароль (ещё раз)",
+        "oldPassword": "Текущий пароль",
+        "newPassword": "Новый пароль",
+        "search": "Поиск",
+        "messageText": "Текст сообщения...",
+        "chat_name": "Название чата"
+    },
+    "alts": {
+        "avatar": "Аватар"
+    },
+    "errors": {
+        "404" : {
+            "header": "Тут Счат'я нет...",
+            "desc": "...но если найдёшь - поделись!"
+        },
+        "500" : {
+            "header": "Ну, не шмагла!",
+            "desc": "Как в том анекдоте про черепаху..."
+        }
+    },
+    "akamych": {
+        "link": "https://www.swing.school",
+        "text": "by akamych"
+    },
+    "headerLink": {
+        "part1": "С",
+        "part2": "ЧАТ'",
+        "part3": "Е"
+    },
+    "feed": {        
+        "noChats": "Как-то печальненько у тебя пока с коммуникацией...",
+        "createChat": "Создать чат",
+        "chatName": "Название чата"
+    },
+    "usersList": {        
+        "noUsers": "Мир игнорирует тебя? Неудивительно!",
+        "noFoundUsers": "Даже людей нормально найти не можешь!"
+    }
+}

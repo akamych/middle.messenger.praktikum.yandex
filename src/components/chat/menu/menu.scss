@@ -5,9 +5,14 @@
     padding: 1em 0;
     display: grid;
     grid-template-columns: auto max-content;
+    grid-template-rows: max-content max-content;
     align-items: center;
     justify-items: start;
     grid-gap: 0 1em;
+
+    input {
+        display: none;
+    }
 
     .avatar {
         grid-row: span 2;
@@ -31,9 +36,11 @@
         justify-self: end;
         line-height: 1;
 
-        a {
+        a, label {
+            text-transform: lowercase;
             font-family: var(--font-family);
-            font-size: 0.5em;
+            font-size: 0.75em;
+            line-height: 2.5;
             color: var(--grey);
             margin-right: 1em;
 
@@ -43,7 +50,7 @@
         }
     }
     
-    &:hover {
+    &:has(b:not(:empty)) {
         b {
             grid-row: 1;
         }

@@ -1,0 +1,14 @@
+<li class="user" data-user-id={{ id }}>
+    {{#if avatar }}
+        <img class="avatar" src="{{ resourcesUrl }}{{ avatar }}" alt="{{ avatarAlt }}" />
+    {{else}}  
+        <div class="avatar"></div>
+    {{/if}}        
+    <b>{{ display_name }}</b>
+    <p>{{ first_name }} {{ second_name }}</p>
+    {{#if inActiveChat }}
+        {{{ removeUser }}}
+    {{else}}
+        {{{ addUser }}}
+    {{/if}}
+</li>

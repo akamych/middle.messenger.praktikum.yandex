@@ -10,17 +10,23 @@
     "preview": "vite preview",
     "lint": "eslint \"**/*.ts\"",
     "stylelint": "npx stylelint \"**/*.scss\"",
-    "typescript": "npx tsc --noEmit"
+    "typescript": "npx tsc --noEmit",
+    "test": "mocha"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
     "@types/sanitize-html": "^2.9.5",
     "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.11.0",
+    "chai": "^4.3.10",
     "eslint": "^8.53.0",
     "eslint-config-airbnb": "^19.0.4",
     "handlebars": "^4.7.8",
+    "husky": "^8.0.3",
     "less": "^4.2.0",
+    "mocha": "^10.2.0",
     "postcss": "^8.4.31",
     "postcss-loader": "^7.3.3",
     "postcss-nesting": "^12.0.1",
@@ -32,6 +38,7 @@
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {
+    "jsdom": "^23.0.1",
     "sanitize-html": "^2.11.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-scss": "^5.3.1",

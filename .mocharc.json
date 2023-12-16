@@ -2,6 +2,6 @@
   "schema": "https://json.schemastore.org/mocharc",
   "extension": ["ts"],
   "loader": "ts-node/esm",
-  "spec": "test/**/*.test.ts",
-  "require": ["./mochaSetup.js"]
+  "spec": "src/**/*.test.*",
+  "require": "./mochaSetup.js"
 } 

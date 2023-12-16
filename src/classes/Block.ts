@@ -129,7 +129,7 @@ export default class Block {
   }
 
   render() : string {
-    return this._props.template;
+    return this._props.template as string;
   }
 
   getContent() : HTMLElement | null {

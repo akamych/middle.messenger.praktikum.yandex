@@ -1,6 +1,6 @@
 import { PropType } from '../utils/types/propType.ts';
 
-type ApiOptionsType = {
+export type ApiOptionsType = {
   method?: string;
   headers?: Record<string, string>;
   data?: Record<string, any>;

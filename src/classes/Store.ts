@@ -3,18 +3,18 @@ import Block from './Block.ts';
 import { PropType } from '../utils/types/propType.ts';
 import { StateMapper } from '../utils/types/stateMapper.ts';
 import set from '../utils/functions/set.ts';
-import pages from '../utils/bundle/pagesData.json';
-import bundle from '../utils/bundle/text.json';
-import inputTypes from '../utils/bundle/inputTypes.json';
-import errorsText from '../utils/bundle/errorsText.json';
+import pages from '../utils/bundle/pagesData.json' assert { type: 'json' };
+import bundle from '../utils/bundle/text.json' assert { type: 'json' };
+import inputTypes from '../utils/bundle/inputTypes.json' assert { type: 'json' };
+import errorsText from '../utils/bundle/errorsText.json' assert { type: 'json' };
 
 export enum StoreEvents {
     // eslint-disable-next-line no-unused-vars
     Updated = 'updated',
 }
 
-class Store extends EventBus {
-  private state: PropType = {
+export class Store extends EventBus {
+  protected state: PropType = {
     bundle: {
       ...bundle,
       pages,

@@ -18,7 +18,7 @@ export enum CHAT_PAGES {
   SETTINGS_PASSWORD = '/settings/password',
 }
 
-class Router {
+export class Router {
   // eslint-disable-next-line no-use-before-define
   private static __instance: Router | null = null;
 
@@ -52,8 +52,9 @@ class Router {
 
   start() : void {
     window.onpopstate = (event: Event) => {
+      console.log('popstate event!');
       if (event === null || event.currentTarget === null) { return; }
-      this._onRoute(event.currentTarget.location.pathname);
+      this._onRoute(event.currentTarget.location?.pathname);
     };
 
     const route = this.getRoute(window.location.pathname);
@@ -92,7 +93,7 @@ class Router {
     if (!nextRoute) { return false; }
 
     if (nextRoute.getAccessLevel() === ACCESS_LEVELS.USERS
-      && store.getState().user.authorized === false) {
+      && store.getState().user?.authorized === false) {
       return false;
     }
 
@@ -100,7 +101,7 @@ class Router {
   }
 
   go(pathname: string) : void {
-    if (!store.getState().user.authorized && pathname === CHAT_PAGES.MESSENGER) {
+    if (!store.getState().user?.authorized && pathname === CHAT_PAGES.MESSENGER) {
       this.go(CHAT_PAGES.LOGIN);
       return;
     }

@@ -7,8 +7,8 @@ import authService from './services/AuthService.ts';
 import LoginPage from './pages/forms/login/loginPage.ts';
 import SignupPage from './pages/forms/signup/signupPage.ts';
 import PasswordPage from './pages/forms/password/passwordPage.ts';
-import Error404Page from './pages/errors/404/error404Page.js';
-import Error500Page from './pages/errors/500/error500Page.js';
+import Error404Page from './pages/errors/404/error404Page.ts';
+import Error500Page from './pages/errors/500/error500Page.ts';
 
 function startApp() : void {
   authService.getUserData();

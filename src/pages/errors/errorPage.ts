@@ -1,12 +1,11 @@
-import Block from '../../classes/Block.js';
-import Link from '../../components/links/link.js';
+import Block from '../../classes/Block.ts';
+import Link from '../../components/links/link.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './errorPage.hbs?raw';
 import styles from './errorPage.scss';
-import { useStoreForComponent } from '../../classes/Store.js';
-import { PropType } from '../../utils/types/propType.js';
-import store from '../../classes/Store.js';
-import { CHAT_PAGES } from '../../classes/Router.js';
+import store, { useStoreForComponent } from '../../classes/Store.ts';
+import { PropType } from '../../utils/types/propType.ts';
+import { CHAT_PAGES } from '../../classes/Router.ts';
 
 export type errorPageProps = {
     header: string,

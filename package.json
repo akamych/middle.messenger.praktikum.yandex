@@ -12,7 +12,8 @@
     "stylelint": "npx stylelint \"**/*.scss\"",
     "typescript": "npx tsc --noEmit",
     "test": "mocha",
-    "precommit": "npm-run-all lint stylelint test"
+    "precommit": "npm-run-all lint stylelint test",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {

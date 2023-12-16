@@ -16,6 +16,8 @@ export enum CHAT_PAGES {
   SIGNUP = '/sign-up',
   SETTINGS = '/settings',
   SETTINGS_PASSWORD = '/settings/password',
+  ERROR_404 = '/404',
+  ERROR_500 = '/500',
 }
 
 export class Router {
@@ -52,7 +54,6 @@ export class Router {
 
   start() : void {
     window.onpopstate = (event: Event) => {
-      console.log('popstate event!');
       if (event === null || event.currentTarget === null) { return; }
       this._onRoute(event.currentTarget.location?.pathname);
     };

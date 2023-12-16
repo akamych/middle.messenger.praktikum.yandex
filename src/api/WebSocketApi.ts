@@ -1,6 +1,6 @@
 import store from '../classes/Store.ts';
 import CONSTANTS from '../utils/bundle/constants.ts';
-import { propType } from '../utils/types/propType.ts';
+import { PropType } from '../utils/types/propType.ts';
 
 export default class WebSocketApi {
   private _domain: string = 'wss://ya-praktikum.tech/ws/chats/';
@@ -20,7 +20,7 @@ export default class WebSocketApi {
     this.init(unread);
   }
 
-  _send(data: propType) {
+  _send(data: PropType) {
     if (!this._ws) { return; }
     this._ws.send(JSON.stringify(data));
   }
@@ -72,31 +72,35 @@ export default class WebSocketApi {
       });
 
     this._ws.addEventListener('message', (event: MessageEvent) => {
-      const data = JSON.parse(event.data);
-      const newMessages: propType[] = [];
-      const oldMessages: propType[] = [];
+      try {
+        const data = JSON.parse(event.data);
+        const newMessages: PropType[] = [];
+        const oldMessages: PropType[] = [];
 
-      if (Array.isArray(data)) {
-        data.forEach((message) => {
-          if (message.type === 'message') {
-            oldMessages.push(message);
+        if (Array.isArray(data)) {
+          data.forEach((message) => {
+            if (message.type === 'message') {
+              oldMessages.push(message);
+            }
+          });
+
+          if (data.length < CONSTANTS.MESSAGES_PER_REQUEST) {
+            store.set('noMoreMessages', true);
           }
-        });
-
-        if (data.length < CONSTANTS.MESSAGES_PER_REQUEST) {
-          store.set('noMoreMessages', true);
+        } else if (data.type === 'message') {
+          newMessages.push(data);
         }
-      } else if (data.type === 'message') {
-        newMessages.push(data);
-      }
 
-      const { messages } = store.getState();
-      const combined = [
-        ...newMessages,
-        ...messages,
-        ...oldMessages,
-      ];
-      store.set('messages', combined);
+        const { messages } = store.getState();
+        const combined = [
+          ...newMessages,
+          ...messages,
+          ...oldMessages,
+        ];
+        store.set('messages', combined);
+      } catch {
+        console.error(event.data);
+      }
     });
 
     this._ws.addEventListener('close', () => {

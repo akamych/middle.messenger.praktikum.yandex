@@ -1,16 +1,16 @@
 import Block from '../../../classes/Block.ts';
 import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
-import { propType } from '../../../utils/types/propType.ts';
+import { PropType } from '../../../utils/types/propType.ts';
 import Link from '../../links/link.ts';
 import Input from '../../inputs/input/input.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './usersList.hbs?raw';
 import usersService from '../../../services/UsersService.ts';
 import UserListUser from './users/user.ts';
-import { userType } from '../../../utils/types/user.ts';
+import { UserType } from '../../../utils/types/user.ts';
 import ChatService from '../../../services/ChatService.ts';
 
-const linkStoreMapper = (state: propType) => ({
+const linkStoreMapper = (state: PropType) => ({
   href: '#',
   title: state.bundle?.buttons.goBackLeft,
   text: state.bundle?.buttons.goBackLeft,
@@ -26,7 +26,7 @@ const searchUserEvent = (event: Event) => {
   input.value = '';
 };
 
-const inputStoreMapper = (state: propType) => ({
+const inputStoreMapper = (state: PropType) => ({
   type: 'text',
   name: 'name',
   placeholder: state.bundle?.labels.search,
@@ -84,6 +84,8 @@ const useStoreImpl = useStore((state) => {
   if (!state.usersList) { return; }
   const { users, found } = state.usersList;
 
+  const avatarAlt = state.bundle?.alts.avatar;
+
   const currentUsers = new Set();
 
   if (users) {
@@ -96,7 +98,7 @@ const useStoreImpl = useStore((state) => {
 
       currentUsers.add(users[i].id);
 
-      const removeLinkMapper = (state: propType) => ({
+      const removeLinkMapper = (state: PropType) => ({
         href: '#',
         title: state.bundle?.buttons.removeUserFromChat,
         text: state.bundle?.buttons.removeUserFromChat,
@@ -107,13 +109,14 @@ const useStoreImpl = useStore((state) => {
 
       model.users.push(new UserListUser({
         ...users[i],
+        avatarAlt,
         inActiveChat: true,
         removeUser: useStoreForComponent(
           removeLinkMapper,
           removeLinkMapper(store.getState()),
           Link,
         ),
-      } as userType));
+      } as UserType));
     }
   }
 
@@ -124,7 +127,7 @@ const useStoreImpl = useStore((state) => {
         continue;
       }
 
-      const addLinkMapper = (state: propType) => ({
+      const addLinkMapper = (state: PropType) => ({
         href: '#',
         title: state.bundle?.buttons.addUserToChat,
         text: state.bundle?.buttons.addUserToChat,
@@ -133,7 +136,7 @@ const useStoreImpl = useStore((state) => {
         },
       });
 
-      const removeLinkMapper = (state: propType) => ({
+      const removeLinkMapper = (state: PropType) => ({
         href: '#',
         title: state.bundle?.buttons.removeUserFromChat,
         text: state.bundle?.buttons.removeUserFromChat,
@@ -144,6 +147,7 @@ const useStoreImpl = useStore((state) => {
 
       model.found.push(new UserListUser({
         ...found[i],
+        avatarAlt,
         inActiveChat: currentUsers.has(found[i].id),
         addUser: useStoreForComponent(addLinkMapper, addLinkMapper(store.getState()), Link),
         removeUser: useStoreForComponent(
@@ -154,12 +158,12 @@ const useStoreImpl = useStore((state) => {
         events: {
           click: () => ChatService.addUser(found[i].id),
         },
-      } as userType));
+      } as UserType));
     }
   }
 
   // eslint-disable-next-line consistent-return
-  return model as propType;
+  return model as PropType;
 });
 
 export default useStoreImpl(UsersList);

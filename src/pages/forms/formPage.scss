@@ -18,6 +18,19 @@ main {
         padding: 0;
         text-transform: lowercase;
 
+        .avatar {
+            position: absolute;
+            top: 0;
+            right: 100%;
+            margin-right: 2em;
+
+            img {
+                width: 8vw;
+                height: 8vw;
+                border-radius: 50%;
+            }
+        }
+
         .headerLinks {
             display: grid;
             grid-template-columns: repeat(2, 1fr);

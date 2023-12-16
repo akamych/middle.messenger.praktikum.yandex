@@ -1,6 +1,6 @@
 import Block from '../../classes/Block.ts';
 import store, { useStoreForComponent } from '../../classes/Store.ts';
-import { propType } from '../../utils/types/propType.ts';
+import { PropType } from '../../utils/types/propType.ts';
 import Input from '../../components/inputs/input/input.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './formPage.hbs?raw';
@@ -19,7 +19,7 @@ export type formPageInputProps = {
 export default class FormPage extends Block {
   protected _display: string = 'grid';
 
-  constructor(props: formPageProps, state: propType) {
+  constructor(props: formPageProps, state: PropType) {
     super({
       ...props,
       styles,
@@ -37,7 +37,7 @@ export default class FormPage extends Block {
     inputs.forEach((input: formPageInputProps) => {
       inputBlocks.push(
         useStoreForComponent(
-          (state: propType) => ({
+          (state: PropType) => ({
             ...state.bundle.inputTypes[input.type],
             label: state.bundle.labels[input.type],
             value: state.user?.authorized ? state.user[input.type] : null,

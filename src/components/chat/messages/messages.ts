@@ -1,6 +1,6 @@
 import Block from '../../../classes/Block.ts';
 import { useStore } from '../../../classes/Store.ts';
-import { propType } from '../../../utils/types/propType.ts';
+import { PropType } from '../../../utils/types/propType.ts';
 import ChatMessage from './message/message.ts';
 import { getMessageDate, getMessageTime } from '../../../utils/functions/dateTime.ts';
 // eslint-disable-next-line import/no-unresolved
@@ -17,16 +17,16 @@ class ChatMessages extends Block {
   protected static _template: string = template;
 }
 
-const prepareProp = (message: propType, state: propType) : propType | null => {
+const prepareProp = (message: PropType, state: PropType) : PropType | null => {
   if (message.user_id && message.content) {
     let avatar: string | null = null;
     if (message.user_id === state.user?.id) {
       avatar = state.user.avatar;
     } else if (state.usersList?.users?.length > 0) {
       Object.entries(state.usersList.users).forEach(([, user]) => {
-        const { id, userAvatar } = user as propType;
+        const { id, userAvatar } = user as PropType;
         if (id === message.user_id) {
-          avatar = userAvatar;
+          avatar = userAvatar as string | null;
         }
       });
     }
@@ -35,7 +35,10 @@ const prepareProp = (message: propType, state: propType) : propType | null => {
       content: message.content,
       unread: !message.is_read,
       byMe: message.user_id === state.user?.id,
-      avatar,
+      avatarAlt: state.bundle?.alts.avatar,
+      avatar: avatar
+        ? `${CONSTANTS.RESOURCES_URL}${avatar}`
+        : null,
       date: getMessageDate(message.time),
       time: getMessageTime(message.time),
       user: message.user_id,
@@ -46,12 +49,15 @@ const prepareProp = (message: propType, state: propType) : propType | null => {
 };
 
 const useStoreImpl = useStore((state) => {
-  const model: propType = {
+  const model: PropType = {
     messages: [],
     myAvatar: state.user?.avatar,
-    noMoreMessages: state.noMoreMessages === true
-      || !state.activeChat
-      || state.messages?.length < CONSTANTS.MESSAGES_PER_REQUEST,
+    avatarAlt: state.bundle?.alts.avatar,
+    showMoreMessages: state.noMoreMessages === false
+      || (
+        !state.noMoreMessages
+        && (state.activeChat?.id || state.messages?.length >= CONSTANTS.MESSAGES_PER_REQUEST)
+      ),
   };
 
   const { messages } = state;

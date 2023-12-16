@@ -4,10 +4,10 @@ import Link from '../../../links/link.ts';
 import store, { useStoreForComponent } from '../../../../classes/Store.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './search.hbs?raw';
-import { propType } from '../../../../utils/types/propType.ts';
+import { PropType } from '../../../../utils/types/propType.ts';
 import chatService from '../../../../services/ChatService.ts';
 
-const linkStoreMapper = (state: propType) => ({
+const linkStoreMapper = (state: PropType) => ({
   href: state.bundle?.pages.settings.link,
   title: state.bundle?.buttons.profile,
   text: state.bundle?.buttons.profile,
@@ -19,7 +19,7 @@ const filterChatEvent = (event: Event) => {
   chatService.filter(target.value);
 };
 
-const inputStoreMapper = (state: propType) => ({
+const inputStoreMapper = (state: PropType) => ({
   type: 'text',
   name: 'search',
   placeholder: state.bundle?.labels.search,

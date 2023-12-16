@@ -1,4 +1,4 @@
-import type { propType } from './propType.ts';
+import type { PropType } from './propType.ts';
 
 // eslint-disable-next-line no-unused-vars
-export type stateMapper = (state: propType) => propType;
+export type StateMapper = (state: PropType) => PropType;

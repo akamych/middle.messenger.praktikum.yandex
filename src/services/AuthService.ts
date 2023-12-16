@@ -28,7 +28,8 @@ class AuthService extends Service {
             router.guestRedirect();
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   login(requestData: loginData) {
@@ -56,7 +57,8 @@ class AuthService extends Service {
             router.guestRedirect();
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   signup(requestData: signupData) {
@@ -78,7 +80,8 @@ class AuthService extends Service {
             });
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 
   logout() {
@@ -96,7 +99,8 @@ class AuthService extends Service {
           default:
             break;
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
 }
 

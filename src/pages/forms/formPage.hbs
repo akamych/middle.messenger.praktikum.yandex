@@ -1,6 +1,12 @@
 <main>
     <form>
-        <h1>{{ header }}</h1>     
+        <h1>{{ header }}</h1>    
+
+        <div class="avatar">
+            {{#if myAvatar }}
+                <img src="{{ myAvatar }}" alt="{{ avatarAlt }}">
+            {{/if}}
+        </div> 
 
         <div class="headerLinks">
             {{#each headerLinks }}

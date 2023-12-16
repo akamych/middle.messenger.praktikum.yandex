@@ -1,6 +1,6 @@
 import Block from '../../../classes/Block.ts';
 import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
-import { propType } from '../../../utils/types/propType.ts';
+import { PropType } from '../../../utils/types/propType.ts';
 import Link from '../../links/link.ts';
 import Input from '../../inputs/input/input.ts';
 import Form from '../../inputs/form/form.ts';
@@ -8,11 +8,11 @@ import Form from '../../inputs/form/form.ts';
 import template from './feed.hbs?raw';
 import Button from '../../inputs/button/button.ts';
 import chatService from '../../../services/ChatService.ts';
-import FeedChat, { feedChatProps } from './chats/chats.ts';
+import FeedChat, { FeedChatProps } from './chats/chats.ts';
 import FeedSearch from './search/search.ts';
 import sortChats from '../../../utils/functions/sort.ts';
 
-const createLinkStoreMapper = (state: propType) => ({
+const createLinkStoreMapper = (state: PropType) => ({
   href: '#',
   title: state.bundle?.feed.createChat,
   text: state.bundle?.feed.createChat,
@@ -27,7 +27,7 @@ const createLinkStoreMapper = (state: propType) => ({
   },
 });
 
-const inputStoreMapper = (state: propType) => ({
+const inputStoreMapper = (state: PropType) => ({
   type: 'text',
   name: 'chat_name',
   placeholder: state.bundle?.labels.chat_name,
@@ -35,7 +35,7 @@ const inputStoreMapper = (state: propType) => ({
 
 const input = useStoreForComponent(inputStoreMapper, inputStoreMapper(store.getState()), Input);
 
-const buttonStoreMapper = (state: propType) => ({
+const buttonStoreMapper = (state: PropType) => ({
   type: 'submit',
   text: state.bundle?.buttons.createChat,
 });
@@ -81,7 +81,7 @@ class Feed extends Block {
     });
   }
 
-  _updateState(newState: propType) : void {
+  _updateState(newState: PropType) : void {
     if (newState && this.componentDidUpdate(this._state, newState)) {
       this._state = newState;
       this._props = {
@@ -111,18 +111,24 @@ const useStoreImpl = useStore((state) => {
   const { chats } = state;
   if (!chats) { return model; }
 
+  const avatarAlt = state.bundle?.alts.avatar;
+
   const sorted = sortChats(chats);
   for (let i = 0; i < sorted.length; i += 1) {
-    const chat = new FeedChat({
-      ...sorted[i],
-      events: {
-        click: () => chatService.open(sorted[i]),
-      },
-    } as feedChatProps);
+    const chat = new FeedChat(
+      {
+        ...sorted[i],
+        avatarAlt,
+        events: {
+          click: () => chatService.open(sorted[i]),
+        },
+      } as FeedChatProps,
+      { avatarAlt },
+    );
     model.chats.push(chat);
   }
   // eslint-disable-next-line consistent-return
-  return model as propType;
+  return model as PropType;
 });
 
 export default useStoreImpl(Feed);

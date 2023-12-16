@@ -1,6 +1,6 @@
 import Block from '../../../classes/Block.ts';
 import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
-import { propType } from '../../../utils/types/propType.ts';
+import { PropType } from '../../../utils/types/propType.ts';
 import Input from '../../inputs/input/input.ts';
 import Form from '../../inputs/form/form.ts';
 // eslint-disable-next-line import/no-unresolved
@@ -10,7 +10,7 @@ import Button from '../../inputs/button/button.ts';
 import attachIcon from '../../../assets/svg/attach.svg?raw';
 import chatService from '../../../services/ChatService.ts';
 
-const inputStoreMapper = (state: propType) => ({
+const inputStoreMapper = (state: PropType) => ({
   type: 'text',
   name: 'message',
   placeholder: state.bundle?.labels.messageText,
@@ -18,7 +18,7 @@ const inputStoreMapper = (state: propType) => ({
 
 const input = useStoreForComponent(inputStoreMapper, inputStoreMapper(store.getState()), Input);
 
-const buttonStoreMapper = (state: propType) => ({
+const buttonStoreMapper = (state: PropType) => ({
   type: 'submit',
   name: 'sendMessage',
   text: state.bundle?.buttons.sendMessage,

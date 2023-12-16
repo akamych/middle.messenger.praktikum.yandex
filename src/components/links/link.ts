@@ -1,6 +1,6 @@
 import Block from '../../classes/Block.ts';
 import router from '../../classes/Router.ts';
-import { propType } from '../../utils/types/propType.ts';
+import { PropType } from '../../utils/types/propType.ts';
 // eslint-disable-next-line import/no-unresolved
 import template from './link.hbs?raw';
 
@@ -8,7 +8,7 @@ type linkPropsType = {
   href: string,
   title?: string,
   text: string,
-  events?: propType,
+  events?: PropType,
 };
 
 export default class Link extends Block {

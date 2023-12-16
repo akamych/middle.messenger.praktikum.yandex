@@ -1,6 +1,6 @@
 import Block from '../../classes/Block.ts';
 
-export type userType = {
+export type UserType = {
     id: Number,
     first_name: string,
     second_name: string,

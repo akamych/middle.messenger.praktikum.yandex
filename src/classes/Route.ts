@@ -1,4 +1,4 @@
-import Block, { propType } from './Block.ts';
+import Block, { PropType } from './Block.ts';
 import { ACCESS_LEVELS } from './Router.ts';
 
 export default class Route {
@@ -9,13 +9,13 @@ export default class Route {
 
   private _block: Block | null;
 
-  private _props: propType;
+  private _props: PropType;
 
   private _template: string;
 
   private _accessLevel: string;
 
-  constructor(pathname: string, view: typeof Block, props: propType) {
+  constructor(pathname: string, view: typeof Block, props: PropType) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;

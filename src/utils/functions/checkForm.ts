@@ -1,11 +1,11 @@
-import { formData } from '../types/formData.ts';
+import { FormDataType } from '../types/formData.ts';
 import { validateInputData, validateInputType } from './validateInput.ts';
 
-export default function checkForm(event : Event) : formData {
+export default function checkForm(event : Event) : FormDataType {
   event.stopPropagation();
   event.preventDefault();
 
-  let data: formData = null;
+  let data: FormDataType = null;
   let errors: boolean = false;
 
   const form = event.target as HTMLFormElement;

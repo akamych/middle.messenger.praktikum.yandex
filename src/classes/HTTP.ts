@@ -1,6 +1,6 @@
-import { propType } from '../utils/types/propType.ts';
+import { PropType } from '../utils/types/propType.ts';
 
-type ApiOptionsType = {
+export type ApiOptionsType = {
   method?: string;
   headers?: Record<string, string>;
   data?: Record<string, any>;
@@ -49,11 +49,11 @@ export default class HTTP {
     return { status, data };
   }
 
-  _parseJSON(data: string): propType {
+  _parseJSON(data: string): PropType {
     return JSON.parse(data);
   }
 
-  get: ApiGetMethod = (url, options: ApiOptionsType = {}) => {
+  get: ApiGetMethod = (url, options = {}) => {
     let fullUrl = url;
     if (options && options.data) {
       fullUrl += this._queryStringify(options.data as object);

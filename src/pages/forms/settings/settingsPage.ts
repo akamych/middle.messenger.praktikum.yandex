@@ -1,19 +1,20 @@
 import FormPage, { formPageInputProps } from '../formPage.ts';
 import Button from '../../../components/inputs/button/button.ts';
-import { propType } from '../../../utils/types/propType.ts';
+import { PropType } from '../../../utils/types/propType.ts';
 import store, { useStore, useStoreForComponent } from '../../../classes/Store.ts';
 import Block from '../../../classes/Block.ts';
 import checkForm from '../../../utils/functions/checkForm.ts';
-import { formData } from '../../../utils/types/formData.ts';
+import { FormDataType } from '../../../utils/types/formData.ts';
 import { settingsData } from '../../../api/UsersApi.ts';
 import usersService from '../../../services/UsersService.ts';
 import Link from '../../../components/links/link.ts';
 import logoutLink from '../../../components/links/settingsPage/logout.ts';
 import avatarLink from '../../../components/links/settingsPage/avatar.ts';
 import router, { CHAT_PAGES } from '../../../classes/Router.ts';
+import CONSTANTS from '../../../utils/bundle/constants.ts';
 
 class SettingsPage extends FormPage {
-  protected _addChildren(props: propType): propType {
+  protected _addChildren(props: PropType): PropType {
     const formInputs: formPageInputProps[] = [
       { type: 'email' },
       { type: 'phone' },
@@ -27,7 +28,7 @@ class SettingsPage extends FormPage {
 
     const buttons: Block[] = [
       useStoreForComponent(
-        (state: propType) => ({
+        (state: PropType) => ({
           className: 'important',
           type: 'submit',
           text: state.bundle?.buttons?.save,
@@ -41,7 +42,7 @@ class SettingsPage extends FormPage {
       ),
     ];
 
-    const passwordMapper = (state: propType) => ({
+    const passwordMapper = (state: PropType) => ({
       href: '#',
       text: state.bundle?.buttons?.changePassword,
       events: {
@@ -61,7 +62,7 @@ class SettingsPage extends FormPage {
 
     const headerLinks = [avatarLink, passwordLink];
 
-    const sendForm = (data: formData) => {
+    const sendForm = (data: FormDataType) => {
       if (data === null) {
         return;
       }
@@ -85,11 +86,18 @@ class SettingsPage extends FormPage {
       submit: (event: Event) => sendForm(checkForm(event)),
     };
 
+    const avatar: string | null = store.getState().user?.avatar;
+    const avatarAlt: string | null = store.getState().bundle?.alts.avatar;
+
     return {
       ...updatedProps,
       headerLinks,
       inputs,
       buttons,
+      myAvatar: avatar
+        ? `${CONSTANTS.RESOURCES_URL}${avatar}`
+        : null,
+      avatarAlt,
       link: logoutLink,
     };
   }
@@ -98,6 +106,8 @@ class SettingsPage extends FormPage {
 const useStoreImpl = useStore((state) => ({
   header: state.bundle.pages.settings.title,
   errors: state.errors?.settingsPage,
+  myAvatar: `${CONSTANTS.RESOURCES_URL}${state.user?.avatar}`,
+  avatarAlt: state.bundle?.alts.avatar,
   changeAvatar: state.changeAvatar,
   changePassword: state.changePassword,
 }));

@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
         "outDir": "dist",
-        "target": "es2016",
+        "target": "es2020",
         "declaration": false,
-        "module": "CommonJS",
-        "allowImportingTsExtensions": true,
         "noEmit": true,
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,        
         "noImplicitAny": true,
@@ -16,5 +17,10 @@
     },
     "include": [
         "src/utils/types/declaration.d.ts"
-    ]
+    ],
+    "ts-node": {
+        "esm": true,
+        "experimentalSpecifierResolution": "node",
+        "transpileOnly": true
+    }
 }

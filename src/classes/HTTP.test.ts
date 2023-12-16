@@ -50,7 +50,7 @@ describe('HTTP', () => {
       http.get(demoUrl, demoData);
 
       // eslint-disable-next-line no-unused-expressions
-      expect(request.calledWithMatch('?a=a&b=2&c=null')).to.be.true;
+      expect(request.calledWithMatch('?a=2&b=2&c=null')).to.be.true;
     });
   });
 
